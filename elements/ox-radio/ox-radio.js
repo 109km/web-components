@@ -4,7 +4,7 @@ import {
 } from '@polymer/polymer/polymer-element.js';
 
 /**
- * @name ox-button
+ * @name ox-radio
  */
 class OXRadio extends PolymerElement {
   constructor() {
