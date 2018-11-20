@@ -23,6 +23,10 @@ $ polymer test
 ```
 
 
+## 设计规范
+
+目前PC端的设计稿放在 `docs` 目录中。
+
 ## 资料
 
 [MDN Web components资料](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components)
