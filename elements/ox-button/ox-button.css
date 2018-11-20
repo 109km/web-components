@@ -36,61 +36,61 @@
 }
 
 :host(.ox-button-success) {
-  color: var(--color-white);
-  background-color: var(--color-success);
-  border-color: var(--color-success);
+  color: var(--theme-color-white);
+  background-color: var(--theme-color-success);
+  border-color: var(--theme-theme-color-success);
 }
 
 :host(.ox-button-success:active) {
-  background-color: var(--color-success-active);
+  background-color: var(--theme-color-success-active);
 }
 
 :host(.ox-button-warning) {
-  color: var(--color-white);
-  background-color: var(--color-warning);
-  border-color: var(--color-warning);
+  color: var(--theme-color-white);
+  background-color: var(--theme-color-warning);
+  border-color: var(--theme-color-warning);
 }
 
 :host(.ox-button-warning:active) {
-  background-color: var(--color-warning-active);
+  background-color: var(--theme-color-warning-active);
 }
 
 :host(.ox-button-error) {
-  color: var(--color-white);
-  background-color: var(--color-error);
-  border-color: var(--color-error);
+  color: var(--theme-color-white);
+  background-color: var(--theme-color-error);
+  border-color: var(--theme-color-error);
 }
 
 :host(.ox-button-error:active) {
-  background-color: var(--color-error-active);
+  background-color: var(--theme-color-error-active);
 }
 
 :host(.ox-button-success-hollow) {
-  color: var(--color-success);
-  border-color: var(--color-success);
+  color: var(--theme-color-success);
+  border-color: var(--theme-color-success);
 }
 
 :host(.ox-button-success-hollow:active) {
-  color: var(--color-success-active);
-  border-color: var(--color-success-active);
+  color: var(--theme-color-success-active);
+  border-color: var(--theme-color-success-active);
 }
 
 :host(.ox-button-warning-hollow) {
-  color: var(--color-warning);
-  border-color: var(--color-warning);
+  color: var(--theme-color-warning);
+  border-color: var(--theme-color-warning);
 }
 
 :host(.ox-button-warning-hollow:active) {
-  color: var(--color-warning-active);
-  border-color: var(--color-warning-active);
+  color: var(--theme-color-warning-active);
+  border-color: var(--theme-color-warning-active);
 }
 
 :host(.ox-button-error-hollow) {
-  color: var(--color-error);
-  border-color: var(--color-error);
+  color: var(--theme-color-error);
+  border-color: var(--theme-color-error);
 }
 
 :host(.ox-button-error-hollow:active) {
-  color: var(--color-error-active);
-  border-color: var(--color-error-active);
+  color: var(--theme-color-error-active);
+  border-color: var(--theme-color-error-active);
 }

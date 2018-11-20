@@ -1,26 +1,32 @@
 html {
-
+  /* 主题样式 */
   --theme-primary-color: #d59e5b;
   --theme-primary-color-active: #deb074;
   --theme-secondary-color: #00f;
   --theme-default-color: #fff;
   --theme-default-color-border: #d0d1d3;
+  --theme-font-family: '微软雅黑';
+  --theme-font-size: 16px;
+  --theme-color-success: #50c984;
+  --theme-color-success-active: #72d499;
+  --theme-color-warning: #fdb668;
+  --theme-color-warning-active: #fdc384;
+  --theme-color-error: #c03a3b;
+  --theme-color-error-active: #ca615e;
+  --theme-color-radio-disabled: #f6f6f6;
+  --theme-color-radio-active-disabled: #e7d2a3;
+  --theme-color-checkbox-disabled: #f6f6f6;
 
+  /* 通用样式 */
   --color-black: #333;
   --color-white: #fff;
 
-  --color-success: #50c984;
-  --color-success-active: #72d499;
-  --color-warning: #fdb668;
-  --color-warning-active: #fdc384;
-  --color-error: #c03a3b;
-  --color-error-active: #ca615e;
-  --color-radio-disabled: #f6f6f6;
-  --color-radio-active-disabled: #e7d2a3;
-  --color-checkbox-disabled: #f6f6f6;
+  
 
-  font-family: '微软雅黑';
-  font-size: 16px;
+
+
+  font-family: var(--theme-font-family);
+  font-size: var(--theme-font-size);
   color: var(--color-black);
 
 }

@@ -29,14 +29,14 @@
   cursor: not-allowed;
 }
 :host([disabled]) .ox-radio-outer{
-  background-color: var(--color-radio-disabled);
+  background-color: var(--theme-color-radio-disabled);
 }
 :host([disabled]) .ox-radio-inner {
   visibility: hidden;
 }
 :host(.ox-radio-actived[disabled]) .ox-radio-outer{
-  background-color: var(--color-radio-active-disabled);
-  border-color: var(--color-radio-active-disabled);
+  background-color: var(--theme-color-radio-active-disabled);
+  border-color: var(--theme-color-radio-active-disabled);
 }
 :host(.ox-radio-actived[disabled]) .ox-radio-inner {
   visibility: visible;
