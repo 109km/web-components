@@ -1,0 +1,42 @@
+html {
+
+  --theme-primary-color: #d59e5b;
+  --theme-primary-color-active: #deb074;
+  --theme-secondary-color: #00f;
+  --theme-default-color: #fff;
+  --theme-default-color-border: #d0d1d3;
+
+  --color-black: #333;
+  --color-white: #fff;
+
+  --color-success: #50c984;
+  --color-success-active: #72d499;
+  --color-warning: #fdb668;
+  --color-warning-active: #fdc384;
+  --color-error: #c03a3b;
+  --color-error-active: #ca615e;
+  --color-radio-disabled: #f6f6f6;
+  --color-checkbox-disabled: #f6f6f6;
+
+  font-family: '微软雅黑';
+  font-size: 16px;
+  color: var(--color-black);
+
+}
+
+.page {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.page-demo {
+  width: 600px;
+}
+
+.page-title {
+  margin-bottom: 50px;
+}
+
+.page .zone {
+  margin-bottom: 30px;
+}

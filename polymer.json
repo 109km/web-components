@@ -1,0 +1,16 @@
+{
+  "entrypoint": "index.html",
+  "sources": [
+    "**.js",
+    "package.json"
+  ],
+  "extraDependencies": [
+    "node_modules/@webcomponents/webcomponentsjs/bundles/**"
+  ],
+  "builds": [{
+    "html": {
+      "minify": false
+    },
+    "addServiceWorker": false
+  }]
+}
