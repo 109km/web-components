@@ -35,6 +35,10 @@ class OXRadio extends PolymerElement {
         type: Boolean,
         value: false
       },
+      checked:{
+        type: Boolean,
+        value: false
+      },
       value: {
         type: String,
         value: ''
@@ -49,6 +53,7 @@ class OXRadio extends PolymerElement {
       radio.className = '';
       radio.removeAttribute('actived');
     });
+    this.checked = true;
     this.className = "ox-radio-actived";
     console.log('此选项值为' + this.value);
   }
@@ -63,6 +68,7 @@ class OXRadio extends PolymerElement {
   }
   ready() {
     super.ready();
+    console.log(this.checked);
   }
 }
 
