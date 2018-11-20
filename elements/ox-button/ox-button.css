@@ -36,7 +36,7 @@
 }
 
 :host(.ox-button-success) {
-  color: var(--theme-color-white);
+  color: var(--color-white);
   background-color: var(--theme-color-success);
   border-color: var(--theme-theme-color-success);
 }
@@ -46,7 +46,7 @@
 }
 
 :host(.ox-button-warning) {
-  color: var(--theme-color-white);
+  color: var(--color-white);
   background-color: var(--theme-color-warning);
   border-color: var(--theme-color-warning);
 }
@@ -56,7 +56,7 @@
 }
 
 :host(.ox-button-error) {
-  color: var(--theme-color-white);
+  color: var(--color-white);
   background-color: var(--theme-color-error);
   border-color: var(--theme-color-error);
 }

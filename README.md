@@ -22,6 +22,9 @@ $ polymer serve
 $ polymer test
 ```
 
+## 开发规范
+
+所有的组件都放在 `elements` 目录下，每一个组件对应一个独立文件夹，包含 `css` 和 `js` 文件，同时需要创建一个预览的html，放在`demo` 目录中。
 
 ## 设计规范
 
