@@ -22,6 +22,10 @@ $ polymer serve
 $ polymer test
 ```
 
+## 代码说明
+
+图标字体使用 [fontawesome](http://fontawesome.dashgame.com/)
+
 ## 开发规范
 
 1. 所有的组件都放在 `elements` 目录下，每一个组件对应一个独立文件夹，包含 `css` 和 `js` 文件。
