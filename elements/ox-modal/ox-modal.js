@@ -107,8 +107,6 @@ class OXModal extends PolymerElement {
     this.setVisible(false);
     callback && callback();
   }
-
-
 }
 
 window.customElements.define('ox-modal', OXModal);
