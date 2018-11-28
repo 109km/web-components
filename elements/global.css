@@ -25,13 +25,13 @@ html {
   --theme-border-radius: 5px;
 
   --modal-bg-color: #fff;
-  --mask-bg-color: rgba(0, 0, 0, 0.6);
+  --mask-bg-color: rgba(0, 0, 0, 0.8);
 
   /* 通用样式 */
   --color-black: #333;
   --color-white: #fff;
   --color-grey: #666;
-  
+
   
 
   font-family: var(--theme-font-family);
