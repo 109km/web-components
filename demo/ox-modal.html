@@ -46,7 +46,11 @@
     </ox-modal>
   </div>
   <script>
-    
+    let modalSuccess = document.querySelector('ox-modal[for="success"]');
+    modalSuccess.onOK = function() {
+      console.log('modal success is clicked');
+      modalSuccess.hide();
+    }
   </script>
 </body>
 
