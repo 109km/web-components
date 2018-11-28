@@ -74,6 +74,10 @@ class OXModal extends PolymerElement {
   }
   ready() {
     super.ready();
+    const bindNode = this.getForNode();
+    bindNode.addEventListener('click', function() {
+      this.show();
+    }.bind(this));
   }
   getForNode() {
     return document.querySelector(`#${this.for}`);
