@@ -1,3 +1,11 @@
+/**
+ * @name ox-modal
+ * @todo 
+ * 1. Add more modal types, including success/warning/error.
+ * 2. Add more callback events.
+ * 3. Add animations.
+ */
+
 import {
   html,
   PolymerElement
@@ -5,9 +13,6 @@ import {
 
 import '../ox-button/ox-button.js';
 
-/**
- * @name ox-modal
- */
 class OXModal extends PolymerElement {
   constructor() {
     super();
@@ -58,16 +63,13 @@ class OXModal extends PolymerElement {
         value: '取消'
       },
       showclosebutton: {
-        type: Boolean,
-        value: false
+        type: String,
+        value: "no"
       },
       animationtype: {
         type: String,
         value: 'fade'
       },
-      afterclose: {
-        type: String
-      }
     };
   }
   ready() {
