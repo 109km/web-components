@@ -8,6 +8,8 @@ html {
   --theme-font-family: "Chinese Quote", -apple-system, BlinkMacSystemFont, "Segoe UI", "PingFang SC", "Hiragino Sans GB", "Microsoft YaHei", "Helvetica Neue", Helvetica, Arial, sans-serif,
     "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   --theme-font-size: 16px;
+  --theme-font-size-large: 20px;
+  --theme-font-size-small: 14px;
   --theme-color-success: #50c984;
   --theme-color-success-active: #72d499;
   --theme-color-warning: #fdb668;
@@ -20,9 +22,17 @@ html {
 
   --theme-link-color: #333d56;
 
+  --theme-border-radius: 5px;
+
+  --modal-bg-color: #fff;
+  --mask-bg-color: rgba(0, 0, 0, 0.6);
+
   /* 通用样式 */
   --color-black: #333;
   --color-white: #fff;
+  --color-grey: #666;
+  
+  
 
   font-family: var(--theme-font-family);
   font-size: var(--theme-font-size);

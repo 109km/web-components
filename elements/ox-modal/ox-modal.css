@@ -1,0 +1,46 @@
+:host {
+  display: none;
+}
+
+:host([visible]) {
+  display: block;
+}
+
+.ox-modal-mask {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--mask-bg-color);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ox-modal-inner {
+  padding: 20px 30px;
+  min-width: 270px;
+  background-color: var(--modal-bg-color);
+  border-radius: var(--theme-border-radius);
+}
+::slotted(.title) {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: var(--theme-font-size-large);
+}
+::slotted(.content) {
+  margin-bottom: 20px;
+  font-size: var(--theme-font-size-small);
+  color: var(--color-grey);
+}
+.actions{
+  text-align: right;
+}
+.actions .btn{
+  cursor: pointer;
+  margin-left: 10px;
+}
+.btn-ok{
+  color: var(--theme-primary-color);
+}
