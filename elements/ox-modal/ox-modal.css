@@ -19,28 +19,60 @@
 }
 
 .ox-modal-inner {
-  padding: 20px 30px;
+  padding: 30px 30px;
   min-width: 270px;
   background-color: var(--modal-bg-color);
   border-radius: var(--theme-border-radius);
 }
+
 ::slotted(.title) {
   margin-bottom: 20px;
   font-weight: bold;
   font-size: var(--theme-font-size-large);
 }
+
 ::slotted(.content) {
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-size: var(--theme-font-size-small);
   color: var(--color-grey);
 }
-.actions{
+
+.actions {
   text-align: right;
 }
-.actions .btn{
+
+.actions .btn {
   cursor: pointer;
   margin-left: 10px;
 }
-.btn-ok{
-  color: var(--theme-primary-color);
+
+.btn-ok {
+  color: var(--theme-color-success);
+}
+
+::slotted(.icon-area) {
+  padding: 10px 0;
+  text-align: center;
+  margin-bottom: 10px;
+  color: var(--theme-color-success);
+  font-size: 64px !important;
+}
+
+/* Modal with status' icons */
+.ox-modal-inner-success,
+.ox-modal-inner-warning,
+.ox-modal-inner-error {
+  text-align: center;
+}
+
+.ox-modal-inner-success .actions,
+.ox-modal-inner-warning .actions,
+.ox-modal-inner-error .actions {
+  text-align: center;
+}
+
+.ox-modal-inner-success .btn,
+.ox-modal-inner-warning .btn,
+.ox-modal-inner-error .btn {
+  
 }

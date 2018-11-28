@@ -11,8 +11,6 @@ import {
   PolymerElement
 } from '@polymer/polymer/polymer-element.js';
 
-import '../ox-button/ox-button.js';
-
 class OXModal extends PolymerElement {
   constructor() {
     super();
@@ -23,7 +21,8 @@ class OXModal extends PolymerElement {
       @import '../elements/ox-modal/ox-modal.css';
     </style>
     <div class="ox-modal-mask" on-click="onMaskClick">
-      <div class="ox-modal-inner" on-click="onInnerClick">
+      <div class$="ox-modal-inner ox-modal-inner-[[type]]" on-click="onInnerClick">
+        <slot name="icon"></slot>
         <div class="user-content">
           <slot class="title" name="title"></slot>
           <slot class="content" name="content"></slot>
@@ -38,34 +37,43 @@ class OXModal extends PolymerElement {
   }
   static get properties() {
     return {
+      // 是否可见
       visible: {
         type: Boolean,
         value: false,
         reflectToAttribute: true
       },
+      // 点击遮罩层是否可以关闭
       maskcloseable: {
-        type: String
+        type: Boolean,
+        value: false
       },
+      // 与按钮绑定
       for: {
         type: String,
         value: ''
       },
+      // 对话框类型
       type: {
         type: String,
         value: 'default'
       },
+      // 确定按钮文案
       oktext: {
         type: String,
         value: '确认'
       },
+      // 取消按钮文案
       canceltext: {
         type: String,
         value: '取消'
       },
+      // 是否展示关闭按钮
       showclosebutton: {
-        type: String,
-        value: "no"
+        type: Boolean,
+        value: false
       },
+      // 对话框动画
       animationtype: {
         type: String,
         value: 'fade'
@@ -79,6 +87,7 @@ class OXModal extends PolymerElement {
       this.show();
     }.bind(this));
   }
+  // 根据 `for` 获取绑定按钮
   getForNode() {
     return document.querySelector(`#${this.for}`);
   }
@@ -92,10 +101,12 @@ class OXModal extends PolymerElement {
     e.stopPropagation();
   }
   onMaskClick(e) {
-    if (this.maskcloseable === 'yes') {
+    console.log(this.maskcloseable);
+    if (this.maskcloseable) {
       this.hide();
     }
   }
+  // 变更visible属性
   setVisible(isVisible) {
     this.visible = !!isVisible;
   }
