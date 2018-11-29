@@ -84,10 +84,11 @@ class OXModal extends PolymerElement {
   }
   ready() {
     super.ready();
-    const bindNode = this.getForNode();
-    bindNode.addEventListener('click', function() {
-      this.show();
-    }.bind(this));
+    if (this.for.length > 0) {
+      this.getForNode().addEventListener('click', function() {
+        this.show();
+      }.bind(this));
+    }
   }
   // 根据 `for` 获取绑定按钮
   getForNode() {
@@ -120,8 +121,8 @@ class OXModal extends PolymerElement {
     this.setVisible(false);
     callback && callback();
   }
-  _attributeTypeChanged(){
-    console.log('_attributeTypeChanged',this.type);
+  _attributeTypeChanged() {
+    console.log('_attributeTypeChanged', this.type);
     this.className = `ox-modal-inner-action ox-modal-inner-${this.type}`;
   }
 }
