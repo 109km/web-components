@@ -1,9 +1,8 @@
 /**
  * @name ox-modal
  * @todo 
- * 1. Add more modal types, including success/warning/error.
- * 2. Add more callback events.
- * 3. Add animations.
+ * 1. Add animations.
+ * 2. Custom css styles.
  */
 
 import {

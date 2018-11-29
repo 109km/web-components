@@ -21,6 +21,9 @@
       ox-button{
         margin-right: 50px;
       }
+      .error .content{
+        color: var(--theme-color-error);
+      }
     </style>
   </custom-style>
   <div class="page page-demo">
@@ -50,7 +53,7 @@
       <div class="title" slot="title">Modal warning 标题</div>
       <div class="content" slot="content">Modal warning 内容</div>
     </ox-modal>
-    <ox-modal for="error" type="error">
+    <ox-modal class="error" for="error" type="error" oktext="知道了">
       <div class="icon-area" slot="icon"><i class="fa fa-times-circle"></i></div>
       <div class="title" slot="title">Modal error 标题</div>
       <div class="content" slot="content">Modal error 内容</div>
