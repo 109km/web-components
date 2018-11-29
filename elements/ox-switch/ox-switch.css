@@ -1,0 +1,27 @@
+
+:host {
+  cursor: cursor;
+}
+
+.ox-switch-outer {
+  display: inline-block;
+  width: 60px;
+  height: 30px;
+  background-color: #C2C2C2;
+  border-radius: 15px;
+
+  position: relative;
+}
+
+.ox-switch-inner {
+  width: 26px;
+  height: 26px;
+  background-color: var(--color-white);
+  border-radius: 50%;
+
+  position: absolute;
+  left: 0;
+  top: 50%;
+
+  transform: translateY(-50%);
+}
