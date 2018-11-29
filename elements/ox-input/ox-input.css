@@ -1,0 +1,31 @@
+:host {
+    /* background: red; */
+    cursor: default;
+
+}
+
+:host([disabled]) {
+    cursor: not-allowed;
+}
+
+:host([disabled]) .ox-input-shadow {
+    visibility: hidden;
+    background: #ccc;
+}
+
+.ox-input-shadow {
+    height: 30px;
+}
+
+:host .ox-input {
+    width: 200px;
+    height: 25px;
+    border-radius: 4px;
+    -webkit-appearance: none;
+}
+.search-input {
+    width: 300px;
+    height: 25px;
+    border-radius: 4px;
+    -webkit-appearance: none;
+}
