@@ -95,9 +95,11 @@ class OXModal extends PolymerElement {
     return document.querySelector(`#${this.for}`);
   }
   onOK(e) {
+    console.log('Default OK is clicked');
     this.hide();
   }
   onCancel(e) {
+    console.log('Default cancel is clicked');
     this.hide();
   }
   onInnerClick(e) {
