@@ -21,7 +21,7 @@ class OXModal extends PolymerElement {
       @import '../elements/ox-modal/ox-modal.css';
     </style>
     <div class="ox-modal-mask" on-click="onMaskClick">
-      <div class$="ox-modal-inner ox-modal-inner-[[type]]" on-click="onInnerClick">
+      <div class$="ox-modal-inner [[className]]" on-click="onInnerClick">
         <slot name="icon"></slot>
         <div class="user-content">
           <slot class="title" name="title"></slot>
@@ -56,7 +56,8 @@ class OXModal extends PolymerElement {
       // 对话框类型
       type: {
         type: String,
-        value: 'default'
+        value: 'default',
+        observer: '_attributeTypeChanged'
       },
       // 确定按钮文案
       oktext: {
@@ -78,6 +79,7 @@ class OXModal extends PolymerElement {
         type: String,
         value: 'fade'
       },
+      className: String
     };
   }
   ready() {
@@ -117,6 +119,10 @@ class OXModal extends PolymerElement {
   hide(callback) {
     this.setVisible(false);
     callback && callback();
+  }
+  _attributeTypeChanged(){
+    console.log('_attributeTypeChanged',this.type);
+    this.className = `ox-modal-inner-action ox-modal-inner-${this.type}`;
   }
 }
 

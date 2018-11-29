@@ -32,6 +32,9 @@
       <ox-button id="success" type="success">成功弹窗</ox-button>
       <ox-button id="warning" type="warning">警告弹窗</ox-button>
     </div>
+    <div class="zone">
+      <ox-button id="error" type="error">错误弹窗</ox-button>
+    </div>
 
     <ox-modal for="basic" type="default" maskcloseable>
       <div class="title" slot="title">Modal basic 标题</div>
@@ -42,9 +45,15 @@
       <div class="title" slot="title">Modal success 标题</div>
       <div class="content" slot="content">Modal success 内容</div>
     </ox-modal>
-    <ox-modal for="warning" type="warning" >
+    <ox-modal for="warning" type="warning">
+      <div class="icon-area" slot="icon"><i class="fa fa-exclamation-circle"></i></div>
       <div class="title" slot="title">Modal warning 标题</div>
       <div class="content" slot="content">Modal warning 内容</div>
+    </ox-modal>
+    <ox-modal for="error" type="error">
+      <div class="icon-area" slot="icon"><i class="fa fa-times-circle"></i></div>
+      <div class="title" slot="title">Modal error 标题</div>
+      <div class="content" slot="content">Modal error 内容</div>
     </ox-modal>
   </div>
   <script>

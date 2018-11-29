@@ -58,21 +58,41 @@
   font-size: 64px !important;
 }
 
+.ox-modal-inner-warning ::slotted(.icon-area ) {
+  color: var(--theme-color-warning);
+}
+.ox-modal-inner-error ::slotted(.icon-area ) {
+  color: var(--theme-color-error);
+}
+
 /* Modal with status' icons */
-.ox-modal-inner-success,
-.ox-modal-inner-warning,
-.ox-modal-inner-error {
+.ox-modal-inner-action {
   text-align: center;
 }
 
-.ox-modal-inner-success .actions,
-.ox-modal-inner-warning .actions,
-.ox-modal-inner-error .actions {
+.ox-modal-inner-action .actions {
+  display: flex;
+  justify-content: center;
   text-align: center;
 }
 
-.ox-modal-inner-success .btn,
-.ox-modal-inner-warning .btn,
-.ox-modal-inner-error .btn {
-  
+.ox-modal-inner-action .btn {
+  display: inline-block;
+  width: 100px;
+  height: 40px;
+  line-height: 40px;
+  border: 1px solid transparent;
+  border-radius: 2px;
+  margin: 0 10px;
+}
+
+.ox-modal-inner-action .btn-ok {
+  color: var(--color-white);
+  border-color: var(--theme-color-success);
+  background-color: var(--theme-color-success);
+}
+
+.ox-modal-inner-action .btn-cancel {
+  border-color: var(--theme-color-default-border);
+
 }
