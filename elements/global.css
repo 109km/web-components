@@ -17,6 +17,8 @@ html {
   --theme-color-radio-disabled: #f6f6f6;
   --theme-color-radio-active-disabled: #e7d2a3;
   --theme-color-checkbox-disabled: #f6f6f6;
+  --theme-bg-color-primary: #D99F53;
+  --theme-bg-color-default: #C2C2C2;
 
   /* 通用样式 */
   --color-black: #333;

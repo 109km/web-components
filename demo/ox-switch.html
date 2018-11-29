@@ -16,7 +16,7 @@
 <body>
   <custom-style>
     <style>
-      ox-radio {
+      ox-switch {
         display: block;
         margin-bottom: 20px;
       }
@@ -27,8 +27,10 @@
       开关(ox-switch)
     </h1>
     <div class="zone">
-      <h2>第1组</h2>
       <ox-switch></ox-switch>
+      <ox-switch checked class="ox-switch-actived"></ox-switch>
+      <ox-switch disabled></ox-switch>
+      <ox-switch checked class="ox-switch-actived" disabled></ox-switch>
     </div>
   </div>
 </body>

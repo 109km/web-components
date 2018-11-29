@@ -23,12 +23,41 @@ class OXSwitch extends PolymerElement {
     `;
   }
 
+  static get properties() {
+    return {
+      checked:{
+        type: Boolean,
+        value: false
+      },
+    }
+  }
+
   onClick(e) {
-    // if () return;
+    if (this.hasAttribute('disabled')) return;
+    console.log('checked:', this.hasAttribute('checked'));
+
+    if (this.hasAttribute('checked')) {
+      this.removeAttribute('checked');
+      this.className = '';
+      this.checked = false;
+    } else {
+      this.checked = true;
+      this.setAttribute('checked', true);
+      this.className = 'ox-switch-actived';
+    }
+  }
+
+  setDisabled() {
+    this.setAttribute('disabled');
+  }
+
+  removeDisabled() {
+    this.removeAttribute('disabled');
   }
 
   ready() {
     super.ready();
+    console.log('checked:', this.checked);
   }
 }
 

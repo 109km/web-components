@@ -1,16 +1,13 @@
 
-:host {
-  cursor: cursor;
-}
-
 .ox-switch-outer {
   display: inline-block;
   width: 60px;
   height: 30px;
-  background-color: #C2C2C2;
+  background-color: var(--theme-bg-color-default);
   border-radius: 15px;
 
   position: relative;
+  cursor: pointer;
 }
 
 .ox-switch-inner {
@@ -24,4 +21,17 @@
   top: 50%;
 
   transform: translateY(-50%);
+}
+
+:host(.ox-switch-actived) .ox-switch-outer {
+  background-color: var(--theme-bg-color-primary);
+}
+
+:host(.ox-switch-actived) .ox-switch-inner {
+  left: 30px;
+}
+
+:host([disabled]) .ox-switch-outer {
+  opacity: .5;
+  cursor: not-allowed;
 }
