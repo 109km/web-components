@@ -3,8 +3,7 @@
   "main": "main.js",
   "scripts": {
     "start": "polymer serve",
-    "build": "polymer build",
-    "test": "polymer test"
+    "build": "polymer build"
   },
   "dependencies": {
     "@polymer/polymer": "^3.0.0"

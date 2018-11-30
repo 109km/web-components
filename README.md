@@ -11,15 +11,21 @@ npm install -g polymer-cli
 
 2. 在当前目录下运行：
 ```
-$ polymer serve
+$ npm start
 ```
 
 3. 访问 `http://127.0.0.1:8081/`
 
+## 构建
+
+```
+$ npm run build
+```
+
 ## 测试
 
 ```
-$ polymer test
+$ npm run test
 ```
 
 ## 代码说明

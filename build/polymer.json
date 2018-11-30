@@ -1,0 +1,25 @@
+{
+  "entrypoint": "index.html",
+  "shell": "main.js",
+  "fragments": [],
+  "sources": [
+    "**.js",
+    "package.json",
+    "index.html",
+    "main.js"
+  ],
+  "extraDependencies": [
+    "bower_components/webcomponentsjs/*.js",
+    "node_modules/@webcomponents/webcomponentsjs/bundles/**"
+  ],
+  "builds": [
+    {
+      "html": {
+        "minify": false
+      },
+      "addServiceWorker": false
+    }
+  ],
+  "componentDir": "elements/",
+  "moduleResolution": "node"
+}
