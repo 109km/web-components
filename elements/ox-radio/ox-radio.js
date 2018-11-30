@@ -10,6 +10,7 @@ class OXRadio extends PolymerElement {
   constructor() {
     super();
     this.addEventListener('click', this.onClick);
+    console.log(this.tagName);
   }
   static get template() {
     return html `
@@ -47,7 +48,6 @@ class OXRadio extends PolymerElement {
   }
   onClick(e) {
     if (this.hasAttribute('disabled')) return;
-
     let radios = this.getGroupRadios();
     radios.forEach(function(radio, index) {
       radio.className = '';
