@@ -17,7 +17,7 @@ class OXModal extends PolymerElement {
   static get template() {
     return html `
     <style>
-      @import '../elements/ox-modal/ox-modal-shaoxinheng.css';
+      @import '../elements/ox-modal-shaoxinheng/ox-modal-shaoxinheng.css';
     </style>
     <div class="ox-modal-mask" on-click="onMaskClick">
       <div class$="ox-modal-inner [[className]]" on-click="onInnerClick">

@@ -13,26 +13,26 @@
 }
 
 :host(.ox-button-default:active) {
-  color: var(--theme-primary-color);
-  border-color: var(--theme-primary-color);
+  color: var(--theme-color-primary);
+  border-color: var(--theme-color-primary);
 }
 
 :host(.ox-button-primary) {
   color: var(--color-white);
-  background-color: var(--theme-primary-color);
-  border-color: var(--theme-primary-color);
+  background-color: var(--theme-color-primary);
+  border-color: var(--theme-color-primary);
 }
 
 :host(.ox-button-primary:active) {
-  background-color: var(--theme-primary-color-active);
+  background-color: var(--theme-color-primary-active);
 }
 
 :host(.ox-button-text) {
-  color: var(--theme-primary-color);
+  color: var(--theme-color-primary);
 }
 
 :host(.ox-button-text:active) {
-  color: var(--theme-primary-color-active);
+  color: var(--theme-color-primary-active);
 }
 
 :host(.ox-button-success) {

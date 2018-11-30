@@ -14,7 +14,7 @@ class OXInput extends PolymerElement {
     static get template(){
         return html`
         <style>
-            @import '../elements/ox-input/ox-input.css'
+            @import '../elements/ox-input-wangdi/ox-input-wangdi.css';
         </style>
            <input type="text" placeholder="请输入" class="ox-input-shadow" on-change="onBlur">
         ` 
