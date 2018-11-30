@@ -9,7 +9,7 @@ import {
 class OXButton extends PolymerElement {
   constructor() {
     super();
-    this.addEventListener('click', this.hide);
+    // this.addEventListener('click', this.hide);
   }
   static get template() {
     return html `
@@ -17,7 +17,7 @@ class OXButton extends PolymerElement {
         @import '../elements/ox-label/ox-label.css';
       </style>
       <slot></slot>
-      <span class="delete">x</span>
+      <span on-click="hide" class="delete">x</span>
     `;
   }
   static get properties() {
