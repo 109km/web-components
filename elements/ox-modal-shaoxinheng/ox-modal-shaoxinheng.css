@@ -25,18 +25,6 @@
   border-radius: var(--theme-border-radius);
 }
 
-::slotted(.title) {
-  margin-bottom: 20px;
-  font-weight: bold;
-  font-size: var(--theme-font-size-large);
-}
-
-::slotted(.content) {
-  margin-bottom: 30px;
-  font-size: var(--theme-font-size-small);
-  color: var(--color-grey);
-}
-
 .actions {
   text-align: right;
 }
@@ -50,6 +38,17 @@
   color: var(--theme-color-success);
 }
 
+::slotted(.title) {
+  margin-bottom: 20px;
+  font-weight: bold;
+  font-size: var(--theme-font-size-large);
+}
+
+::slotted(.content) {
+  margin-bottom: 30px;
+  font-size: var(--theme-font-size-small);
+  color: var(--color-grey);
+}
 ::slotted(.icon-area) {
   padding: 10px 0;
   text-align: center;
