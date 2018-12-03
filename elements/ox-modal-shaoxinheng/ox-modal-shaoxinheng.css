@@ -1,3 +1,115 @@
+@-webkit-keyframes animation-fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-moz-keyframes animation-fade {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@-webkit-keyframes animation-top {
+  0% {
+    margin-top: -2000px;
+  }
+
+  100% {
+    margin-top: 0;
+  }
+}
+
+@-moz-keyframes animation-top {
+  0% {
+    margin-top: -2000px;
+  }
+
+  100% {
+    margin-top: 0;
+  }
+}
+
+@-webkit-keyframes animation-left {
+  0% {
+    margin-left: -2000px;
+  }
+
+  100% {
+    margin-left: 0;
+  }
+}
+
+@-moz-keyframes animation-left {
+  0% {
+    margin-left: -2000px;
+  }
+
+  100% {
+    margin-left: 0;
+  }
+}
+
+@-webkit-keyframes animation-left {
+  0% {
+    margin-left: -2000px;
+  }
+
+  100% {
+    margin-left: 0;
+  }
+}
+
+@-moz-keyframes animation-right {
+  0% {
+    margin-right: -2000px;
+  }
+
+  100% {
+    margin-right: 0;
+  }
+}
+
+@-webkit-keyframes animation-right {
+  0% {
+    margin-right: -2000px;
+  }
+
+  100% {
+    margin-right: 0;
+  }
+}
+
+@-moz-keyframes animation-bottom {
+  0% {
+    margin-bottom: -2000px;
+  }
+
+  100% {
+    margin-bottom: 0;
+  }
+}
+
+@-webkit-keyframes animation-bottom {
+  0% {
+    margin-bottom: -2000px;
+  }
+
+  100% {
+    margin-bottom: 0;
+  }
+}
+
+
+
 :host {
   display: none;
 }
@@ -16,6 +128,26 @@
   display: flex;
   align-items: center;
   justify-content: center;
+}
+
+:host([visible]) .ox-modal-mask.fade {
+  animation: animation-fade 0.3s ease;
+}
+
+:host([visible]) .ox-modal-mask.top {
+  animation: animation-top 0.3s ease;
+}
+
+:host([visible]) .ox-modal-mask.left {
+  animation: animation-left 0.3s ease;
+}
+
+:host([visible]) .ox-modal-mask.right {
+  animation: animation-right 0.3s ease;
+}
+
+:host([visible]) .ox-modal-mask.bottom {
+  animation: animation-bottom 0.3s linear;
 }
 
 .ox-modal-inner {
@@ -49,6 +181,7 @@
   font-size: var(--theme-font-size-small);
   color: var(--color-grey);
 }
+
 ::slotted(.icon-area) {
   padding: 10px 0;
   text-align: center;
@@ -57,10 +190,11 @@
   font-size: 64px !important;
 }
 
-.ox-modal-inner-warning ::slotted(.icon-area ) {
+.ox-modal-inner-warning ::slotted(.icon-area) {
   color: var(--theme-color-warning);
 }
-.ox-modal-inner-error ::slotted(.icon-area ) {
+
+.ox-modal-inner-error ::slotted(.icon-area) {
   color: var(--theme-color-error);
 }
 
