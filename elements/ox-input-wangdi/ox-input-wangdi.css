@@ -1,31 +1,65 @@
 :host {
     /* background: red; */
-    cursor: default;
+    /* cursor: default; */
 
 }
 
-:host([disabled]) {
+/* :host([disabled]) {
     cursor: not-allowed;
-}
+} */
 
-:host([disabled]) .ox-input-shadow {
-    visibility: hidden;
-    background: #ccc;
+:host([required]) {
+    position: relative;
+    /* border: 1px solid red; */
 }
 
 .ox-input-shadow {
-    height: 30px;
+    width: 190px;
+    height: 25px;
+    /* position: relative; */
 }
 
 :host .ox-input {
     width: 200px;
-    height: 25px;
+    height: 22px;
     border-radius: 4px;
     -webkit-appearance: none;
 }
 .search-input {
     width: 300px;
-    height: 25px;
+    height: 22px;
     border-radius: 4px;
     -webkit-appearance: none;
+}
+.error-message{
+    color: red;
+    font-size: 12px;
+    position: absolute;
+    top:43%;
+    left: 10%;
+}
+.required{
+    position: relative;
+}
+.show{
+    display: block;
+  }
+ .hide{
+    display: none;
+  }
+/* .open-message{
+    display: block;
+} */
+/* .hide{
+    display: none;
+} */
+.error-messagehide{
+    display: none;
+}
+.error-messageshow{
+    display: block;
+} 
+.required ::slotted(*){
+    color: red;
+    font-size: 12px;
 }

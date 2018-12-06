@@ -1,51 +1,68 @@
-
-  import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
+import {
+    PolymerElement,
+    html
+} from '@polymer/polymer/polymer-element.js';
 
 
 
 class OXInput extends PolymerElement {
-    constructor(){
+    constructor() {
         //必须首先调用super方法
         super();
         // this.addEventListener('onblur',this.onBlur);
         // console.log(this.tagName);
+        this.mode = 'auto';
+        this.data = {};
     }
     //创建shadow dom
-    static get template(){
-        return html`
+    static get template() {
+        return html `
         <style>
             @import '../elements/ox-input-wangdi/ox-input-wangdi.css';
         </style>
-           <input type="text" placeholder="请输入" class="ox-input-shadow" on-change="onBlur">
-        ` 
+           <input type="text" placeholder="请输入" class="ox-input-shadow"  disabled="{{disabled}}" required="{{required}}" on-blur="onBlur" on-keyup="onKey"> 
+           `
+        //   <slot class="error-message">輸入有誤</slot>
+
     }
-    static get properties(){
-      return {
-        value: {
-            type: String
-          }
-      }
+    static get properties() {
+        return {
+            disabled: {
+                type: Boolean,
+                value: false
+            },
+            required: {
+                type: Boolean,
+                value: true
+            },
+            validate: {
+                type: Boolean,
+                value: false
+            }
+        }
     }
-    ready(){
+    ready() {
         super.ready();
         console.log('input-element created!');
     }
-    onBlur(e){
-        // console.log("aaa");
+    onBlur(e) {
         if (this.hasAttribute('disabled')) return;
-        // console.log(this)
-        // const content = this.innerHTML;
-        // console.log(content);
-        // console.log('此选项值为' +  this.value);
-        console.log(this.className);
+        if (this.hasAttribute('required')) {
+            console.log('required:', this.hasAttribute('required'));
+            console.log(this);
+        }
     }
-    setDisabled(){
+    onKey(e) {
+        e.target.value = e.target.value.replace(/[^\d]/g,'')
+        const {value} = e.target;
+        console.log(value);
+    }
+    setDisabled() {
         this.setAttribute('disabled');
-      }
-      removeDisabled(){
+    }
+    removeDisabled() {
         this.removeAttribute('disabled');
-      }
+    }
 
 }
-customElements.define('ox-input',OXInput);
-  
+customElements.define('ox-input', OXInput);
