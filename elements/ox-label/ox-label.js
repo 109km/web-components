@@ -4,12 +4,11 @@ import {
 } from '@polymer/polymer/polymer-element.js';
 
 /**
- * @name ox-button
+ * @name ox-label
  */
-class OXButton extends PolymerElement {
+class OXLabel extends PolymerElement {
   constructor() {
-    super();
-    this.addEventListener('click', this.hide);
+    super(); 
   }
   static get template() {
     return html `
@@ -17,7 +16,7 @@ class OXButton extends PolymerElement {
         @import '../elements/ox-label/ox-label.css';
       </style>
       <slot></slot>
-      <span class="delete">x</span>
+      <span on-click="hide" class="delete">x</span>
     `;
   }
   static get properties() {
@@ -25,17 +24,19 @@ class OXButton extends PolymerElement {
       type: {
         type: String,
         value: 'default',
+      }, 
+      oxclass: {
+        type: String, 
       }
     };
   }
   ready() {
     super.ready();
-    this.className = `ox-label ox-label-${this.type}`; 
+    this.className = `ox-label ox-label-${this.type} ${this.oxclass}`;  
   }
   hide() {
     if(!this.getAttribute("class").includes("delete")) return false;
     this.style.display = "none" 
   } 
-}
-
-window.customElements.define('ox-label', OXButton);
+} 
+window.customElements.define('ox-label', OXLabel);

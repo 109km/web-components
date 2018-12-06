@@ -19,7 +19,7 @@ class OXModal extends PolymerElement {
     <style>
       @import '../elements/ox-modal-shaoxinheng/ox-modal-shaoxinheng.css';
     </style>
-    <div class="ox-modal-mask" on-click="onMaskClick">
+    <div class$="ox-modal-mask [[animationtype]]" on-click="onMaskClick">
       <div class$="ox-modal-inner [[className]]" on-click="onInnerClick">
         <slot name="icon"></slot>
         <div class="user-content">
@@ -83,15 +83,18 @@ class OXModal extends PolymerElement {
   }
   ready() {
     super.ready();
+    this.bindEvents();
+  }
+  // 根据 `for` 获取绑定按钮
+  getForNode() {
+    return document.querySelector(`#${this.for}`);
+  }
+  bindEvents() {
     if (this.for.length > 0) {
       this.getForNode().addEventListener('click', function() {
         this.show();
       }.bind(this));
     }
-  }
-  // 根据 `for` 获取绑定按钮
-  getForNode() {
-    return document.querySelector(`#${this.for}`);
   }
   onOK(e) {
     console.log('Default OK is clicked');
@@ -105,7 +108,6 @@ class OXModal extends PolymerElement {
     e.stopPropagation();
   }
   onMaskClick(e) {
-    console.log(this.maskcloseable);
     if (this.maskcloseable) {
       this.hide();
     }
@@ -123,7 +125,7 @@ class OXModal extends PolymerElement {
     callback && callback();
   }
   _attributeTypeChanged() {
-    console.log('_attributeTypeChanged', this.type);
+    console.log('_attributeTypeChanged', this.animationtype);
     this.className = `ox-modal-inner-action ox-modal-inner-${this.type}`;
   }
 }
