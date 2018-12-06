@@ -1,6 +1,6 @@
   
-  :host(.ox-label) {
-    background:rgba(217,159,83,1);
+  :host(.ox-label) { 
+    background:var(--my-elem-color, rgba(217,159,83,1));
     border-radius:4px;
     font-size:13px; 
     color:rgba(255,255,255,1);
