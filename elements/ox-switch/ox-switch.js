@@ -9,7 +9,7 @@ import {
 class OXSwitch extends PolymerElement {
   constructor() {
     super();
-    this.userClass = this.getAttribute('class');
+    this.userClass = this.getAttribute('class') || '';
     this.addEventListener('click', this.onClick);
     if (this.hasAttribute('checked')) {
       this.className = `ox-switch-actived ${this.userClass}`;
@@ -17,6 +17,7 @@ class OXSwitch extends PolymerElement {
   }
 
   static get template() {
+    // <div class="ox-switch-inner-box "></div>
     return html`
       <style>
         @import '../elements/ox-switch/ox-switch.css';
