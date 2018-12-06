@@ -21,7 +21,6 @@
   top: 50%;
 
   transform: translateY(-50%);
-  animation: moveLeft 3.5s ease-in-out;
 }
 
 :host(.ox-switch-actived) .ox-switch-outer {
@@ -30,28 +29,9 @@
 
 :host(.ox-switch-actived) .ox-switch-inner {
   left: 30px;
-  animation: moveRight 3.5s ease-in-out;
 }
 
 :host([disabled]) .ox-switch-outer {
   opacity: .5;
   cursor: not-allowed;
-}
-
-@keyframes moveLeft {
-  0% {
-    left: 30rpx;
-  }
-  100% {
-    left: 2rpx;
-  }
-}
-
-@keyframes moveRight {
-  0% {
-    left: 2rpx;
-  }
-  100% {
-    left: 30rpx;
-  }
 }
