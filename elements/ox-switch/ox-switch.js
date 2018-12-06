@@ -9,7 +9,11 @@ import {
 class OXSwitch extends PolymerElement {
   constructor() {
     super();
+    this.userClass = this.getAttribute('class');
     this.addEventListener('click', this.onClick);
+    if (this.hasAttribute('checked')) {
+      this.className = `ox-switch-actived ${this.userClass}`;
+    }
   }
 
   static get template() {
@@ -38,12 +42,12 @@ class OXSwitch extends PolymerElement {
 
     if (this.hasAttribute('checked')) {
       this.removeAttribute('checked');
-      this.className = '';
+      this.className = this.userClass;
       this.checked = false;
     } else {
       this.checked = true;
       this.setAttribute('checked', true);
-      this.className = 'ox-switch-actived';
+      this.className = `ox-switch-actived ${this.userClass}`;
     }
   }
 
