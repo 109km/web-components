@@ -2,30 +2,30 @@
 <html>
 
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-  <title>Demo - ox-checkbox</title>
-  <link rel="stylesheet" href="../elements/normalize.css">
-  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
-  <link rel="stylesheet" href="../elements/global.css">
-  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-
-  <!-- 引入组件的js -->
-  
-  <script type="module" src="../elements/ox-button/ox-button.js"></script>
-  <script type="module" src="../elements/ox-modal-liuhao/ox-modal-liuhao.js"></script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>Demo - ox-modal-liuhao</title>
+    <link rel="stylesheet" href="../elements/normalize.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../elements/global.css">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <!-- 引入组件的js -->
+    <script type="module" src="../elements/ox-button/ox-button.js"></script>
+    <script type="module" src="../elements/ox-modal-liuhao/ox-modal-liuhao.js"></script>
+    <script type="text/javascript" src="../elements/ox-modal-liuhao/ox-modal-module.js"></script>
 </head>
+
 <body>
-  <custom-style>
-    <style>
-      /*ox-checkbox {
+    <custom-style>
+        <style>
+            /*ox-checkbox {
         display: block;
         margin-bottom: 20px;
       }
       .fa {
         color: #fff;
       }*/
-      .btn{
+      #success-btn,#btn1,#btn2{
         display: inline-block;
         cursor: pointer;
         padding: 8px 20px;
@@ -35,24 +35,69 @@
         color: #fff;
       }
     </style>
-  </custom-style>
-  <div class="page page-demo">
-    <h1 class="page-title">
+    </custom-style>
+    <div class="page page-demo">
+        <h1 class="page-title">
       对话框(ox-modal)
     </h1>
-    <div class="zone">
-      <ox-button type="success">成功按钮</ox-button>
+        <div class="zone">
+            <ox-button id="success" type="success">成功按钮</ox-button>
+        </div>
+        <div class="zone">
+            <ox-button id="warning" type="warning">警告按钮</ox-button>
+            <ox-button id="error" type="error">错误按钮</ox-button>
+        </div>
+        <button id="success-btn" data-type="success">成功方法</button>
+        <button id="btn1" data-type="warning">方法1</button>
+        <button id="btn2" data-type="warning">方法2</button>
+        <!-- ox-modal -->
+        <ox-modal for="success" type="success" title="我是标题" oktext="确定吧" canceltext="取消吧" animationtype="animate-fade">
+            <div class="content" slot="content">成功的内容内容内容</div>
+            <div class="icon-area" slot="icon"><i class="fa fa-check-circle"></i></div>
+        </ox-modal>
+        <ox-modal for="warning" type="warning" title="我是标题" oktext="确定吧" canceltext="取消吧" animationtype="animate-top">
+            <div class="icon-area" slot="icon"><i class="fa fa-exclamation-circle"></i></div>
+            <div class="content" slot="content">内容内容内容</div>
+        </ox-modal>
+        <ox-modal for="error" type="error" title="我是标题" oktext="确定吧" canceltext="取消吧" animationtype="animate-right">
+            <div class="icon-area" slot="icon"><i class="fa fa-times-circle"></i></div>
+            <div class="content" slot="content">内容内容内容</div>
+        </ox-modal>
     </div>
-    <div class="zone">
-      <ox-button type="warning">警告按钮</ox-button>
-      <ox-button type="error">错误按钮</ox-button>
-    </div>
-    <button class="btn" data-type="success">成功方法</button>
-    <button class="btn" data-type="warning">警告方法</button>
-    <button class="btn" data-type="error">失败方法</button>
-
-    <!-- ox-modal -->
-    <ox-modal title="我是标题" content="我是内容" mask="show" oktext="确定吧" cancel-text="取消吧"></ox-modal>
-  </div>
 </body>
+<script>
+let successBtn = document.querySelector('#success-btn');
+let modalSuccess = document.querySelector('ox-modal[for="success"]');
+successBtn.onclick = function() {
+    modalSuccess.show()
+}
+// let oxModal = document.createElement('ox-modal');
+// oxModal.type = 'warning';
+// oxModal.title = '创建的对话框';
+// oxModal.animationtype = 'animate-left';
+// oxModal.for = 'warning-btn';
+// document.body.appendChild(oxModal)
+// setTimeout(function () {
+//   oxModal.show()
+// },1000)
+let btn1 = document.querySelector('#btn1');
+btn1.onclick = function() {
+    let obj = { title: '创建的对话框', content: '我是创建的内容', animationtype: 'animate-bottom', oktext: '确定吧！' }
+
+    function log() {
+        console.log('我是回调方法')
+    }
+    modal.customType(obj, 'fa fa-info-circle', '#08b8fd', log);
+}
+let btn2 = document.querySelector('#btn2');
+btn2.ondblclick = function() {
+    let obj = { title: '创建的对话框', content: '我是创建的内容', animationtype: 'animate-bottom', oktext: '确定吧！' }
+
+    function log() {
+        console.log('我是成功的回调方法')
+    }
+    modal.success(obj, log);
+}
+</script>
+
 </html>
