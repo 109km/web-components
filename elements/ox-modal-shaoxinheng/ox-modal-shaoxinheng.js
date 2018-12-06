@@ -113,6 +113,7 @@ class OXModal extends PolymerElement {
   // 变更visible属性
   setVisible(isVisible) {
     this.visible = !!isVisible;
+    console.log(this.visible)
   }
   show(callback) {
     this.setVisible(true);
@@ -120,6 +121,7 @@ class OXModal extends PolymerElement {
   }
   hide(callback) {
     this.setVisible(false);
+    console.log(11)
     callback && callback();
   }
   _attributeTypeChanged() {
