@@ -101,6 +101,8 @@
   box-sizing: border-box;
   color: black;
 }
+/*width: + "px");*/
+/*expression(varWidth*/
 .ox-bubble-box-ok{
   background: white;
   box-shadow: 0 10px 30px #ccc;
