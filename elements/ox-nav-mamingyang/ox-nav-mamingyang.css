@@ -2,3 +2,6 @@
 :host .ox-nav-name{
   color: red;
 }
+:host .ox-nav-item {
+  color: blue;
+}

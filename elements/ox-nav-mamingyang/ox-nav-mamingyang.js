@@ -17,6 +17,9 @@ class OXNav extends PolymerElement {
     </style>
       <div class="ox-nav-box">
         <slot></slot>
+        <div class="ox-nav-item">
+          <slot></slot>
+        </div>
       </div>
     `;
   }
