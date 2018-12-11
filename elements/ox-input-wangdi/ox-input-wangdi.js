@@ -20,10 +20,9 @@ class OXInput extends PolymerElement {
         <style>
             @import '../elements/ox-input-wangdi/ox-input-wangdi.css';
         </style>
-           <input type="text" placeholder="请输入" class="ox-input-shadow"  disabled="{{disabled}}" required="{{required}}" on-blur="onBlur" on-keyup="onKey"> 
+           <input type="text" placeholder="请输入" class="ox-input-shadow"  disabled="{{disabled}}" required="{{required}}" on-Change="onChange"> 
+           <div id="error-message">请输入正确手机号**</div>
            `
-        //   <slot class="error-message">輸入有誤</slot>
-
     }
     static get properties() {
         return {
@@ -33,29 +32,35 @@ class OXInput extends PolymerElement {
             },
             required: {
                 type: Boolean,
-                value: true
+                value: false
             },
             validate: {
                 type: Boolean,
                 value: false
+            },
+            value:{
+                type:Number,
             }
         }
     }
     ready() {
         super.ready();
         console.log('input-element created!');
+        console.log(this.value);
     }
-    onBlur(e) {
+    onChange(e) {
         if (this.hasAttribute('disabled')) return;
         if (this.hasAttribute('required')) {
             console.log('required:', this.hasAttribute('required'));
-            console.log(this);
+            this.value = e.target.value;
+            console.log(this.value);
+            let errormsg = this.shadowRoot.querySelector('#error-message');
+            errormsg.className = 'unactive';
+            if(!(/^1[34578]\d{9}$/.test(this.value))){
+                errormsg.className = 'active';
+                console.log(this.tagName);
+            }
         }
-    }
-    onKey(e) {
-        e.target.value = e.target.value.replace(/[^\d]/g,'')
-        const {value} = e.target;
-        console.log(value);
     }
     setDisabled() {
         this.setAttribute('disabled');
@@ -63,6 +68,5 @@ class OXInput extends PolymerElement {
     removeDisabled() {
         this.removeAttribute('disabled');
     }
-
 }
 customElements.define('ox-input', OXInput);
