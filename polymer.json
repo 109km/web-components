@@ -1,7 +1,7 @@
 {
   "entrypoint": "index.html",
   "componentDir": "elements/",
-  "shell": "main.js",
+  "shell": "index.js",
   "sources": [
     "**.js",
     "package.json"
@@ -13,6 +13,10 @@
     "html": {
       "minify": false
     },
+    "js": {
+      "minify": true
+    },
+    "bundle": true,
     "addServiceWorker": false
   }]
 }

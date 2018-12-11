@@ -2,7 +2,7 @@ import {
   html,
   PolymerElement
 } from '@polymer/polymer/polymer-element.js';
-
+import './ox-button.less?name=button';
 /**
  * @name ox-button
  */
@@ -13,8 +13,7 @@ class OXButton extends PolymerElement {
   }
   static get template() {
     return html `
-      <style>
-        @import '../elements/ox-button/ox-button.css';
+      <style include="button">
       </style>
       <slot></slot>
     `;

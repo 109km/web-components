@@ -5,31 +5,24 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <meta http-equiv="refresh" content="0;url=/demo/">
+  <!-- <meta http-equiv="refresh" content="0;url=/demo/"> -->
   <title>Web components</title>
-  <link rel="stylesheet" href="./elements/normalize.css">
-  <link rel="stylesheet" href="./elements/global.css">
-  <script src="./node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js" async></script>
-  <script src="index.js" type="module" async></script>
+  <link rel="stylesheet" href="/dist/ox.min.css">
 </head>
 
 <body>
   <custom-style>
     <style>
-      a {
-        color: var(--theme-link-color);
-      }
-
       .page {
         width: 600px;
+        padding-top: 100px;
         margin: 0 auto;
-        padding-top: 50px;
       }
     </style>
   </custom-style>
-  <!-- <root-app></root-app> -->
   <div class="page">
     <ox-button>按钮</ox-button>
+    <ox-bubble type="left" director="左方弹出" content="左方内容提示信息"></ox-bubble>
   </div>
 </body>
 
