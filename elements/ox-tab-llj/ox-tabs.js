@@ -19,7 +19,36 @@ class OXTabs extends PolymerElement {
   static get template() {
     return html `
       <style>
-        @import '../elements/ox-tab-llj/ox-tab.css';
+        .ol-tabs{
+          width:auto; 
+          height:auto; 
+          display: inline-block;
+          position: relative;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          overflow: hidden;
+          margin-bottom: 30px
+        }
+        .ol-tabs::after{
+          content: '';
+          position: absolute;
+          right:0;
+          left:0;
+          bottom:0; 
+          height:4px;
+          background: #E9E9E9;
+          z-index:100;
+        }
+        .active-bar{
+          position: absolute;
+          bottom:0;
+          height:4px;
+          background: #D99F53;
+          width: 100px;  
+          z-index:101; 
+          transition: all .5s;
+        }
       </style>
       <div class="ol-tabs" > 
         <div class="active-bar"></div>
