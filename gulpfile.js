@@ -33,6 +33,10 @@ function renameJS() {
     .pipe(dest(`${DIST_DIR}/prod`));
 }
 
+function removeUselessFiles() {
+  return exec('rm -rf build/prod/index.js');
+}
+
 function replaceHTML() {
   return src(`${DIST_DIR}/prod/index.html`)
     .pipe(htmlReplace({
@@ -47,4 +51,4 @@ function replaceHTML() {
     .pipe(dest(`${DIST_DIR}/prod`))
 }
 
-exports.build = series(buildPolymer, renameJS, buildCSS, replaceHTML);
+exports.build = series(buildPolymer, renameJS, buildCSS, replaceHTML, removeUselessFiles);
