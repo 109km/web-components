@@ -1,0 +1,51 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>Demo - ox-input</title>
+  <link rel="stylesheet" href="../elements/normalize.css">
+  <link rel="stylesheet" href="../elements/global.css">
+  <link rel="stylesheet" href="../elements/ox-input-wangdi/ox-input-wangdi.css">
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <!-- 引入组件的js -->
+  <script type="module" src="../elements/ox-input-wangdi/ox-input-wangdi.js"></script>
+</head>
+
+<body>
+  <style>
+    ox-input {
+      display: inline-block;
+      height: 30px;
+      border: 1px solid #ccc;
+      background: #e8e8e8;
+      border-radius: 4px;
+    }
+  </style>
+  <div class="page page-demo">
+    <h1 class="page-title">
+      输入框(ox-input)
+    </h1>
+    <div class="zone">
+      <h2>默认</h2>
+      <ox-input class="ox-input"></ox-input>
+    </div>
+    <div class="zone">
+      <h2>禁止</h2>
+      <ox-input class="ox-input" disabled></ox-input>
+    </div>
+    <div class="zone">
+      <h2>搜索</h2>
+      <ox-input class="ox-input"></ox-input>
+    </div>
+    <div class="zone">
+      <h2>有误</h2>
+      <ox-input class="ox-input"></ox-input>
+    </div>
+  
+  </div>
+</body>
+
+</html>

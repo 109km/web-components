@@ -19,7 +19,7 @@ import {
   static get template() {
     return html `
     <style>
-    @import '../elements/ox-modal/ox-modal.css';
+    @import '../elements/ox-modal-liuhao/ox-modal-liuhao.css';
     @import "../assets/css/font-awesome.min.css";
     </style>
     <div class$="ox-modal-outer [[mask]]">
