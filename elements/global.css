@@ -25,6 +25,7 @@ html {
   --theme-link-color: #333d56;
 
   --theme-border-radius: 5px;
+  --theme-button-radius: 2px;
 
   --modal-bg-color: #fff;
   --mask-bg-color: rgba(0, 0, 0, 0.8);

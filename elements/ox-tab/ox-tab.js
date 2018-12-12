@@ -28,7 +28,7 @@ class OXTab extends PolymerElement {
     return {
       type: {
         type: "String",
-        value: "type_1"
+        value: "1"
       },
       content: {
         type: "String",
@@ -41,13 +41,14 @@ class OXTab extends PolymerElement {
     };
   }
   tabToHtml(index = 0) {
-    const tab = this.tab.split(",");
+    const tab = this.tab.split(","),
+          className = (this.type === "2") ? "tab-item-1" : "tab-item";
     let html = "";
     tab.map( (el, i) => {
       if (index === i) {
-        html += `<div data-index="${i}" class="tab-item active">${el}</div>`
+        html += `<div data-index="${i}" class="${className} active">${el}</div>`
       } else {
-        html += `<div data-index="${i}" class="tab-item">${el}</div>`
+        html += `<div data-index="${i}" class="${className}">${el}</div>`
       }
       
     })
