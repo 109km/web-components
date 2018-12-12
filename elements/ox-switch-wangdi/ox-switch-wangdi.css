@@ -1,0 +1,28 @@
+.ox-switch-outer {
+    cursor: pointer;
+    display: inline-block;
+    width: 50px;
+    height: 25px;
+    border-radius: 15px;
+    position: relative; 
+    background-color: var(--theme-bg-color-default); 
+  }
+  .ox-switch-inner {
+    width: 21px;
+    height: 21px;
+    border-radius: 50%;
+    position: absolute;
+    left: 4px;
+    top: 6%;
+    transform:translateX(-10%);
+    background-color: var(--color-white);
+  }
+  :host(.ox-switch-actived) .ox-switch-outer {
+    background-color: var(--theme-bg-color-primary);
+  }
+  
+  :host(.ox-switch-actived) .ox-switch-inner {
+    left: 30px;
+  }
+  
+  
