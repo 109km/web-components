@@ -15,7 +15,49 @@ class OXRadio extends PolymerElement {
   static get template() {
     return html `
     <style>
-      @import '../elements/ox-radio/ox-radio.css';
+      :host{
+        cursor: default;
+      }
+      .ox-radio-outer {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 50%;
+        text-align: center;
+        border: 1px solid var(--theme-color-default-border);
+      }
+
+      :host(.ox-radio-actived) .ox-radio-outer {
+        background-color: var(--theme-color-primary);
+        border-color: var(--theme-color-primary);
+      }
+      .ox-radio-label{
+        display: inline-block;
+      }
+      .ox-radio-inner {
+        display: inline-block;
+        width: 10px;
+        height: 10px;
+        border-radius: 50%;
+        background-color: var(--color-white);
+        margin-top: 5px;
+      }
+      :host([disabled]){
+        cursor: not-allowed;
+      }
+      :host([disabled]) .ox-radio-outer{
+        background-color: var(--theme-color-radio-disabled);
+      }
+      :host([disabled]) .ox-radio-inner {
+        visibility: hidden;
+      }
+      :host(.ox-radio-actived[disabled]) .ox-radio-outer{
+        background-color: var(--theme-color-radio-active-disabled);
+        border-color: var(--theme-color-radio-active-disabled);
+      }
+      :host(.ox-radio-actived[disabled]) .ox-radio-inner {
+        visibility: visible;
+      }
     </style>
     <div class="ox-radio-outer">
       <div class="ox-radio-inner">

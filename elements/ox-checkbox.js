@@ -14,11 +14,55 @@ class OXCheckbox extends PolymerElement {
   static get template() {
     return html `
     <style>
-      @import '../elements/ox-checkbox/ox-checkbox.css';
+      :host{
+        cursor: default;
+      }
+      .ox-checkbox-outer {
+        display: inline-block;
+        width: 20px;
+        height: 20px;
+        border-radius: 3px;
+        text-align: center;
+        border: 1px solid var(--theme-color-default-border);
+      }
+
+      :host(.ox-checkbox-actived) .ox-checkbox-outer {
+        background-color: var(--theme-color-primary);
+        border-color: var(--theme-color-primary);
+      }
+      .ox-checkbox-label{
+        display: inline-block;
+      }
+      .ox-checkbox-inner {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        margin-top: 1px;
+      }
+      .ox-checkbox-inner .icon{
+        color: var(--color-white);
+        font-weight: bold;
+      }
+      :host([disabled]){
+        cursor: not-allowed;
+      }
+      :host([disabled]) .ox-checkbox-outer{
+        background-color: var(--theme-color-radio-disabled);
+      }
+      :host([disabled]) .ox-checkbox-inner {
+        visibility: hidden;
+      }
+      :host(.ox-checkbox-actived[disabled]) .ox-checkbox-outer{
+        background-color: var(--theme-color-radio-active-disabled);
+        border-color: var(--theme-color-radio-active-disabled);
+      }
+      :host(.ox-checkbox-actived[disabled]) .ox-checkbox-inner {
+        visibility: visible;
+      }
     </style>
     <div class="ox-checkbox-outer">
       <div class="ox-checkbox-inner">
-        <slot name="icon"></slot>
+        <span class="icon">&#10003;</span>
       </div>
     </div>
     <div class="ox-checkbox-label">
@@ -74,7 +118,7 @@ class OXCheckbox extends PolymerElement {
     return Array.prototype.map.call(options, function(option) {
       if (option.hasAttribute('checked')) {
         return option.value;
-      }else{
+      } else {
         return null;
       }
     });
