@@ -81,6 +81,11 @@ class OXModal extends PolymerElement {
             animationtype: {
                 type: String,
                 value: ''
+            },
+            // 是否为新添加的对话框
+            isadd:{
+                type:Boolean,
+                value:false
             }
         };
     }
@@ -136,6 +141,10 @@ class OXModal extends PolymerElement {
     }
     hide(callback) {
         this.setVisible(false)
+        if(this.isadd){
+            this.remove()
+            // this.parentNode.removeChild(this)
+        }
         callback && callback()
     }
     show(callback) {

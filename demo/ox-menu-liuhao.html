@@ -1,0 +1,56 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+    <title>Demo - ox-modal-liuhao</title>
+    <link rel="stylesheet" href="../elements/normalize.css">
+    <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="../elements/global.css">
+    <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+    <!-- 引入组件的js -->
+    <script type="module" src="../elements/ox-menu-liuhao/ox-menu-liuhao.js"></script>
+</head>
+<body>
+    <custom-style>
+        <style>
+          h1{
+            text-align: center;
+          }
+          /*.menu-a{
+            text-decoration: none;
+            color: #ffe0b7;
+          }
+          .menu-a:link{
+            color: #ffe0b7;
+          }
+          .menu-a:visited{
+            color: #ffe0b7;
+          }
+          .menu-a:active{
+            color: #ffe0b7;
+          }*/
+        </style>
+    </custom-style>
+        <h1 class="page-title">
+          导航菜单(ox-menu)
+        </h1>
+        <ox-menu type="dark" to="./index.html">
+            <img src="../assets/images/logo.png" alt="" class="logo" slot="logo">
+            <div class="menu-item active" slot="menu-item">首页</div>
+            <!-- <div class="menu-item" slot="menu-item"><a href="./index.html">链接导航</a></div> -->
+            <div class="menu-item" slot="menu-item">导航01</div>
+            <div class="menu-item" slot="menu-item">导航02</div>
+            <div class="menu-item" slot="menu-item">导航03</div>
+            <div class="menu-item" slot="menu-item">导航1</div>
+            <div class="menu-item" slot="menu-item">导航2</div>
+            <div class="menu-item" slot="menu-item">导航3</div>
+            <img src="../assets/images/my.png" alt="" class="menu-my" slot="menu-my">
+        </ox-menu>
+</body>
+<script>
+
+</script>
+
+</html>

@@ -66,8 +66,8 @@
     </div>
 </body>
 <script>
-let successBtn = document.querySelector('#success-btn');
-let modalSuccess = document.querySelector('ox-modal[for="success"]');
+const successBtn = document.querySelector('#success-btn');
+const modalSuccess = document.querySelector('ox-modal[for="success"]');
 successBtn.onclick = function() {
     modalSuccess.show()
 }
@@ -80,7 +80,7 @@ successBtn.onclick = function() {
 // setTimeout(function () {
 //   oxModal.show()
 // },1000)
-let btn1 = document.querySelector('#btn1');
+const btn1 = document.querySelector('#btn1');
 btn1.onclick = function() {
     let obj = { title: '创建的对话框', content: '我是创建的内容', animationtype: 'animate-bottom', oktext: '确定吧！' }
 
@@ -89,8 +89,8 @@ btn1.onclick = function() {
     }
     modal.customType(obj, 'fa fa-info-circle', '#08b8fd', log);
 }
-let btn2 = document.querySelector('#btn2');
-btn2.ondblclick = function() {
+const btn2 = document.querySelector('#btn2');
+btn2.onclick = function() {
     let obj = { title: '创建的对话框', content: '我是创建的内容', animationtype: 'animate-bottom', oktext: '确定吧！' }
 
     function log() {
