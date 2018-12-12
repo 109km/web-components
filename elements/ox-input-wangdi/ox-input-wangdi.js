@@ -1,51 +1,71 @@
-
-  import {PolymerElement, html} from '@polymer/polymer/polymer-element.js';
+import {
+    PolymerElement,
+    html
+} from '@polymer/polymer/polymer-element.js';
 
 
 
 class OXInput extends PolymerElement {
-    constructor(){
+    constructor() {
         //必须首先调用super方法
         super();
         // this.addEventListener('onblur',this.onBlur);
         // console.log(this.tagName);
+        this.mode = 'auto';
+        this.data = {};
     }
     //创建shadow dom
-    static get template(){
-        return html`
+    static get template() {
+        return html `
         <style>
             @import '../elements/ox-input-wangdi/ox-input-wangdi.css';
         </style>
-           <input type="text" placeholder="请输入" class="ox-input-shadow" on-change="onBlur">
-        ` 
+           <input type="text" placeholder="请输入" class="ox-input-shadow"  disabled="{{disabled}}" required="{{required}}" on-Change="onChange"> 
+           <div id="error-message">请输入正确手机号**</div>
+           `
     }
-    static get properties(){
-      return {
-        value: {
-            type: String
-          }
-      }
+    static get properties() {
+        return {
+            disabled: {
+                type: Boolean,
+                value: false
+            },
+            required: {
+                type: Boolean,
+                value: false
+            },
+            validate: {
+                type: Boolean,
+                value: false
+            },
+            value:{
+                type:Number,
+            }
+        }
     }
-    ready(){
+    ready() {
         super.ready();
-        console.log('input-element created!');
     }
-    onBlur(e){
-        // console.log("aaa");
+    onChange(e) {
         if (this.hasAttribute('disabled')) return;
-        // console.log(this)
-        // const content = this.innerHTML;
-        // console.log(content);
-        // console.log('此选项值为' +  this.value);
-        console.log(this.className);
+        if (this.hasAttribute('required')) {
+            console.log('required:', this.hasAttribute('required'));
+            this.value = e.target.value;
+            console.log(this.value);
+            let errormsg = this.shadowRoot.querySelector('#error-message');
+            errormsg.className = 'unactive';
+            this.className = '';
+            if(!(/^1[34578]\d{9}$/.test(this.value))){
+                errormsg.className = 'active';
+                this.className = 'input-box';
+            }
+        }
     }
-    setDisabled(){
+    setDisabled() {
         this.setAttribute('disabled');
-      }
-      removeDisabled(){
+    }
+    removeDisabled() {
         this.removeAttribute('disabled');
-      }
-
+    }
 }
-customElements.define('ox-input',OXInput);
-  
+customElements.define('ox-input', OXInput);
