@@ -12,8 +12,8 @@
 // polymer-element.js now exports PolymerElement instead of Element,
 // so no need to change the symbol. 
 import './node_modules/@webcomponents/webcomponentsjs/webcomponents-loader';
-import './elements/ox-bubble/ox-bubble.js';
 import './elements/ox-button/ox-button.js';
+// import './elements/ox-bubble/ox-bubble.js';
 // import './elements/ox-checkbox/ox-checkbox.js';
 // import './elements/ox-input/ox-input.js';
 // import './elements/ox-label/ox-label.js';
