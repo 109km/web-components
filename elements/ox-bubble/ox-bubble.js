@@ -1,6 +1,6 @@
 import {
-    html,
-    PolymerElement
+  html,
+  PolymerElement
 } from '@polymer/polymer/polymer-element.js';
 /**
  * @name ox-bubble
@@ -25,7 +25,7 @@ class OXBubble extends PolymerElement {
       display: inline-block;
       cursor: pointer;
       padding: 8px 20px;
-      border-radius: 2px;
+      border-radius: var(--theme-button-radius);
       border: 1px solid transparent;
       position: relative;
     }
@@ -153,23 +153,23 @@ class OXBubble extends PolymerElement {
         type: String,
         value: '左边弹出'
       },
-      content:{
+      content: {
         type: String,
         value: '气泡内容'
       },
       mask: {
-        type:String,
-        value:'hide'
+        type: String,
+        value: 'hide'
       },
       type: {
-        type:String,
-        value:'left'
+        type: String,
+        value: 'left'
       },
       titleContent: {
         type: String,
         value: ''
       },
-      titleOk:{
+      titleOk: {
         type: String,
         value: ''
       }

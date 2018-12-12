@@ -17,7 +17,7 @@ class OXButton extends PolymerElement {
           display: inline-block;
           cursor: pointer;
           padding: 8px 20px;
-          border-radius:var(--theme-border-radius);
+          border-radius:var(--theme-button-radius);
           border: 1px solid transparent;
         }
 
