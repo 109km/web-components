@@ -6,15 +6,20 @@
   },
   "scripts": {
     "start": "polymer serve",
-    "build": "polymer build"
+    "build": "gulp build"
   },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
     "@polymer/test-fixture": "^4.0.2",
     "@webcomponents/webcomponentsjs": "^2.0.0",
     "chai": "^4.2.0",
+    "gulp": "^4.0.0",
+    "gulp-clean-css": "^4.0.0",
+    "gulp-concat-css": "^3.1.0",
+    "gulp-exec": "^3.0.2",
+    "gulp-html-replace": "^1.6.2",
+    "gulp-rename": "^1.4.0",
     "mocha": "^5.2.0",
-    "sass-loader": "^7.1.0",
     "wct-mocha": "^1.0.0"
   }
 }

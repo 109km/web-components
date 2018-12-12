@@ -11,6 +11,7 @@
 // Import statements in Polymer 3.0 can now use package names.
 // polymer-element.js now exports PolymerElement instead of Element,
 // so no need to change the symbol. 
+import './node_modules/@webcomponents/webcomponentsjs/webcomponents-loader';
 import './elements/ox-bubble/ox-bubble.js';
 import './elements/ox-button/ox-button.js';
 // import './elements/ox-checkbox/ox-checkbox.js';

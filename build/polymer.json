@@ -15,8 +15,11 @@
   "builds": [
     {
       "name": "prod",
+      "browserCapabilities": [
+        "es2015"
+      ],
       "html": {
-        "minify": true
+        "minify": false
       },
       "css": {
         "minify": true

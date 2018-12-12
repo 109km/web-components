@@ -1,21 +1,23 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Web components</title>
-  <link rel="stylesheet" href="./elements/normalize.css">
-  <link rel="stylesheet" href="./elements/global.css">
-  <style>.page-title{margin-top:50px;}a{color:#344056;font-size:18px;font-weight:bold;text-decoration:none;}p{line-height:1.5;}</style>
-  <script src="./index.js" type="module"></script>
-</head>
+  <link rel="stylesheet" href="ox.min.css">
+  <script src="ox.min.js" type="module"></script></head>
 
 <body>
-  <div class="page page-demo">
-    <ox-button>测试按钮</ox-button>
+  <custom-style>
+    <style is="custom-style">.page{width:600px;margin:50px auto 0 auto;}</style>
+  </custom-style>
+  <div class="page">
+    <div class="zone">
+      <ox-button>测试按钮</ox-button>
+    </div>
+    <div class="zone">
+      <ox-bubble type="right" director="右方弹出" content="右方内容提示信息"></ox-bubble>
+    </div>
   </div>
-</body>
 
-</html>
+
+</body></html>
