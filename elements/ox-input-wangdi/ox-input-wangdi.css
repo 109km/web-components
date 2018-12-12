@@ -1,10 +1,17 @@
 
 :host([required]) {
     position: relative;
+
 }
+
 .ox-input-shadow {
     width: 190px;
     height: 25px;
+    border: none;
+    border-radius: 4px;
+    padding-left: 10px;
+    outline: none;
+   
 }
 :host .ox-input {
     width: 200px;
@@ -28,6 +35,10 @@
     line-height: 20px;
     display: none;
 }
+.input-box{
+    border: none !important;
+    border: 1px solid red !important;
+}
 .active{
     display: block !important;  
 }
@@ -43,13 +54,4 @@
  .hide{
     display: none;
   }
-.error-messagehide{
-    display: none;
-}
-.error-messageshow{
-    display: block;
-} 
-.required ::slotted(*){
-    color: red;
-    font-size: 12px;
-}
+

@@ -45,8 +45,6 @@ class OXInput extends PolymerElement {
     }
     ready() {
         super.ready();
-        console.log('input-element created!');
-        console.log(this.value);
     }
     onChange(e) {
         if (this.hasAttribute('disabled')) return;
@@ -56,9 +54,10 @@ class OXInput extends PolymerElement {
             console.log(this.value);
             let errormsg = this.shadowRoot.querySelector('#error-message');
             errormsg.className = 'unactive';
+            this.className = '';
             if(!(/^1[34578]\d{9}$/.test(this.value))){
                 errormsg.className = 'active';
-                console.log(this.tagName);
+                this.className = 'input-box';
             }
         }
     }

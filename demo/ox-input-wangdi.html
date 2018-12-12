@@ -18,10 +18,15 @@
   <style>
     ox-input {
       display: inline-block;
-      /* border: 1px solid #ccc; */
+      border: 1px solid #ccc;
       background: #e8e8e8;
       border-radius: 4px;
     }
+    ox-input:focus{
+    outline: 0;
+    border: 1px solid #f95d5d;
+    box-shadow: 0px 0px 10px 0px #f95d5d;
+  }
   </style>
   <div class="page page-demo">
     <h1 class="page-title">
@@ -37,9 +42,7 @@
     </div>
     <div class="zone">
       <h2>限制</h2>
-      <ox-input class="ox-input required" required value="">
-          <!-- <slot class="error-message">输入有誤**</slot> -->
-      </ox-input>
+      <ox-input class="ox-input required" required value=""></ox-input>
     </div>
   
   </div>
