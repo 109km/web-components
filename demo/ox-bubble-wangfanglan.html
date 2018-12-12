@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>Demo - ox-bubble</title>
+  <link rel="stylesheet" href="../elements/normalize.css">
+  <link rel="stylesheet" href="../elements/global.css">
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <!-- 引入组件的js -->
+  <script type="module" src="../elements/ox-bubble-wangfanglan/ox-bubble.js"></script>
+  <style>
+    .zone{
+      margin: 80px auto 200px !important;
+    }
+  </style>
+</head>
+
+<body>
+<div class="page page-demo">
+  <h1 class="page-title">
+    气泡(ox-bubble)
+  </h1>
+  <div class="zone">
+    <!-- ox-buble 左方弹出-->
+    <ox-bubble type="left" director="左方弹出" content="左方内容提示信息"></ox-bubble>
+    <!-- ox-buble 上方弹出-->
+    <ox-bubble type="top" director="上方弹出" content="上方内容提示信息"></ox-bubble>
+    <!-- ox-buble 下方弹出-->
+    <ox-bubble type="bottom" director="下方弹出" content="下方内容提示信息"></ox-bubble>
+    <!-- ox-buble 右方弹出-->
+    <ox-bubble type="right" director="右方弹出" content="右方内容提示信息"></ox-bubble>
+  </div>
+
+  <div class="zone">
+    <!-- ox-buble-title 左方弹出-->
+    <ox-bubble type="left" director="左方弹出" content="弹出框文本可多行显示" title-content="标题1"></ox-bubble>
+    <!-- ox-buble-title 上方弹出-->
+    <ox-bubble type="top" director="上方弹出" content="弹出框文本可多行显示" title-content="标题2"></ox-bubble>
+    <!-- ox-buble-title 下方弹出-->
+    <ox-bubble type="bottom" director="下方弹出" content="弹出框文本可多行显示" title-content="标题3"></ox-bubble>
+    <!-- ox-buble-title 右方弹出-->
+    <ox-bubble type="right" director="右方弹出" content="弹出框文本可多行显示" title-content="标题4"></ox-bubble>
+  </div>
+
+</div>
+</body>
+</html>
