@@ -14,7 +14,7 @@ class OXBubble extends PolymerElement {
   static get template() {
     return html `
     <style>
-    @import '../elements/ox-bubble/ox-bubble.css';
+    @import '../elements/ox-bubble-wangfanglan/ox-bubble.css';
     </style>
         <div class="ox-bubble">
           {{director}}
