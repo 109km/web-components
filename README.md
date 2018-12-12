@@ -50,6 +50,8 @@ $ npm run test
 
 [Polymer 官方文档](https://polymer-library.polymer-project.org/)
 
+[基于Polymer的组件市场](https://www.webcomponents.org/)
+
 [基于Polymer的App布局组件](https://github.com/PolymerElements/app-layout)
 
 [Polymer新手启动项目](https://github.com/Polymer/polymer-starter-kit)
