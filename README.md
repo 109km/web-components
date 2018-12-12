@@ -1,8 +1,8 @@
 # 介绍
 
-基于Google的 `Polymer` 的PC组件库。
+基于`Polymer`的PC组件库。
 
-# 立即开始
+# 立即开始
 
 ## 安装
 
@@ -51,6 +51,6 @@ $ npm run test
 
 [Polymer 官方文档](https://polymer-library.polymer-project.org/)
 
-[基于Polymer的App布局组件](https://github.com/PolymerElements/app-layout)
+[基于Polymer的App布局组件](https://github.com/PolymerElements/app-layout)
 
 [Polymer新手启动项目](https://github.com/Polymer/polymer-starter-kit)
