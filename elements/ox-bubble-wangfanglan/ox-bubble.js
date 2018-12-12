@@ -15,7 +15,7 @@ class OXBubble extends PolymerElement {
   static get template() {
     return html `
     <style>
-    @import '../elements/ox-bubble/ox-bubble.css';
+    @import '../elements/ox-bubble-wangfanglan/ox-bubble.css';
     </style>
         <div class="ox-bubble">
           {{director}}
@@ -63,7 +63,7 @@ class OXBubble extends PolymerElement {
       this.shadowRoot.children[1].children[0].className += " ox-bubble-box-ok";
       this.shadowRoot.children[1].children[0].children[2].className += ' triangle-' + this.type + '-ok';
       //console.log(e.target.children);
-      //e.target.children.setAttribute('class','ox-bubble-box-ok');
+      //e.target.children.setAttribute('class','ox-bubble-wangfanglan-box-ok');
     }else{
       console.log(0)
     }
@@ -75,9 +75,9 @@ class OXBubble extends PolymerElement {
     if(title !== ""){
       //var a = document.querySelector(".title");
       console.log(this.shadowRoot.children[1].children[0].className);
-      this.shadowRoot.children[1].children[0].className += "ox-bubble-box-ok";
+      this.shadowRoot.children[1].children[0].className += "ox-bubble-wangfanglan-box-ok";
       //console.log(e.target.children);
-      //e.target.children.setAttribute('class','ox-bubble-box-ok');
+      //e.target.children.setAttribute('class','ox-bubble-wangfanglan-box-ok');
     }else{
       console.log(0)
     }
