@@ -13,6 +13,15 @@
 // so no need to change the symbol. 
 import './node_modules/@webcomponents/webcomponentsjs/webcomponents-loader';
 import './elements/ox-button/ox-button.js';
+//llj
+import './elements/ox-tab-llj/ox-tabs.js';
+import './elements/ox-tab-llj/ox-tab-pane.js';
+import './elements/ox-tab-llj/ox-tab-card.js';
+
+
+
+
+
 // import './elements/ox-bubble-wangfanglan/ox-bubble-wangfanglan.js';
 // import './elements/ox-checkbox/ox-checkbox.js';
 // import './elements/ox-input/ox-input.js';
