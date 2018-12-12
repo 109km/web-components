@@ -4,7 +4,10 @@
   "dependencies": {
     "@polymer/polymer": "^3.0.0"
   },
-  "scripts": {},
+  "scripts": {
+    "start": "polymer serve",
+    "build": "polymer build"
+  },
   "devDependencies": {
     "@polymer/iron-demo-helpers": "^3.0.0-pre.19",
     "@polymer/test-fixture": "^4.0.2",
