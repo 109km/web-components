@@ -13,14 +13,14 @@
 // so no need to change the symbol. 
 import './elements/ox-bubble/ox-bubble.js';
 import './elements/ox-button/ox-button.js';
-import './elements/ox-checkbox/ox-checkbox.js';
-import './elements/ox-input/ox-input.js';
-import './elements/ox-label/ox-label.js';
-import './elements/ox-modal-shaoxinheng/ox-modal-shaoxinheng.js';
-import './elements/ox-nav-mamingyang/ox-nav-mamingyang.js';
-import './elements/ox-radio/ox-radio.js';
-import './elements/ox-switch/ox-switch.js';
-import './elements/ox-tab/ox-tab.js';
+// import './elements/ox-checkbox/ox-checkbox.js';
+// import './elements/ox-input/ox-input.js';
+// import './elements/ox-label/ox-label.js';
+// import './elements/ox-modal-shaoxinheng/ox-modal-shaoxinheng.js';
+// import './elements/ox-nav-mamingyang/ox-nav-mamingyang.js';
+// import './elements/ox-radio/ox-radio.js';
+// import './elements/ox-switch/ox-switch.js';
+// import './elements/ox-tab/ox-tab.js';
 
 
 // class App extends PolymerElement {

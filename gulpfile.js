@@ -7,8 +7,6 @@ const {
 } = require('gulp');
 
 const path = require('path');
-const webpack = require('webpack-stream');
-const webpeckConfig = require('./webpack.config');
 const less = require('gulp-less');
 const concatCSS = require('gulp-concat-css');
 const minifyCSS = require('gulp-clean-css');
@@ -29,4 +27,4 @@ function buildWithWebpack() {
     .pipe(dest(DIST_DIR));
 }
 
-exports.webpack = parallel(buildCSS, buildWithWebpack);
+exports.dev = parallel(buildCSS);
