@@ -31,6 +31,7 @@
   /*border-bottom: 5px solid blue;*/
   background: #D99F53;
   color: #fff;
+  transition: .5s;
 }
 .ox-tab-contents{
   /*border: 1px solid blue;*/
@@ -42,4 +43,5 @@
 }
 .ox-content-active{
   display: block;
+  transition: .5s;
 }
