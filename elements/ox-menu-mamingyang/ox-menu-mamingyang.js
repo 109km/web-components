@@ -6,7 +6,7 @@ import {
   PolymerElement
 } from '@polymer/polymer/polymer-element.js';
 
-class OXNav extends PolymerElement {
+class OXMenu extends PolymerElement {
   constructor() {
     super();
   }
@@ -18,11 +18,9 @@ class OXNav extends PolymerElement {
     </style>
       <div class="ox-menu-box">
         <slot name="title"></slot>
-        <slot class="ox-menu-item" name="ground-title">
-        
-        </solt>
-        <span>[[isShow]]</span>
-        
+        <div class="ox-menu-ground">
+          <slot class="ox-menu-item" name="ground-title"></solt>
+        </div>
       </div>
     `;
   }
@@ -34,8 +32,8 @@ class OXNav extends PolymerElement {
         value: false,
       },
       isShow: {
-        type: String,
-        value: 'ddd'
+        type: Boolean,
+        value: 'ox-show'
       }
     }
   }
@@ -43,10 +41,12 @@ class OXNav extends PolymerElement {
     return this.querySelector(``);
   }
   onClick() {
+    let _this = this;
     this.disabled = false
     this.firstElementChild.addEventListener('click', function() {
-      console.log(this)
-    }.bind(this))
+      console.log(this.nextElementSibling)
+      this.nextElementSilbing.style.display="block";     
+    })
   }
   onShow() {
 
@@ -54,7 +54,6 @@ class OXNav extends PolymerElement {
   ready() {
     super.ready();
     this.onClick();
-    console.log(this)
   }
 }
-window.customElements.define('ox-nav', OXNav);
+window.customElements.define('ox-menu', OXMenu);
