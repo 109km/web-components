@@ -9,6 +9,7 @@ const modal = {
         oxModal.animationtype = animationtype;
         oxModal.oktext = oktext;
         oxModal.canceltext = canceltext;
+        oxModal.isadd = true;
         if (obj.content) {
             let content = document.createElement('div')
             content.className = 'content';
@@ -65,40 +66,40 @@ const modal = {
         this.modal(obj)
         this.type('success')
         document.body.appendChild(oxModal)
-        setTimeout(() => {
+        // setTimeout(() => {
             oxModal.show(callback)
-        }, 200)
+        // }, 200)
     },
     warning(obj, callback) {
         this.modal(obj)
         this.type('warning')
         document.body.appendChild(oxModal)
-        setTimeout(() => {
+        // setTimeout(() => {
             oxModal.show(callback)
-        }, 200)
+        // }, 200)
     },
     error(obj, callback) {
         this.modal(obj)
         this.type('error')
         document.body.appendChild(oxModal)
-        setTimeout(() => {
+        // setTimeout(() => {
             oxModal.show(callback)
-        }, 200)
+        // }, 200)
     },
     basic(obj, callback) {
         this.modal(obj)
         document.body.appendChild(oxModal)
-        setTimeout(() => {
+        // setTimeout(() => {
             oxModal.show(callback)
-        }, 200)
+        // }, 200)
     },
     //使用font awesome图标库自定义图标
     customType(obj, icon, color, callback) {
         this.modal(obj)
         this.type(icon, color)
         document.body.appendChild(oxModal)
-        setTimeout(() => {
+        // setTimeout(() => {
             oxModal.show(callback)
-        }, 200)
+        // }, 200)
     }
 }
