@@ -16,7 +16,7 @@
 
 <body>
   <custom-style>
-    
+
   </custom-style>
   <div class="page page-demo">
     <h1 class="page-title">
@@ -28,23 +28,22 @@
     </div>
     <script>
       const el = document.querySelectorAll("#nav");
-      const b = [
-                  {
-                    href: "https://www.baidu.com",
-                    text: "导航1",
-                    isActive: true,
-                    activeColor: "red"
-                  },
-                  {
-                    href: "#",
-                    text: "导航2",
-                    isActive: true,
-                  },
-                  {
-                    href: "#",
-                    text: "导航3"
-                  }
-                ];
+      const b = [{
+          href: "https://www.baidu.com",
+          text: "导航1",
+          isActive: true,
+          activeColor: "red"
+        },
+        {
+          href: "#",
+          text: "导航2",
+          isActive: true,
+        },
+        {
+          href: "#",
+          text: "导航3"
+        }
+      ];
       const a = el[0].setAttribute("content", JSON.stringify(b));
     </script>
   </div>
