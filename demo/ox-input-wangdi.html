@@ -18,11 +18,15 @@
   <style>
     ox-input {
       display: inline-block;
-      height: 30px;
       border: 1px solid #ccc;
       background: #e8e8e8;
       border-radius: 4px;
     }
+    ox-input:focus{
+    outline: 0;
+    border: 1px solid #f95d5d;
+    box-shadow: 0px 0px 10px 0px #f95d5d;
+  }
   </style>
   <div class="page page-demo">
     <h1 class="page-title">
@@ -30,19 +34,15 @@
     </h1>
     <div class="zone">
       <h2>默认</h2>
-      <ox-input class="ox-input"></ox-input>
+      <ox-input class="ox-input" value="" ></ox-input>
     </div>
     <div class="zone">
       <h2>禁止</h2>
       <ox-input class="ox-input" disabled></ox-input>
     </div>
     <div class="zone">
-      <h2>搜索</h2>
-      <ox-input class="ox-input"></ox-input>
-    </div>
-    <div class="zone">
-      <h2>有误</h2>
-      <ox-input class="ox-input"></ox-input>
+      <h2>限制</h2>
+      <ox-input class="ox-input required" required value=""></ox-input>
     </div>
   
   </div>

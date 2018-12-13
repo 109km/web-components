@@ -1,7 +1,3 @@
-:host {
-    /*display: none;*/
-}
-
 :host(.ox-menu-primary) .ox-menu-outer {
     background-color: var(--theme-color-primary);
     color:  #ffe0b7;
@@ -59,9 +55,6 @@
 .menu-items{
     margin-left: 325px;
 }
-/*::slotted(.menu-item:nth-child(2)){
-    margin-left: 300px;
-}*/
 :host(.ox-menu-primary) ::slotted(.menu-item):after{
     content: ".";
     position: absolute;

@@ -14,6 +14,7 @@ class OXModal extends PolymerElement {
         // this.okText = '主要操作';
 
     }
+     // @import '../elements/ox-modal-liuhao/ox-modal-liuhao.css';
     static get template() {
         return html `
     <style>
