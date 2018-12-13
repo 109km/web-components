@@ -10,11 +10,6 @@ import { translate } from '@polymer/polymer/lib/utils/path';
 class OXTabs extends PolymerElement {
   constructor() {
     super(); 
-
-    this.addEventListener('load-complete', async (e) => {
-      console.log(e.detail.message);
-      console.log(await this.requestUpdate());
-    });
   }
   static get template() {
     return html `
