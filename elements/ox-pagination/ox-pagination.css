@@ -31,6 +31,10 @@
   background-color: #D1D1D1;
 }
 
+.ox-pagination-pre.active, .ox-pagination-next.active {
+  cursor: pointer;
+}
+
 .ox-pagination-pre.active::before, .ox-pagination-pre.active::after, .ox-pagination-next.active::before, .ox-pagination-next.active::after {
   background-color: var(--theme-bg-color-primary);
 }
