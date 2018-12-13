@@ -62,7 +62,7 @@ class OXCheckbox extends PolymerElement {
     </style>
     <div class="ox-checkbox-outer">
       <div class="ox-checkbox-inner">
-        <span class="icon">&#10003;</span>
+        <span class="icon">&#x2713;</span>
       </div>
     </div>
     <div class="ox-checkbox-label">

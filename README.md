@@ -1,17 +1,35 @@
 # 介绍
+基于`Polymer`的组件库。
 
-基于 `Polymer` 的PC组件库。
+# 立即开始
 
-# 立即开始
-按顺序执行以下命令：
+## 安装
 
-```javascript
-// 安装命令
-npm i
+1. 安装 `polymer-cli`
+```
+npm install -g polymer-cli
+```
 
-// 启动开发
-npm start
+2. 安装npm依赖：
+```
+$ npm i
+```
+3. 启动开发
+```
+$ npm start
+```
+4. 访问 `http://127.0.0.1:8081/demo/`
 
+## 构建
+
+```
+$ npm run build
+```
+
+## 测试
+
+```
+$ npm run test
 ```
 
 ## 开发步骤
@@ -24,12 +42,16 @@ npm start
 7. `build/prod` 目录中的 `ox.min.css` 和 `ox.min.js` 就是最终需要引入的文件，可以在任意的项目中引入，然后就可以使用所有的组件了。
 
 
-## 构建上线
+# 资料
 
-```javascript
+[MDN Web components资料](https://developer.mozilla.org/zh-CN/docs/Web/Web_Components)
 
-npm run build
+[Google Web components资料](https://developers.google.com/web/fundamentals/)
 
-```
+[Polymer 官方文档](https://polymer-library.polymer-project.org/)
 
+[基于Polymer的组件市场](https://www.webcomponents.org/)
 
+[基于Polymer的App布局组件](https://github.com/PolymerElements/app-layout)
+
+[Polymer新手启动项目](https://github.com/Polymer/polymer-starter-kit)

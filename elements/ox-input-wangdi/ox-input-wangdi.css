@@ -37,7 +37,8 @@
 }
 .input-box{
     border: none !important;
-    border: 1px solid red !important;
+    border: 1px solid rgb(236, 61, 61) !important;
+    box-shadow:0 0 5px rgb(235, 99, 99) !important;
 }
 .active{
     display: block !important;  
