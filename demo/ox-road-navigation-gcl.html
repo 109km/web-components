@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>Demo - ox-road-navigation</title>
+  <link rel="stylesheet" href="../elements/normalize.css">
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../elements/global.css">
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <!-- 引入组件的js -->
+  <script type="module" src="../elements/ox-road-navigation-gcl/ox-road-navigation-gcl.js"></script>
+</head>
+
+<body>
+  <custom-style>
+    
+  </custom-style>
+  <div class="page page-demo">
+    <h1 class="page-title">
+      导航路劲(ox-road-navigation)
+    </h1>
+    <div class="zone">
+      <ox-road-nav id="nav">
+      </ox-road-nav>
+    </div>
+    <script>
+      const el = document.querySelectorAll("#nav");
+      const b = [
+                  {
+                    href: "https://www.baidu.com",
+                    text: "导航1",
+                    isActive: true,
+                    activeColor: "red"
+                  },
+                  {
+                    href: "#",
+                    text: "导航2",
+                    isActive: true,
+                  },
+                  {
+                    href: "#",
+                    text: "导航3"
+                  }
+                ];
+      const a = el[0].setAttribute("content", JSON.stringify(b));
+    </script>
+  </div>
+</body>
+
+</html>
