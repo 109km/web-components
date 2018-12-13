@@ -14,7 +14,13 @@ class OXTabPane extends PolymerElement {
   static get template() {
     return html `
       <style>
-        @import '../elements/ox-tab-llj/ox-tab.css';
+        .ox-tab-pane{
+          font-size:14px; 
+          color:rgba(217,159,83,1); 
+          padding: 16px 0;
+          line-height: 1; 
+          cursor: pointer;
+        }  
       </style>
       <div on-click="change" class="ox-tab-pane">  
         <slot></slot>
