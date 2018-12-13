@@ -27,22 +27,22 @@ class OXTab extends PolymerElement {
   static get properties() {
     return {
       type: {
-        type: "String",
-        value: "1"
+        type: String,
+        value: "tab_1"
       },
       content: {
-        type: "String",
+        type: String,
         value: ""
       },
       tab: {
-        type: "String",
+        type: String,
         value: ""
       }
     };
   }
   tabToHtml(index = 0) {
     const tab = this.tab.split(","),
-          className = (this.type === "2") ? "tab-item-1" : "tab-item";
+          className = (this.type === "tab_2") ? "tab-item-1" : "tab-item";
     let html = "";
     tab.map( (el, i) => {
       if (index === i) {
