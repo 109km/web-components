@@ -76,7 +76,7 @@ class OXPagination extends PolymerElement {
         }
         this.pagesNumber.push(obj);
       }
-      this.initOverObj('...');
+      this.initOverObj('...back', 'back');
       this.initOverObj(this.total);
     } else {
       for (let i = 0; i < this.total; i++) {
@@ -110,55 +110,99 @@ class OXPagination extends PolymerElement {
 
   pageHandler(e) {
     const value = e.target.innerHTML;
-    if (value !== '...') {
+    if (!value.includes('...')) {
       this.currentPage = parseInt(value);
       this.pageNumberInitHandler(e.target);
     } else  {
-      console.log('value:', value);
-      console.log(this.total - this.currentPage + 9);
-      if (this.total - this.currentPage <= 5 || this.currentPage + 9 >= this.total || (this.total - (this.currentPage + 9)) < 5) {
-        console.log('1111111111111111', this.total - this.currentPage, this.currentPage + 9);
-        this.currentPage = this.currentPage + 9;
-        this.pagesNumber = [];
-        this.initOverObj(1);
-        this.initOverObj('...', 'prev');
-        for (let i = 0; i < 8; i++)  {
-          let obj = {};
-          obj.number = (this.total - 7) + i;
-          obj.data = i;
-          obj.active = false;
-          if (this.currentPage === obj.number) obj.active = true;
-          this.pagesNumber.push(obj);
+      if (value === '...back') {
+        if (this.total - this.currentPage <= 5 || this.currentPage + 9 >= this.total || (this.total - (this.currentPage + 9)) < 5) {
+          console.log('1111111111111111', this.total - this.currentPage, this.currentPage + 9);
+          this.currentPage = this.currentPage + 9;
+          this.pagesNumber = [];
+          this.initOverObj(1);
+          this.initOverObj('...', 'prev');
+          for (let i = 0; i < 8; i++)  {
+            let obj = {};
+            obj.number = (this.total - 7) + i;
+            obj.data = i;
+            obj.active = false;
+            if (this.currentPage === obj.number) obj.active = true;
+            this.pagesNumber.push(obj);
+          }
+        } else {
+          console.log('222222222222222');
+          this.currentPage = this.currentPage + 9;
+          this.pagesNumber = [];
+          this.initOverObj(1);
+          this.initOverObj('...', 'prev');
+          for (let i = 0; i < 6; i++) {
+            let obj = {};
+            obj.active = false;
+            obj.data = i;
+            if (i === 2) {
+              obj.active = true;
+              obj.number = this.currentPage;
+            } else if (i < 2) {
+              obj.number = this.currentPage - (2 - i );
+            } else {
+              obj.number = this.currentPage + (i -  2);
+            }
+            this.pagesNumber.push(obj);
+          }
+          if (this.total - this.currentPage <= 4) {
+    
+          } else {
+            this.initOverObj('...back', 'back');
+          }
+          console.log('this.currentPage：', this.currentPage );
+          this.initOverObj(this.total);
         }
       } else {
-        console.log('222222222222222');
-        this.currentPage = this.currentPage + 9;
-        this.pagesNumber = [];
-        this.initOverObj(1);
-        this.initOverObj('...', 'prev');
-        for (let i = 0; i < 6; i++) {
-          let obj = {};
-          obj.active = false;
-          obj.data = i;
-          if (i === 2) {
-            obj.active = true;
-            obj.number = this.currentPage;
-          } else if (i < 2) {
-            obj.number = this.currentPage - (2 - i );
-          } else {
-            obj.number = this.currentPage + (i -  2);
+        // this.currentPage = this.currentPage - 9;
+        if (this.currentPage < 9 || this.currentPage - 9 <= 8) {
+          if (this.currentPage - 9 <= 0) {
+            this.currentPage = 1;
+          } else  {
+            this.currentPage = this.currentPage - 9;
           }
-          this.pagesNumber.push(obj);
-        }
-        if (this.total - this.currentPage <= 4) {
-  
+          this.pagesNumber = [];
+          for (let i = 0; i < 8; i++)  {
+            let obj = {};
+            obj.number = 1 + i;
+            obj.data = i;
+            obj.active = false;
+            if (this.currentPage === obj.number) obj.active = true;
+            this.pagesNumber.push(obj);
+          }
+          this.initOverObj('...back', 'back');
+          this.initOverObj(this.total);
         } else {
-          this.initOverObj('...', 'back');
+          this.currentPage = this.currentPage - 9;
+          this.pagesNumber = [];
+          this.initOverObj(1);
+          this.initOverObj('...', 'prev');
+          for (let i = 0; i < 6; i++) {
+            let obj = {};
+            obj.active = false;
+            obj.data = i;
+            if (i === 2) {
+              obj.active = true;
+              obj.number = this.currentPage;
+            } else if (i < 2) {
+              obj.number = this.currentPage - (2 - i );
+            } else {
+              obj.number = this.currentPage + (i -  2);
+            }
+            this.pagesNumber.push(obj);
+          }
+          
+          this.initOverObj('...back', 'back');
+          this.initOverObj(this.total);
         }
-        console.log('this.currentPage：', this.currentPage );
-        this.initOverObj(this.total);
       }
     }
+    this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
+    this.onOk();
   }
 
   initOverObj(number, str = '') {
@@ -200,7 +244,7 @@ class OXPagination extends PolymerElement {
           if (this.currentPage === obj.number) obj.active = true;
           this.pagesNumber.push(obj);
         }
-        this.initOverObj('...', 'back');
+        this.initOverObj('...back', 'back');
         this.initOverObj(this.total);
       } else if ((this.total - this.currentPage) < 5) {
         this.pagesNumber = [];
@@ -232,7 +276,7 @@ class OXPagination extends PolymerElement {
           }
           this.pagesNumber.push(obj);
         }
-        this.initOverObj('...', 'back');
+        this.initOverObj('...back', 'back');
         this.initOverObj(this.total);
       } else {
         console.log('........................');
