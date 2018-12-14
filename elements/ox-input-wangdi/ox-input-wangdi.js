@@ -18,10 +18,64 @@ class OXInput extends PolymerElement {
     static get template() {
         return html `
         <style>
-            @import '../elements/ox-input-wangdi/ox-input-wangdi.css';
+            :host([required]) {
+                position: relative;
+            
+            }
+            .ox-input-shadow {
+                width: 190px;
+                height: 25px;
+                border: none;
+                border-radius: 4px;
+                padding-left: 10px;
+                outline: none;
+            
+            }
+            :host .ox-input {
+                width: 200px;
+                height: 22px;
+                border-radius: 4px;
+                -webkit-appearance: none;
+            }
+            .search-input {
+                width: 300px;
+                height: 22px;
+                border-radius: 4px;
+                -webkit-appearance: none;
+            }
+            #error-message{
+                color: red;
+                font-size: 14px;
+                position: absolute;
+                top:100%;
+                width: 100%;
+                height: 20px;
+                line-height: 20px;
+                display: none;
+            }
+            .input-box{
+                border: none !important;
+                border: 1px solid rgb(236, 61, 61) !important;
+                box-shadow:0 0 5px rgb(235, 99, 99) !important;
+            }
+            .active{
+                display: block !important;  
+            }
+            .unactive{
+                display: none !important;
+            }
+            .required{
+                position: relative;
+            }
+            .show{
+                display: block;
+            }
+            .hide{
+                display: none;
+            }
         </style>
            <input type="text" placeholder="请输入" class="ox-input-shadow"  disabled="{{disabled}}" required="{{required}}" on-Change="onChange"> 
-           <div id="error-message">请输入正确手机号**</div>
+           <div id="error-message" ></div>
            `
     }
     static get properties() {
@@ -40,7 +94,12 @@ class OXInput extends PolymerElement {
             },
             value:{
                 type:Number,
-            }
+            },
+            type: {
+                type: String,
+                value: 'default',
+                observer: '_determineType'
+              }
         }
     }
     ready() {
@@ -49,17 +108,44 @@ class OXInput extends PolymerElement {
     onChange(e) {
         if (this.hasAttribute('disabled')) return;
         if (this.hasAttribute('required')) {
-            console.log('required:', this.hasAttribute('required'));
-            this.value = e.target.value;
-            console.log(this.value);
-            let errormsg = this.shadowRoot.querySelector('#error-message');
-            errormsg.className = 'unactive';
-            this.className = '';
-            if(!(/^1[34578]\d{9}$/.test(this.value))){
-                errormsg.className = 'active';
-                this.className = 'input-box';
+                this.value = e.target.value;
+                let errormsg = this.shadowRoot.querySelector('#error-message');
+                errormsg.className = 'unactive';
+                this.className = '';
+                let inputType = this.type;
+            if(inputType == "Phone"){
+                //正则验证手机
+                if(!(/^1[34578]\d{9}$/.test(this.value))){
+                        errormsg.className = 'active';
+                        errormsg.innerText = '请输入正确手机号**'
+                        this.className = 'input-box'
+                }else{
+                    console.log(this.value);
+                }
+            }else if(inputType == "Email"){
+                // 正则验证电子邮箱
+                if(!(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/.test(this.value))){
+                    errormsg.className = 'active';
+                    errormsg.innerText = '请在电子邮箱中包括@**，'
+                    this.className = 'input-box';
+                }else{
+                    console.log(this.value);
+                }
+            }else if(inputType == "Url"){
+                // 正则验证URL
+                if(!(/^((ht|f)tps?):\/\/([\w\-]+(\.[\w\-]+)*\/)*[\w\-]+(\.[\w\-]+)*\/?(\?([\w\-\.,@?^=%&:\/~\+#]*)+)?/.test(this.value))){
+                    errormsg.className = 'active';
+                    errormsg.innerText = '请输入网址包含http://**，'
+                    this.className = 'input-box';
+                }else{
+                    console.log(this.value);
+                }
+            }else if(inputType == "Default"){
+                alert('yes')
+                console.log(this.value);
             }
         }
+        // console.log(this.value);
     }
     setDisabled() {
         this.setAttribute('disabled');
@@ -67,5 +153,10 @@ class OXInput extends PolymerElement {
     removeDisabled() {
         this.removeAttribute('disabled');
     }
+
+    _determineType() {
+        console.log('determinetype：', this.type);
+      }
+
 }
 customElements.define('ox-input', OXInput);
