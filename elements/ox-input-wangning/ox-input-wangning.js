@@ -9,31 +9,47 @@ import {
 class OXInput extends PolymerElement {
   constructor() {
     super();
-    //this.addEventListener('click', this.onClick);
+    this.addEventListener('input', this.onChange);
   }
   static get template() {
     return html `
       <style>
-        :host(.ox-input) .ox-inner-input {
-          display: inline-block;
-          cursor: pointer;
-          padding: 8px 20px;
+        :host(.ox-input){
+          display:inline-block;
+          width:200px;
+          height:32px;
           border-radius: 4px;
-          border:1px  var(--color-black) solid;
+          border:1px solid var(--color-black); 
+        }
+        :host(.ox-input) input{
+          display:block;
+          width:100%;
+          height:100%;
+          text-indent:10px;
+          padding:0;
+          font-size: var(--theme-font-size);
+          border-radius:4px;
+          border:none;
+          outline:none;
         }
         :host(.ox-input) .ox-input-error-word{
           display:none;
+          padding-top:4px;
+          font-size: var(--theme-font-size-small);
           color: var(--theme-color-error);
         }
-        :host([pressed]) .ox-input-error-word{
-          display:block;
+        :host([error]){
+          border: 1px var(--theme-color-error) solid;
         }
-        :host(.ox-input) .ox-inner-input-error{
-          border:1px var(--theme-color-error) solid;
+        :host([error]) .ox-input-error-word{
+          display: block;
+        }
+        :host([disabled]) input{
+          cursor: not-allowed;
         }
       </style> 
-      <input class="ox-inner-input" type="{{type}}" placeholder="{{placeholder}}" disabled="{{disabled}}"/>
-      <div class="ox-input-error-word">输入有误</div>
+      <input type="{{type}}" placeholder="{{placeholder}}" disabled="{{disabled}}"/>
+      <div class="ox-input-error-word">{{notice}}</div>
     `;
   }
   static get properties() {
@@ -49,16 +65,44 @@ class OXInput extends PolymerElement {
       disabled: {
         type: Boolean,
         value:false,
+      },
+      notice: {
+        type: String,
+        value: '',
       }
     };
   }
+
   ready() {
     super.ready();
     this.className = `ox-input ox-input-${this.type}`;
   }
-  // onClick(e){
-  //   if (this.hasAttribute('disabled')) return;
-  // }
+  onChange(e){
+    var input = this.shadowRoot.querySelector('input');
+    if(input.getAttribute('type') == 'tel'){
+      console.log(input.value);
+      if(!(/^1[0-9]{10}$/.test(input.value))){
+        console.log('错误');
+        this.setAttribute('error','');
+      }else{
+        this.removeAttribute('error');
+      }
+    }else if(input.getAttribute('type') == 'email'){
+      if(!(/^[A-Za-z\d]+([-_.][A-Za-z\d]+)*@([A-Za-z\d]+[-.])+[A-Za-z\d]{2,4}$/.test(input.value))){
+        console.log('错误');
+        this.setAttribute('error','');
+      }else{
+        this.removeAttribute('error');
+      }
+    }else if(input.getAttribute('type') == 'url'){
+      if(!(/(http|ftp|https):\/\/[\w\-_]+(\.[\w\-_]+)+([\w\-\.,@?^=%&:/~\+#]*[\w\-\@?^=%&/~\+#])?/.test(input.value))){
+        console.log('错误');
+        this.setAttribute('error','');
+      }else{
+        this.removeAttribute('error');
+      }
+    }
+  }
 }
 
 window.customElements.define('ox-input', OXInput);
