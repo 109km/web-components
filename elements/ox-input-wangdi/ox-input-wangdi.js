@@ -20,7 +20,6 @@ class OXInput extends PolymerElement {
         <style>
             :host([required]) {
                 position: relative;
-            
             }
             .ox-input-shadow {
                 width: 190px;
@@ -29,9 +28,8 @@ class OXInput extends PolymerElement {
                 border-radius: 4px;
                 padding-left: 10px;
                 outline: none;
-            
             }
-            :host .ox-input {
+            .ox-input {
                 width: 200px;
                 height: 22px;
                 border-radius: 4px;
@@ -45,15 +43,16 @@ class OXInput extends PolymerElement {
             }
             #error-message{
                 color: red;
-                font-size: 14px;
+                font-size:var(--theme-font-size-small);
                 position: absolute;
                 top:100%;
                 width: 100%;
                 height: 20px;
                 line-height: 20px;
                 display: none;
+                margin-top:5px;
             }
-            .input-box{
+           :host(.input-box){
                 border: none !important;
                 border: 1px solid rgb(236, 61, 61) !important;
                 box-shadow:0 0 5px rgb(235, 99, 99) !important;
@@ -75,7 +74,7 @@ class OXInput extends PolymerElement {
             }
         </style>
            <input type="text" placeholder="请输入" class="ox-input-shadow"  disabled="{{disabled}}" required="{{required}}" on-Change="onChange"> 
-           <div id="error-message" ></div>
+           <div id="error-message"></div>
            `
     }
     static get properties() {
@@ -120,7 +119,8 @@ class OXInput extends PolymerElement {
                         errormsg.innerText = '请输入正确手机号**'
                         this.className = 'input-box'
                 }else{
-                    console.log(this.value);
+                    errormsg.className = 'unactive';
+                    this.className = '';
                 }
             }else if(inputType == "Email"){
                 // 正则验证电子邮箱
@@ -129,7 +129,8 @@ class OXInput extends PolymerElement {
                     errormsg.innerText = '请在电子邮箱中包括@**，'
                     this.className = 'input-box';
                 }else{
-                    console.log(this.value);
+                    errormsg.className = 'unactive';
+                    this.className = '';
                 }
             }else if(inputType == "Url"){
                 // 正则验证URL
@@ -138,11 +139,9 @@ class OXInput extends PolymerElement {
                     errormsg.innerText = '请输入网址包含http://**，'
                     this.className = 'input-box';
                 }else{
-                    console.log(this.value);
+                    errormsg.className = 'unactive';
+                    this.className = '';
                 }
-            }else if(inputType == "Default"){
-                alert('yes')
-                console.log(this.value);
             }
         }
         // console.log(this.value);
