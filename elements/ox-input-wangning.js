@@ -14,7 +14,39 @@ class OXInput extends PolymerElement {
   static get template() {
     return html `
       <style>
-        @import '../elements/ox-input-wangning/ox-input-wangning.css';
+        :host(.ox-input){
+          display:inline-block;
+          width:200px;
+          height:32px;
+          border-radius: 4px;
+          border:1px solid var(--color-black); 
+        }
+        :host(.ox-input) input{
+          display:block;
+          width:100%;
+          height:100%;
+          text-indent:10px;
+          padding:0;
+          font-size: var(--theme-font-size);
+          border-radius:4px;
+          border:none;
+          outline:none;
+        }
+        :host(.ox-input) .ox-input-error-word{
+          display:none;
+          padding-top:4px;
+          font-size: var(--theme-font-size-small);
+          color: var(--theme-color-error);
+        }
+        :host([error]){
+          border: 1px var(--theme-color-error) solid;
+        }
+        :host([error]) .ox-input-error-word{
+          display: block;
+        }
+        :host([disabled]) input{
+          cursor: not-allowed;
+        }
       </style> 
       <input type="{{type}}" placeholder="{{placeholder}}" disabled="{{disabled}}"/>
       <div class="ox-input-error-word">{{notice}}</div>
@@ -49,7 +81,7 @@ class OXInput extends PolymerElement {
     var input = this.shadowRoot.querySelector('input');
     if(input.getAttribute('type') == 'tel'){
       console.log(input.value);
-      if(!(/^1[0-9]{10}$/.test(input.value))){
+      if(!(/^1[3,5,8,9,4,6,7]\d{9}$/.test(input.value))){
         console.log('错误');
         this.setAttribute('error','');
       }else{

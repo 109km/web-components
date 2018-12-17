@@ -1,0 +1,33 @@
+:host(.ox-input){
+  display:inline-block;
+  width:200px;
+  height:32px;
+  border-radius: 4px;
+  border:1px solid var(--color-black); 
+}
+:host(.ox-input) input{
+  display:block;
+  width:100%;
+  height:100%;
+  text-indent:10px;
+  padding:0;
+  font-size: var(--theme-font-size);
+  border-radius:4px;
+  border:none;
+  outline:none;
+}
+:host(.ox-input) .ox-input-error-word{
+  display:none;
+  padding-top:4px;
+  font-size: var(--theme-font-size-small);
+  color: var(--theme-color-error);
+}
+:host([error]){
+  border: 1px var(--theme-color-error) solid;
+}
+:host([error]) .ox-input-error-word{
+  display: block;
+}
+:host([disabled]) input{
+  cursor: not-allowed;
+}

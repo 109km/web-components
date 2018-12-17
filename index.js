@@ -23,3 +23,5 @@ import './elements/ox-tab-llj/ox-tab-card.js';
 // import './elements/ox-bubble-wangfanglan/ox-bubble-wangfanglan.js';
 import './elements/ox-checkbox';
 import './elements/ox-modal-shaoxinheng';
+
+import './elements/ox-input-wangning';
