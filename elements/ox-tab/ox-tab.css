@@ -1,0 +1,42 @@
+.ox-tab-main {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.tab-item {
+  height: 60px;
+  line-height: 60px;
+  padding-left: 40px;
+  padding-right: 40px;
+  border-bottom: 2px solid #ccc;
+  cursor: pointer;
+  margin-bottom: 50px;
+  font-size: 18px;
+}
+
+.tab-item.active {
+  color: #D99F53;
+  border-bottom: 2px solid #D99F53;
+}
+
+.tab-item-1 {
+  height: 60px;
+  line-height: 60px;
+  padding-left: 40px;
+  padding-right: 40px;
+  background-color: #fff;
+  border: 1px solid #D99F53;
+  color: #D99F53;
+  cursor: pointer;
+  margin-bottom: 50px;
+  font-size: 18px;
+}
+
+.tab-item-1.active {
+  background-color: #D99F53;
+  color: #fff;
+}
+.ox-tab-main:first-child .tab-item-1{
+  
+}

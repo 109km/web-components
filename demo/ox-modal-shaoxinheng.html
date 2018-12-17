@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>Demo - ox-modal</title>
+  <link rel="stylesheet" href="../elements/normalize.css">
+  <link rel="stylesheet" href="../elements/global.css">
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <!-- 引入组件的js -->
+  <script type="module" src="../elements/ox-button.js"></script>
+  <script type="module" src="../elements/ox-modal-shaoxinheng.js"></script>
+</head>
+
+<body>
+  <custom-style>
+    <style>
+      ox-button{
+        margin-right: 50px;
+      }
+      .error .content{
+        color: var(--theme-color-error);
+      }
+    </style>
+  </custom-style>
+  <div class="page page-demo">
+    <h1 class="page-title">
+      对话框(ox-modal)
+    </h1>
+    <div class="zone">
+      <ox-button id="basic" type="default">基础弹窗</ox-button>
+      <ox-button id="success" type="success">成功弹窗</ox-button>
+      <ox-button id="warning" type="warning">警告弹窗</ox-button>
+    </div>
+    <div class="zone">
+      <ox-button id="error" type="error">错误弹窗</ox-button>
+    </div>
+
+    <ox-modal for="basic" type="default" maskcloseable>
+      <div class="title" slot="title">Modal basic 标题</div>
+      <div class="content" slot="content">Modal basic 内容</div>
+    </ox-modal>
+    <ox-modal for="success" type="success" maskcloseable animationtype="top">
+      <div class="icon-area" slot="icon"><i class="fa fa-check"></i></div>
+      <div class="title" slot="title">Modal success 标题</div>
+      <div class="content" slot="content">Modal success 内容</div>
+    </ox-modal>
+    <ox-modal for="warning" type="warning" animationtype="bottom">
+      <div class="icon-area" slot="icon"><i class="fa fa-exclamation-circle"></i></div>
+      <div class="title" slot="title">Modal warning 标题</div>
+      <div class="content" slot="content">Modal warning 内容</div>
+    </ox-modal>
+    <ox-modal class="error" for="error" type="error" oktext="知道了" animationtype="left">
+      <div class="icon-area" slot="icon"><i class="fa fa-times-circle"></i></div>
+      <div class="title" slot="title">Modal error 标题</div>
+      <div class="content" slot="content">Modal error 内容</div>
+    </ox-modal>
+  </div>
+  <script>
+    // Bind customer's events here
+    let modalSuccess = document.querySelector('ox-modal[for="success"]');
+    modalSuccess.onOK = function() {
+      console.log('modal success is clicked');
+      modalSuccess.hide();
+    }
+    modalSuccess.onCancel = function() {
+      console.log('modal cancel is clicked');
+      modalSuccess.hide();
+    }
+  </script>
+</body>
+
+</html>
