@@ -43,7 +43,7 @@ $ npm run test
 
 ## 使用文档
 组件详细文档请参考：
-[API文档](http://192.168.0.34/sunlands/fe-web-components/blob/master/api.md)
+[API文档](api.md)
 
 
 # 资料
