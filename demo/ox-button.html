@@ -26,11 +26,13 @@
       按钮(ox-button)
     </h1>
     <div class="zone">
-      <ox-button type="default">默认按钮</ox-button>
-      <ox-button type="primary">主要按钮</ox-button>
+      <ox-button id="btn-default" type="default">默认按钮</ox-button>
+      <ox-button type="primary" disabled>主要按钮</ox-button>
       <ox-button type="text">文字按钮</ox-button>
     </div>
-
+    <div class="zone">
+      <ox-button type="success" href="https://www.baidu.com" target="_self" disabled block>成功按钮</ox-button>
+    </div>
     <div class="zone">
       <ox-button type="success">成功按钮</ox-button>
       <ox-button type="warning">警告按钮</ox-button>
@@ -43,6 +45,15 @@
       <ox-button type="error-hollow">错误按钮</ox-button>
     </div>
   </div>
+  <script>
+    let btn = document.querySelector('#btn-default');
+
+    function onSuccessClick(e) {
+      console.log(123, e);
+    }
+
+    btn.onClick = onSuccessClick;
+  </script>
 </body>
 
 </html>
