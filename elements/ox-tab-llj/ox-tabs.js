@@ -101,6 +101,10 @@ class OXTabs extends PolymerElement {
     super.ready();  
     let domWidth= this.getLineWidth()  
     this.style.width=domWidth+'px'; 
+    this.created();
   }  
+  created(callback) {
+    callback && callback();
+  }
 } 
 window.customElements.define('ox-tabs', OXTabs);

@@ -39,20 +39,24 @@ class OXTabPane extends PolymerElement {
     };
   }
   ready() {
-    super.ready(); 
+    super.ready();  
     let index = this.getAttribute("index");    
     if(index==0){ 
       let card = document.querySelector(`ox-tab-card[oxcard=${this.oxtarget}]`);  
       if(!card)return false;
       card.show=true
-    }
+    };
   } 
   change(){ 
     let index = this.getAttribute("index"); 
     this.parentNode.activebar = Number(index); 
     let card = document.querySelector(`ox-tab-card[oxcard=${this.oxtarget}]`);  
     if(!card)return false;
-    card.show=true
+    card.show=true;
+    this.oxClick(); 
+  }
+  oxClick(callback) {
+    callback && callback();
   }
   
 } 

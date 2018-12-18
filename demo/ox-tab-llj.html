@@ -49,12 +49,22 @@
     </ox-tab-card>
     <ox-tab-card oxcard="card4">
       woshi长选项卡卡卡卡卡卡卡卡卡卡222
-    </ox-tab-card>
-
-
-
-
+    </ox-tab-card> 
    </div> 
 </body>
+<script>
+  let oxTab= document.querySelector("ox-tabs")
+  oxTab.created = function() {
+    console.log("created")
+  } 
 
+  let oxTabPane = [...document.querySelectorAll("ox-tab-pane")]; 
+  oxTabPane.forEach((val,index)=>{
+    val.oxClick = function() {
+      console.log(index)
+    }
+  })
+ 
+
+</script>
 </html>
