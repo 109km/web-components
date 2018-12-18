@@ -41,6 +41,10 @@ $ npm run test
 6. 如果需要构建项目，则执行构建命令。
 7. `build/prod` 目录中的 `ox.min.css` 和 `ox.min.js` 就是最终需要引入的文件，可以在任意的项目中引入，然后就可以使用所有的组件了。
 
+## 使用文档
+组件详细文档请参考：
+[API文档](http://192.168.0.34/sunlands/fe-web-components/blob/master/api.md)
+
 
 # 资料
 
