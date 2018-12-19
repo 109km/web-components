@@ -7,6 +7,7 @@
   <title>Demo - ox-radio</title>
   <link rel="stylesheet" href="../elements/normalize.css">
   <link rel="stylesheet" href="../elements/global.css">
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
   <!-- 引入组件的js -->
@@ -27,19 +28,12 @@
       单选(ox-radio)
     </h1>
     <div class="zone">
-      <h2>第1组</h2>
-      <ox-radio group="choices1" class="ox-radio-actived" disabled  value="1">不可选择</ox-radio>
-      <ox-radio group="choices1" value="2">选项2</ox-radio>
-      <ox-radio group="choices1" value="3">选项3</ox-radio>
-    </div>
-    <div class="zone">
       <h2>组元素</h2>
-      <ox-radio group="choices2" value="1" class="ox-radio-actived">选项1</ox-radio>
-      <ox-radio group="choices2" value="2">选项2</ox-radio>
-      <ox-radio group="choices2" value="3">选项3</ox-radio>
-      <ox-radio group="choices2" value="4" disabled>选项4</ox-radio>
+      <ox-radio group="choices1" value="已选中" class="ox-radio-actived" >已选中</ox-radio>
+      <ox-radio group="choices1" value="未选中">未选中</ox-radio>
+      <ox-radio group="choices1" value="不可用" disabled>不可用</ox-radio>
+      <ox-radio group="choices1" value="选中不可用" disabled class="ox-radio-actived">选中不可用</ox-radio>    
     </div>
-  </div>
 </body>
 
 </html>

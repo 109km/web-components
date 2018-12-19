@@ -19,8 +19,9 @@ class OXRadio extends PolymerElement {
     }
     .ox-radio-outer {
       display: inline-block;
-      width: 20px;
-      height: 20px;
+      width: 18px;
+      height: 18px;
+      line-height:16px;
       border-radius: 50%;
       text-align: center;
       border: 1px solid var(--theme-color-default-border);
@@ -38,11 +39,9 @@ class OXRadio extends PolymerElement {
       height: 10px;
       border-radius: 50%;
       background-color: var(--color-white);
-      margin-top: 5px;
     }
     :host([disabled]){
       cursor: not-allowed;
-
     }
     :host([disabled]) .ox-radio-outer{
       background-color: var(--theme-color-radio-disabled);
@@ -77,10 +76,6 @@ class OXRadio extends PolymerElement {
         type: Boolean,
         value: false
       },
-      checked: {
-        type: Boolean,
-        value: false
-      },
       value: {
         type: String,
         value: ''
@@ -94,7 +89,6 @@ class OXRadio extends PolymerElement {
       radio.className = '';
       radio.removeAttribute('actived');
     });
-    this.checked = true;
     this.className = "ox-radio-actived";
     console.log("选值为",this.value);
   }
@@ -109,7 +103,6 @@ class OXRadio extends PolymerElement {
   }
   ready() {
     super.ready();
-    console.log(this.checked);
   }
 }
 

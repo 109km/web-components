@@ -4,14 +4,11 @@ import {
 } from '@polymer/polymer/polymer-element.js';
 
 
-
 class OXSwitch extends PolymerElement {
     constructor() {
-        //必须首先调用super方法
         super();
-        this.addEventListener('click',this.onClick);
+        this.addEventListener('click', this.onClick);
     }
-    //创建shadow dom
     static get template() {
         return html `
         <style>
@@ -46,6 +43,15 @@ class OXSwitch extends PolymerElement {
             transition-duration: 0.5s;
             left: 30px;
           }
+          :host([disabled]){
+            cursor: not-allowed;
+          }
+          :host([disabled]) .ox-switch-outer{
+            cursor: not-allowed;
+            display: inline-block;
+            box-shadow: 0 0 5px rgb(221, 218, 218);
+            opacity:0.5;
+          } 
         </style>
             <div class="ox-switch-outer">
                 <div class="ox-switch-inner"></div>
@@ -54,12 +60,13 @@ class OXSwitch extends PolymerElement {
     }
     static get properties() {
         return {
-            value:{
-                type:String,
+            value: {
+                type: String,
             },
-            checked:{
-                type:Boolean,
-                value:false
+            checked: {
+                type: Boolean,
+                value: false,
+                observer: '_checkedChanged'
             },
             disabled: {
                 type: Boolean,
@@ -73,22 +80,30 @@ class OXSwitch extends PolymerElement {
     onClick(e) {
         if (this.hasAttribute('disabled')) return;
         if (this.hasAttribute('checked')) {
-            console.log('关闭:',this.hasAttribute('checked'));
+            console.log('关闭:', this.hasAttribute('checked'));
             this.removeAttribute('checked');
             this.className = '';
             this.checked = false;
-          } else {
+        } else {
             this.checked = true;
             this.setAttribute('checked', true);
             this.className = 'ox-switch-actived';
-            console.log('打开:',this.hasAttribute('checked'));
-          }
+            console.log('打开:', this.hasAttribute('checked'));
+        }
     }
-       setDisabled() {
+    setDisabled() {
         this.setAttribute('disabled');
-      }
-      removeDisabled() {
+    }
+    removeDisabled() {
         this.removeAttribute('disabled');
-      }   
+    }
+    _checkedChanged(newValue, oldValue) {
+        console.log("目前状态",newValue,"之前状态",oldValue);
+        if(newValue){
+            console.log("打开状态事件")
+        }else{
+            console.log("关闭状态事件")
+        }
+      }
 }
 customElements.define('ox-switch', OXSwitch);
