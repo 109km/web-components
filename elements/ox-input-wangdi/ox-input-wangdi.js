@@ -63,22 +63,16 @@ class OXInput extends PolymerElement {
             .unactive{
                 display: none !important;
             }
-            .required{
-                position: relative;
-            }
-            .show{
-                display: block;
-            }
-            .hide{
-                display: none;
-            }
         </style>
-           <input type="text" placeholder="请输入" class="ox-input-shadow"  disabled="{{disabled}}" required="{{required}}" on-Change="onChange"> 
+           <input type="text" placeholder="{{placeholder}}" class="ox-input-shadow"  disabled="{{disabled}}" required="{{required}}" on-Change="onChange"> 
            <div id="error-message"></div>
            `
     }
     static get properties() {
         return {
+            placeholder:{
+                type:String,
+            },
             disabled: {
                 type: Boolean,
                 value: false
@@ -142,6 +136,9 @@ class OXInput extends PolymerElement {
                     errormsg.className = 'unactive';
                     this.className = '';
                 }
+            }else{
+                errormsg.className = 'unactive';
+                this.className = '';
             }
         }
         // console.log(this.value);
