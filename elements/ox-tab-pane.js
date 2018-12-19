@@ -16,7 +16,7 @@ class OXTabPane extends PolymerElement {
       <style>
         .ox-tab-pane{
           font-size:14px; 
-          color:rgba(217,159,83,1); 
+          color:#282828; 
           padding: 16px 0;
           line-height: 1; 
           cursor: pointer;
@@ -27,17 +27,27 @@ class OXTabPane extends PolymerElement {
           cursor: pointer;
           padding: 8px 12px;
           position: relative;
-          color:rgb(51, 51, 51);
+          color:#D99F53;
           text-align:center; 
           margin-right: -1px;
         }
-        .ox-tab-pane.active{
+        .ox-tab-pane.piece.active{
           background: #D99F53;
           color: #fff;
           transition:all .5s;
         }
+        .ox-tab-pane.active{
+          color: #D99F53; 
+          transition:all .5s;
+        }
+        .first{
+          border-radius:4px 0 0 4px;
+        }
+        .last{
+          border-radius:0px 4px 4px 0px; 
+        }
       </style>
-      <div on-click="change" class$="ox-tab-pane [[type]] [[active]]" inner-h-t-m-l={{tabHtml}}></div>
+      <div on-click="change" class$="ox-tab-pane [[type]] [[active]]  [[className]]" inner-h-t-m-l={{tabHtml}}></div>
     `;
   }
   static get properties() {
@@ -51,35 +61,46 @@ class OXTabPane extends PolymerElement {
       oxtarget:{
         type:String, 
       }, 
+      className:{
+        type:String,
+        value:false,
+        observer:'attrChange'
+      },
     };
   }
   ready() {
     super.ready();  
     this.tabHtml =this.label;  
     this.parentNode.rendered = true; 
-    let index = Number(this.getAttribute("index"));   
-    this.type=this.parentNode.type 
+    let index = Number(this.getAttribute("index"));    
+    let domLength = this.parentNode.children.length;
+    this.type=this.parentNode.type;
     // 默认第一个card显示及tab-pane active
-    if(index===0){  
-      let card = document.querySelector(`ox-tab-card[oxcard=${this.oxtarget}]`);  
-      if(!card)return false;
-      card.show=true;
-    }; 
-    if(this.type==="piece" && index===0){
-      this.active = "active"
+    switch (index) {
+      case 0:
+        this.active = "active";
+        this.className = "first"
+        let card = document.querySelector(`ox-tab-card[oxcard=${this.oxtarget}]`);  
+        if(!card)return false;
+        card.show=true;
+        break;
+    
+      case domLength-1:
+        this.className = "last"
+        break;
     }
+  
   } 
   // tab切换
   change(){  
-    if(this.type==="piece"){
-      [...this.parentNode.children].forEach((val)=>{
-        val.shadowRoot.querySelector(".piece").classList.remove("active")
-      })
-      this.shadowRoot.querySelector(".piece").classList.add("active")
-    }else{
+    [...this.parentNode.children].forEach((val)=>{
+      val.shadowRoot.querySelector(".ox-tab-pane").classList.remove("active")
+    })
+    this.shadowRoot.querySelector(".ox-tab-pane").classList.add("active")
+    if(this.type !=="piece"){
       let index = this.getAttribute("index"); 
-      this.parentNode.activebar = Number(index); 
-    }
+      this.parentNode.activebar = Number(index);  
+    } 
     let card = document.querySelector(`ox-tab-card[oxcard=${this.oxtarget}]`);  
     if(!card)return false;
     card.show=true; 

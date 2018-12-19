@@ -30,7 +30,7 @@ class OXTabCard extends PolymerElement {
         type:Boolean,
         value:false,
         observer:'attrChange'
-      }
+      },
     };
   }
   // 触发card切换

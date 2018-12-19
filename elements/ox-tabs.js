@@ -55,8 +55,8 @@ class OXTabs extends PolymerElement {
         }
       </style>
       <div class$="ol-tabs [[type]]" > 
-        <div class="active-bar"></div>
-        <slot></slot>
+        <div class="active-bar"></div> 
+        <slot></slot> 
       </div>
     `;
   }
@@ -83,7 +83,7 @@ class OXTabs extends PolymerElement {
   }
   render(newVal,oldVal){
     if(newVal){  
-      this.initBar()
+      this.initBar(); 
     }
   }
   // slide类型下 tab切换触发事件
@@ -95,6 +95,8 @@ class OXTabs extends PolymerElement {
     let activeDom = this.shadowRoot.querySelector(".active-bar"); 
     activeDom.style.webkitTransform=`translateX(${left}px)`;
     activeDom.style.width=width+'px'; 
+
+
   }  
   //初始化 slide滑动条
   initBar(){
@@ -103,8 +105,8 @@ class OXTabs extends PolymerElement {
     let paneDom = this.querySelector("ox-tab-pane");
     if(!paneDom)  return false;
     childDom.forEach((val,index)=>{ 
-      // 添加属性
-      val.setAttribute("index",index) 
+      // tan-pane添加属性
+      val.setAttribute("index",index) ; 
     })  
     // 获取继承的最终的字体大小
     let fontSize = document.defaultView.getComputedStyle(paneDom,null).fontSize;
@@ -114,7 +116,8 @@ class OXTabs extends PolymerElement {
     activeDom.style.width=activeBarWidth+'px' ; 
   }
   ready() {
-    super.ready();   
+    super.ready();
+    
     this.created();
   }  
   created(callback) {
