@@ -102,13 +102,15 @@
 
   text-align: center;
   line-height: 36px;
+  /* line-height: 29px; */
   font-size: 16px;
   color: #282828;
-  
+  font-weight: 400;
+  vertical-align: middle;
 }
 
 :host .ox-pagination-numer li.active {
-  min-width: 38px;
+  /* min-width: 38px; */
   transition: all .3s;
   background-color: var(--theme-bg-color-primary);
   color: var(--theme-color-default);

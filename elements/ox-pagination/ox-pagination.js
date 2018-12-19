@@ -30,12 +30,13 @@ class OXPagination extends PolymerElement {
               <li
                 class="active"
                 on-click="pageHandler"
+                data-other$="[[item.data]]"
                 style="background-color: [[backgroundColor]]; border-top: 1px solid [[backgroundColor]]; 
                 border-bottom: 1px solid [[backgroundColor]]; border-left: 1px solid [[backgroundColor]];"
               >[[item.number]]</li>
             </template>
             <template is="dom-if" if="[[!item.active]]">
-              <li on-mouseover="liMouseover" on-mouseout="liMouseout" on-click="pageHandler">[[item.number]]</li>
+              <li data-other$="[[item.data]]" on-mouseover="liMouseover" on-mouseout="liMouseout" on-click="pageHandler" user="[[item.number]]">[[item.number]]</li>
             </template>
           </template>
         </ul>
@@ -117,7 +118,7 @@ class OXPagination extends PolymerElement {
       this.page = parseInt(value);
       this.pageNumberInitHandler(e.target);
     } else  {
-      if (value === '...back') {
+      if (e.target.getAttribute('data-other') === 'back') {
         if (this.page + 5 >= this.total) {
           this.page = this.total;
           this.backNumberInit();
@@ -181,11 +182,18 @@ class OXPagination extends PolymerElement {
   initOverObj(number, str = '') {
     let data = number;
     if (number === this.total) data = 8;
-    if (number === '...') data = str;
+    let content = number;
+    if (number === '...') {
+      data = str;
+    } else if (number === '...back') {
+      content = '...';
+      data = str;
+    }
+
     const obj = {
       active: false,
-      number: number,
-      data: data
+      number: content,
+      data: data,
     }
     this.pagesNumber.push(obj);
   }
@@ -267,11 +275,19 @@ class OXPagination extends PolymerElement {
   }
   
   liMouseover(e) {
+    const target = e.target;
     if (this.backgroundColor) {
-      e.target.style.backgroundColor = this.backgroundColor;
-      e.target.style.borderTop = `1px solid ${this.backgroundColor}`;
-      e.target.style.borderBottom = `1px solid ${this.backgroundColor}`;
+      target.style.backgroundColor = this.backgroundColor;
+      target.style.borderTop = `1px solid ${this.backgroundColor}`;
+      target.style.borderBottom = `1px solid ${this.backgroundColor}`;
     }
+
+    // const targetContent = target.getAttribute('data-other');
+    // if (targetContent === 'prev') {
+
+    // } else if (targetContent === 'back') {
+
+    // }
   }
 
   liMouseout(e) {
