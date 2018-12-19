@@ -10,13 +10,13 @@
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
   <!-- 引入组件的js -->
-  <script type="module" src="../elements/ox-label/ox-label.js"></script>
+  <script type="module" src="../elements/ox-tag/ox-tag.js"></script>
 </head> 
 <body>
   <custom-style>
     <style>
       body{padding-top:100px;}
-      ox-label{
+      ox-tag{
         display: inline-block;
         margin-right: 50px;
       }  
@@ -33,11 +33,13 @@
     </style>
   </custom-style>
   <div class="page page-demo">
-    <ox-label>标签</ox-label>
-    <ox-label type="delete">标签</ox-label>
-
-    <ox-label oxclass="round" type="default">自定义标签</ox-label>
+    <ox-tag>标签</ox-tag>
+    <ox-tag type="delete">标签</ox-tag> 
    </div>
 </body>
-
+<script>
+  document.querySelector("[type=delete]").delete = ()=>{
+    alert("delete")
+  }
+</script>
 </html>

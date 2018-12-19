@@ -12,7 +12,12 @@ class OXTabCard extends PolymerElement {
     
   }
   static get template() {
-    return html ` 
+    return html `
+    <style>
+      .ox-tab-card{
+        transition:all .5s;
+      }
+    </style> 
       <div class="ox-tab-card">  
         <slot></slot>
       </div>

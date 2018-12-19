@@ -10,9 +10,9 @@
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
   <!-- 引入组件的js --> 
-  <script type="module" src="../elements/ox-tab-llj/ox-tabs.js"></script>
-  <script type="module" src="../elements/ox-tab-llj/ox-tab-pane.js"></script>
-  <script type="module" src="../elements/ox-tab-llj/ox-tab-card.js"></script>
+  <script type="module" src="../elements/ox-tabs/ox-tabs.js"></script>
+  <script type="module" src="../elements/ox-tab-pane/ox-tab-pane.js"></script>
+  <script type="module" src="../elements/ox-tab-card/ox-tab-card.js"></script>
 </head> 
 <body>
   <custom-style>
@@ -24,46 +24,51 @@
     </style>
   </custom-style>
   <div class="page page-demo">  
-    <ox-tabs>
-      <ox-tab-pane oxtarget="card1">选项卡一wwwwwwwww</ox-tab-pane>
-      <ox-tab-pane oxtarget="card2">选项卡二</ox-tab-pane>
-      <ox-tab-pane oxtarget="card3">选项卡san</ox-tab-pane>
-      <ox-tab-pane oxtarget="card4">长选项卡卡卡卡卡卡卡卡卡卡</ox-tab-pane> 
+    <ox-tabs type="piece">
+      <ox-tab-pane onclick="fn(this)" label="选项卡一" oxtarget="card1"></ox-tab-pane>
+      <ox-tab-pane onclick="fn(this)" label="选项卡二" oxtarget="card2"></ox-tab-pane>
+      <ox-tab-pane onclick="fn(this)" label="选项卡三" oxtarget="card3"></ox-tab-pane>
+      <ox-tab-pane onclick="fn(this)" label="选项卡四" oxtarget="card4"></ox-tab-pane> 
     </ox-tabs>
-    <ox-tab-card oxcard="card1">
-      <ul>
-        <li>11111</li>
-        <li>22222</li>
-        <li>33333</li>
-      </ul>
-    </ox-tab-card>
-    <ox-tab-card oxcard="card2">
-      <ol>
-        <li>11111</li>
-        <li>22222</li>
-        <li>33333</li>
-      </ol>
-    </ox-tab-card>
-    <ox-tab-card oxcard="card3">
-      woshi长选项卡卡卡卡卡卡卡卡卡卡111
-    </ox-tab-card>
-    <ox-tab-card oxcard="card4">
-      woshi长选项卡卡卡卡卡卡卡卡卡卡222
-    </ox-tab-card> 
+    <ox-tabs >
+      <ox-tab-pane onclick="fn(this)" label="选项卡一" oxtarget="card1"></ox-tab-pane>
+      <ox-tab-pane onclick="fn(this)" label="选项卡二" oxtarget="card2"></ox-tab-pane>
+      <ox-tab-pane onclick="fn(this)" label="选项卡三" oxtarget="card3"></ox-tab-pane>
+      <ox-tab-pane onclick="fn(this)" label="选项卡四" oxtarget="card4"></ox-tab-pane> 
+    </ox-tabs>
+    <div>
+      <ox-tab-card oxcard="card1">
+        <ul>
+          <li>11111</li>
+          <li>22222</li>
+          <li>33333</li>
+        </ul>
+      </ox-tab-card>
+      <ox-tab-card oxcard="card2">
+        <ol>
+          <li>11111</li>
+          <li>22222</li>
+          <li>33333</li>
+        </ol>
+      </ox-tab-card>
+      <ox-tab-card oxcard="card3">
+        woshi长选项卡卡卡卡卡卡卡卡卡卡111
+      </ox-tab-card>
+      <ox-tab-card oxcard="card4">
+        woshi长选项卡卡卡卡卡卡卡卡卡卡222
+      </ox-tab-card> 
+    </div>
    </div> 
 </body>
 <script>
   let oxTab= document.querySelector("ox-tabs")
   oxTab.created = function() {
     console.log("created")
-  } 
-
-  let oxTabPane = [...document.querySelectorAll("ox-tab-pane")]; 
-  oxTabPane.forEach((val,index)=>{
-    val.oxClick = function() {
-      console.log(index)
-    }
-  })
+  }  
+  
+ function fn(e){ 
+   console.log(e.getAttribute("index"))
+ } 
  
 
 </script>
