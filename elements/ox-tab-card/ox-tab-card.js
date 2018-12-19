@@ -25,6 +25,7 @@ class OXTabCard extends PolymerElement {
   }
   static get properties() {
     return {  
+      //显示隐藏
       show:{
         type:Boolean,
         value:false,
@@ -32,6 +33,7 @@ class OXTabCard extends PolymerElement {
       }
     };
   }
+  // 触发card切换
   attrChange(newVal,oldVal){ 
     if(oldVal === undefined) return false; 
     let siblingsNode = [...this.parentNode.children];

@@ -25,16 +25,16 @@
   </custom-style>
   <div class="page page-demo">  
     <ox-tabs type="piece">
-      <ox-tab-pane onclick="fn(this)" label="选项卡一" oxtarget="card1"></ox-tab-pane>
-      <ox-tab-pane onclick="fn(this)" label="选项卡二" oxtarget="card2"></ox-tab-pane>
-      <ox-tab-pane onclick="fn(this)" label="选项卡三" oxtarget="card3"></ox-tab-pane>
-      <ox-tab-pane onclick="fn(this)" label="选项卡四" oxtarget="card4"></ox-tab-pane> 
+      <ox-tab-pane label="选项卡一" oxtarget="card1"></ox-tab-pane>
+      <ox-tab-pane label="选项卡二" oxtarget="card2"></ox-tab-pane>
+      <ox-tab-pane label="选项卡三" oxtarget="card3"></ox-tab-pane>
+      <ox-tab-pane label="选项卡四" oxtarget="card4"></ox-tab-pane> 
     </ox-tabs>
     <ox-tabs >
-      <ox-tab-pane onclick="fn(this)" label="选项卡一" oxtarget="card1"></ox-tab-pane>
-      <ox-tab-pane onclick="fn(this)" label="选项卡二" oxtarget="card2"></ox-tab-pane>
-      <ox-tab-pane onclick="fn(this)" label="选项卡三" oxtarget="card3"></ox-tab-pane>
-      <ox-tab-pane onclick="fn(this)" label="选项卡四" oxtarget="card4"></ox-tab-pane> 
+      <ox-tab-pane label="选项卡一" oxtarget="card1"></ox-tab-pane>
+      <ox-tab-pane label="选项卡二" oxtarget="card2"></ox-tab-pane>
+      <ox-tab-pane label="选项卡三" oxtarget="card3"></ox-tab-pane>
+      <ox-tab-pane label="选项卡四" oxtarget="card4"></ox-tab-pane> 
     </ox-tabs>
     <div>
       <ox-tab-card oxcard="card1">
@@ -64,12 +64,7 @@
   let oxTab= document.querySelector("ox-tabs")
   oxTab.created = function() {
     console.log("created")
-  }  
-  
- function fn(e){ 
-   console.log(e.getAttribute("index"))
- } 
- 
+  }   
 
 </script>
 </html>

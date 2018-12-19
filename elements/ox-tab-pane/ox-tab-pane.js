@@ -42,17 +42,15 @@ class OXTabPane extends PolymerElement {
   }
   static get properties() {
     return { 
+      //标签内容
       label:{
         type:String,
         value:"tabs"
       },
+      // 对应card id
       oxtarget:{
         type:String, 
-      },
-      type:{
-        type: String,
-        value: 'slide'
-      }
+      }, 
     };
   }
   ready() {
@@ -61,7 +59,7 @@ class OXTabPane extends PolymerElement {
     this.parentNode.rendered = true; 
     let index = Number(this.getAttribute("index"));   
     this.type=this.parentNode.type 
-
+    // 默认第一个card显示及tab-pane active
     if(index===0){  
       let card = document.querySelector(`ox-tab-card[oxcard=${this.oxtarget}]`);  
       if(!card)return false;
@@ -71,6 +69,7 @@ class OXTabPane extends PolymerElement {
       this.active = "active"
     }
   } 
+  // tab切换
   change(){  
     if(this.type==="piece"){
       [...this.parentNode.children].forEach((val)=>{

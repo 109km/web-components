@@ -62,16 +62,19 @@ class OXTabs extends PolymerElement {
   }
   static get properties() {
     return {
+      // slide 条件下active 状态
       activebar: {
         type: Number,
         value: 0,
         observer:'attrChange'
       },
+      // tab-pane 是否渲染到页面
       rendered:{
         type:Boolean,
         value:false,
         observer:"render"
       },
+      //tab类型 slide/piece
       type:{
         type: String,
         value: 'slide'
@@ -83,7 +86,7 @@ class OXTabs extends PolymerElement {
       this.initBar()
     }
   }
-  // tab切换
+  // slide类型下 tab切换触发事件
   attrChange(newVal,oldVal){  
     let tabDom = this.querySelectorAll("ox-tab-pane")[newVal];
     if(!tabDom) return false
@@ -93,7 +96,7 @@ class OXTabs extends PolymerElement {
     activeDom.style.webkitTransform=`translateX(${left}px)`;
     activeDom.style.width=width+'px'; 
   }  
-  //初始化 滑动条
+  //初始化 slide滑动条
   initBar(){
     let activeDom = this.shadowRoot.querySelector(".active-bar");
     let childDom = this.querySelectorAll("ox-tab-pane");  
