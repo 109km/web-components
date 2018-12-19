@@ -87,63 +87,16 @@ class OXPagination extends PolymerElement {
   _reset() {
     this.page = parseInt(this.getAttribute('defaultCurrent'));
     this.total = parseInt(this.getAttribute('total'));
-    this.pagesNumber = [];
     if (this.total > 10) {
       if (this.page <= 8) {
-        for (let i = 0; i < 8; i++) {
-          let obj = {};
-          obj.active = false;
-          obj.number = i + 1;
-          obj.data = i + 1;
-          if (obj.number === this.page) {
-            obj.active = true;
-          }
-          this.pagesNumber.push(obj);
-        }
-        this.initOverObj('...back', 'back');
-        this.initOverObj(this.total);
+        this.preNumberInit();
       } else if (this.page > 8 && this.page < (this.total - 5)) {
-        this.initOverObj(1);
-        this.initOverObj('...', 'prev');
-        for (let i = 0; i < 6; i++) {
-          let obj = {};
-          obj.active = false;
-          obj.data = i;
-          if (i === 2) {
-            obj.active = true;
-            obj.number = this.page;
-          } else if (i < 2) {
-            obj.number = this.page - (2 - i );
-          } else {
-            obj.number = this.page + (i -  2);
-          }
-          this.pagesNumber.push(obj);
-        }
-        this.initOverObj('...back', 'back');
-        this.initOverObj(this.total);
+        this.betweenNumberInit();
       } else {
-        this.initOverObj(1);
-        this.initOverObj('...', 'prev');
-        for (let i = 0; i < 8; i++)  {
-          let obj = {};
-          obj.number = this.total - 7 + i;
-          obj.data = i;
-          obj.active = false;
-          if (this.page === obj.number) obj.active = true;
-          this.pagesNumber.push(obj);
-        }
+        this.backNumberInit();
       }
     } else {
-      for (let i = 0; i < this.total; i++) {
-        let obj = {};
-        obj.active = false;
-        obj.number = i + 1;
-        obj.data = i + 1;
-        if (obj.number === this.page) {
-          obj.active = true;
-        }
-        this.pagesNumber.push(obj);
-      }
+      this.numberLimitedTen();
     }
     // 前后按钮
     if (this.page === 1) {
@@ -158,190 +111,15 @@ class OXPagination extends PolymerElement {
     }
   }
 
-  liMouseover(e) {
-    if (this.backgroundColor) {
-      e.target.style.backgroundColor = this.backgroundColor;
-      e.target.style.borderTop = `1px solid ${this.backgroundColor}`;
-      e.target.style.borderBottom = `1px solid ${this.backgroundColor}`;
-      // e.target.style.borderLeft = `1px solid ${this.backgroundColor}`;
-    }
-  }
-
-  liMouseout(e) {
-    if (this.backgroundColor) {
-      e.target.style.backgroundColor = '';
-      e.target.style.borderTop = '';
-      e.target.style.borderBottom = '';
-    }
-  }
-
-  pageHandler(e) {
-    const value = e.target.innerHTML;
-    if (!value.includes('...')) {
-      this.page = parseInt(value);
-      this.pageNumberInitHandler(e.target);
-    } else  {
-      if (value === '...back') {
-        if (this.total - this.page <= 5 || this.page + 9 >= this.total || (this.total - (this.page + 9)) < 5) {
-          this.page = this.page + 9;
-          this.pagesNumber = [];
-          this.initOverObj(1);
-          this.initOverObj('...', 'prev');
-          for (let i = 0; i < 8; i++)  {
-            let obj = {};
-            obj.number = (this.total - 7) + i;
-            obj.data = i;
-            obj.active = false;
-            if (this.page === obj.number) obj.active = true;
-            this.pagesNumber.push(obj);
-          }
-        } else {
-          this.page = this.page + 9;
-          this.pagesNumber = [];
-          this.initOverObj(1);
-          this.initOverObj('...', 'prev');
-          for (let i = 0; i < 6; i++) {
-            let obj = {};
-            obj.active = false;
-            obj.data = i;
-            if (i === 2) {
-              obj.active = true;
-              obj.number = this.page;
-            } else if (i < 2) {
-              obj.number = this.page - (2 - i );
-            } else {
-              obj.number = this.page + (i -  2);
-            }
-            this.pagesNumber.push(obj);
-          }
-          if (this.total - this.page <= 4) {
-    
-          } else {
-            this.initOverObj('...back', 'back');
-          }
-          this.initOverObj(this.total);
-        }
-      } else {
-        // this.page = this.page - 9;
-        if (this.page < 9 || this.page - 9 <= 8) {
-          if (this.page - 9 <= 0) {
-            this.page = 1;
-          } else  {
-            this.page = this.page - 9;
-          }
-          this.pagesNumber = [];
-          for (let i = 0; i < 8; i++)  {
-            let obj = {};
-            obj.number = 1 + i;
-            obj.data = i;
-            obj.active = false;
-            if (this.page === obj.number) obj.active = true;
-            this.pagesNumber.push(obj);
-          }
-          this.initOverObj('...back', 'back');
-          this.initOverObj(this.total);
-        } else {
-          this.page = this.page - 9;
-          this.pagesNumber = [];
-          this.initOverObj(1);
-          this.initOverObj('...', 'prev');
-          for (let i = 0; i < 6; i++) {
-            let obj = {};
-            obj.active = false;
-            obj.data = i;
-            if (i === 2) {
-              obj.active = true;
-              obj.number = this.page;
-            } else if (i < 2) {
-              obj.number = this.page - (2 - i );
-            } else {
-              obj.number = this.page + (i -  2);
-            }
-            this.pagesNumber.push(obj);
-          }
-          
-          this.initOverObj('...back', 'back');
-          this.initOverObj(this.total);
-        }
-      }
-      this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
-      this.onOk();
-    }
-  }
-
-  initOverObj(number, str = '') {
-    let data = number;
-    if (number === this.total) data = 8;
-    if (number === '...') data = str;
-    const obj = {
-      active: false,
-      number: number,
-      data: data
-    }
-    this.pagesNumber.push(obj);
-  }
-
-  onOk() {
-    callback && callback();
-  }
-
-  preHandler() {
-    this.page = this.page - 1;
-    this.pageNumberInitHandler();
-  }
-
-  nextHandler() {
-    this.page = this.page + 1;
-    this.pageNumberInitHandler();
-  }
-
   pageNumberInitHandler(target) {
     // 处理页数渲染
     if (this.total > 10) {
       if (this.page < 8) {
-        this.pagesNumber = [];
-        for (let i = 0; i < 8; i++)  {
-          let obj = {};
-          obj.number = i + 1;
-          obj.data = i;
-          obj.active = false;
-          if (this.page === obj.number) obj.active = true;
-          this.pagesNumber.push(obj);
-        }
-        this.initOverObj('...back', 'back');
-        this.initOverObj(this.total);
+        this.preNumberInit();
       } else if ((this.total - this.page) < 5) {
-        this.pagesNumber = [];
-        this.initOverObj(1);
-        this.initOverObj('...', 'prev');
-        for (let i = 0; i < 8; i++)  {
-          let obj = {};
-          obj.number = this.total - 7 + i;
-          obj.data = i;
-          obj.active = false;
-          if (this.page === obj.number) obj.active = true;
-          this.pagesNumber.push(obj);
-        }
+        this.backNumberInit();
       } else if (this.page - 5 >= 0 && this.total - this.page >= 5 ) {
-        this.pagesNumber = [];
-        this.initOverObj(1);
-        this.initOverObj('...', 'prev');
-        for (let i = 0; i < 6; i++) {
-          let obj = {};
-          obj.active = false;
-          obj.data = i;
-          if (i === 2) {
-            obj.active = true;
-            obj.number = this.page;
-          } else if (i < 2) {
-            obj.number = this.page - (2 - i );
-          } else {
-            obj.number = this.page + (i -  2);
-          }
-          this.pagesNumber.push(obj);
-        }
-        this.initOverObj('...back', 'back');
-        this.initOverObj(this.total);
+        this.betweenNumberInit();
       } else {
         console.log('........................');
       }
@@ -366,6 +144,152 @@ class OXPagination extends PolymerElement {
     
     this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
     this.onOk();
+  }
+
+  pageHandler(e) {
+    const value = e.target.innerHTML;
+    if (!value.includes('...')) {
+      this.page = parseInt(value);
+      this.pageNumberInitHandler(e.target);
+    } else  {
+      if (value === '...back') {
+        if (this.page + 9 >= this.total) {
+          this.page = this.total;
+          this.backNumberInit();
+        } else {
+          this.page = this.page + 9;
+          this.betweenNumberInit(1);
+          if (this.total - this.page <= 4) {
+    
+          } else {
+            this.initOverObj('...back', 'back');
+          }
+          this.initOverObj(this.total);
+        }
+      } else {
+        if (this.page < 9 || this.page - 9 <= 8) {
+          if (this.page - 9 <= 0) {
+            this.page = 1;
+          } else  {
+            this.page = this.page - 9;
+          }
+          this.preNumberInit();
+        } else {
+          this.page = this.page - 9;
+          this.betweenNumberInit();
+        }
+      }
+      this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
+      this.onOk();
+    }
+  }
+
+  initOverObj(number, str = '') {
+    let data = number;
+    if (number === this.total) data = 8;
+    if (number === '...') data = str;
+    const obj = {
+      active: false,
+      number: number,
+      data: data
+    }
+    this.pagesNumber.push(obj);
+  }
+
+  numberLimitedTen() {
+    this.pagesNumber = [];
+    for (let i = 0; i < this.total; i++) {
+      let obj = {};
+      obj.active = false;
+      obj.number = i + 1;
+      obj.data = i + 1;
+      if (obj.number === this.page) {
+        obj.active = true;
+      }
+      this.pagesNumber.push(obj);
+    }
+  }
+
+  preNumberInit() {
+    this.pagesNumber = [];
+    for (let i = 0; i < 8; i++) {
+      let obj = {};
+      obj.number = i + 1;
+      obj.data = i;
+      obj.active = false;
+      if (obj.number === this.page) obj.active = true;
+      this.pagesNumber.push(obj);
+    }
+    this.initOverObj('...back', 'back');
+    this.initOverObj(this.total);
+  }
+
+  betweenNumberInit(type = 0) {
+    this.pagesNumber = [];
+    this.initOverObj(1);
+    this.initOverObj('...', 'prev');
+    for (let i = 0; i < 6; i++) {
+      let obj = {};
+      obj.active = false;
+      obj.data = i;
+      if (i === 2) {
+        obj.active = true;
+        obj.number = this.page;
+      } else if (i < 2) {
+        obj.number = this.page - (2 - i );
+      } else {
+        obj.number = this.page + (i -  2);
+      }
+      this.pagesNumber.push(obj);
+    }
+    if (type !== 1) {
+      this.initOverObj('...back', 'back');
+      this.initOverObj(this.total);
+    }
+  }
+
+  backNumberInit() {
+    this.pagesNumber = [];
+    this.initOverObj(1);
+    this.initOverObj('...', 'prev');
+    for (let i = 0; i < 8; i++)  {
+      let obj = {};
+      obj.number = this.total - 7 + i;
+      obj.data = i;
+      obj.active = false;
+      if (this.page === obj.number) obj.active = true;
+      this.pagesNumber.push(obj);
+    }
+  }
+
+  preHandler() {
+    this.page = this.page - 1;
+    this.pageNumberInitHandler();
+  }
+
+  nextHandler() {
+    this.page = this.page + 1;
+    this.pageNumberInitHandler();
+  }
+  
+  liMouseover(e) {
+    if (this.backgroundColor) {
+      e.target.style.backgroundColor = this.backgroundColor;
+      e.target.style.borderTop = `1px solid ${this.backgroundColor}`;
+      e.target.style.borderBottom = `1px solid ${this.backgroundColor}`;
+    }
+  }
+
+  liMouseout(e) {
+    if (this.backgroundColor) {
+      e.target.style.backgroundColor = '';
+      e.target.style.borderTop = '';
+      e.target.style.borderBottom = '';
+    }
+  }
+
+  onOk() {
+    callback && callback();
   }
 }
 
