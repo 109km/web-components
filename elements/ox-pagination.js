@@ -42,7 +42,6 @@ class OXPagination extends PolymerElement {
 
           text-align: center;
           line-height: 36px;
-          /* line-height: 29px; */
           font-size: 16px;
           color: #282828;
           font-weight: 400;
@@ -51,7 +50,6 @@ class OXPagination extends PolymerElement {
           position: relative;
         }
         :host .ox-pagination-numer li.active {
-          /* min-width: 38px; */
           transition: all .3s;
           background-color: var(--theme-bg-color-primary);
           color: var(--theme-color-default);
@@ -71,15 +69,15 @@ class OXPagination extends PolymerElement {
           line-height: 22px;
         }
         :host .ox-pagination-numer li.prev::before, :host .ox-pagination-numer li.back::before {
-          content: "\2026";
+          content: "\\2026";
         }
         :host .ox-pagination-numer li.prev:hover::before {
           line-height: 30px;
-          content: "\00AB";
+          content: "\\00AB";
         }
         :host .ox-pagination-numer li.back:hover::before {
           line-height: 30px;
-          content: "\00BB";
+          content: "\\00BB";
         }
         :host .ox-pagination-pre,  :host .ox-pagination-next {
           min-width: 36px;
@@ -98,7 +96,8 @@ class OXPagination extends PolymerElement {
         .ox-pagination-pre.active, .ox-pagination-next.active {
           cursor: pointer;
         }
-        .ox-pagination-pre.active::before, .ox-pagination-pre.active::after, .ox-pagination-next.active::before, .ox-pagination-next.active::after {
+        .ox-pagination-pre.active::before, .ox-pagination-pre.active::after,
+        .ox-pagination-next.active::before, .ox-pagination-next.active::after {
           background-color: var(--theme-bg-color-primary);
         }
         .ox-pagination-pre::before, .ox-pagination-pre::after {
@@ -155,12 +154,7 @@ class OXPagination extends PolymerElement {
         <ul class="ox-pagination-numer">
           <template is="dom-repeat" items="[[pagesNumber]]">
             <template is="dom-if" if="[[item.active]]">
-              <li
-                class$="active [[item.data]]"
-                on-click="pageHandler"
-                data-other$="[[item.data]]"
-                style="background-color: [[backgroundColor]]; border-top: 1px solid [[backgroundColor]]; 
-                border-bottom: 1px solid [[backgroundColor]]; border-left: 1px solid [[backgroundColor]];"
+              <li class$="active [[item.data]]" on-click="pageHandler" data-other$="[[item.data]]" style$="[[defaultColor]]"
               >[[item.number]]</li>
             </template>
             <template is="dom-if" if="[[!item.active]]">
@@ -186,11 +180,7 @@ class OXPagination extends PolymerElement {
       page: {
         type: Number
       },
-      // 与按钮绑定
-      for: {
-        type: String,
-        value: ''
-      }
+      backgroundColor: String
     }
   }
 
@@ -203,16 +193,20 @@ class OXPagination extends PolymerElement {
   initUserClass() {
     // 渲染
     this.backgroundColor = this.getAttribute('background') || '';
-    // if (this.backgroundColor) {
-    //   let style = document.createElement("style");
-    //   let nextTop = '';
-    //   let nextBottom = '';
-    //   nextTop = document.createTextNode(`.user-class.active:before {background-color: ${this.backgroundColor}}`);
-    //   nextBottom = document.createTextNode(`.user-class.active:after {background-color: ${this.backgroundColor}}`);
-    //   style.appendChild(nextTop);
-    //   style.appendChild(nextBottom);
-    //   this.shadowRoot.children[1].children[0].appendChild(style);
-    // }
+    if (this.backgroundColor) {
+      this.defaultColor = `background-color: ${this.backgroundColor}; border-top: 1px solid ${this.backgroundColor}; 
+      border-bottom: 1px solid ${this.backgroundColor}; border-left: 1px solid ${this.backgroundColor}`;
+      let style = document.createElement("style");
+      let nextTop = '';
+      let nextBottom = '';
+      nextTop = document.createTextNode(`.user-class.active:before {background-color: ${this.backgroundColor}}`);
+      nextBottom = document.createTextNode(`.user-class.active:after {background-color: ${this.backgroundColor}}`);
+      style.appendChild(nextTop);
+      style.appendChild(nextBottom);
+      this.shadowRoot.children[1].children[0].appendChild(style);
+    } else {
+      this.defaultColor = '';
+    }
   }
 
   _reset() {

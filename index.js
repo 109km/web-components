@@ -11,7 +11,7 @@
 import './node_modules/@webcomponents/webcomponentsjs/webcomponents-loader';
 import './elements/ox-button';
 // wyd
-import './elements/ox-pagination.js';
+import './elements/ox-pagination';
 //llj
 import './elements/ox-radio';
 // import './elements/ox-tab-llj/ox-tabs.js';
