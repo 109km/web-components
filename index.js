@@ -10,11 +10,13 @@
 
 import './node_modules/@webcomponents/webcomponentsjs/webcomponents-loader';
 import './elements/ox-button';
+// wyd
+import './elements/ox-pagination.js';
 //llj
 import './elements/ox-radio';
-import './elements/ox-tab-llj/ox-tabs.js';
-import './elements/ox-tab-llj/ox-tab-pane.js';
-import './elements/ox-tab-llj/ox-tab-card.js';
+// import './elements/ox-tab-llj/ox-tabs.js';
+// import './elements/ox-tab-llj/ox-tab-pane.js';
+// import './elements/ox-tab-llj/ox-tab-card.js';
 
 
 
@@ -25,3 +27,5 @@ import './elements/ox-checkbox';
 import './elements/ox-modal-shaoxinheng';
 
 import './elements/ox-input-wangning';
+
+
