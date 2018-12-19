@@ -10,7 +10,6 @@ class OXPagination extends PolymerElement {
 
   constructor() {
     super();
-    this._reset();
   }
   
   static get template() {
@@ -19,26 +18,31 @@ class OXPagination extends PolymerElement {
         @import '../elements/ox-pagination/ox-pagination.css';
       </style>
       <div class="ox-pagination-container">
-        <template is="dom-if" if="{{preStatus}}">
-          <div class="ox-pagination-pre active" on-click="preHandler"></div>
+        <template is="dom-if" if="[[preStatus]]">
+          <div class="ox-pagination-pre active user-class" on-click="preHandler"></div>
         </template>
-        <template is="dom-if" if="{{!preStatus}}">
+        <template is="dom-if" if="[[!preStatus]]">
           <div class="ox-pagination-pre disabled"></div>
         </template>
         <ul class="ox-pagination-numer">
-          <template is="dom-repeat" items="{{pagesNumber}}">
-            <template is="dom-if" if="{{item.active}}">
-              <li class="active" on-click="pageHandler">{{item.number}}</li>
+          <template is="dom-repeat" items="[[pagesNumber]]">
+            <template is="dom-if" if="[[item.active]]">
+              <li
+                class="active"
+                on-click="pageHandler"
+                style="background-color: [[backgroundColor]]; border-top: 1px solid [[backgroundColor]]; 
+                border-bottom: 1px solid [[backgroundColor]]; border-left: 1px solid [[backgroundColor]];"
+              >[[item.number]]</li>
             </template>
-            <template is="dom-if" if="{{!item.active}}">
-              <li on-click="pageHandler">{{item.number}}</li>
+            <template is="dom-if" if="[[!item.active]]">
+              <li on-mouseover="liMouseover" on-mouseout="liMouseout" on-click="pageHandler">[[item.number]]</li>
             </template>
           </template>
         </ul>
-        <template is="dom-if" if="{{nextStatus}}">
-          <div class="ox-pagination-next active" on-click="nextHandler"></div>
+        <template is="dom-if" if="[[nextStatus]]">
+          <div class="ox-pagination-next active user-class" on-click="nextHandler"></div>
         </template>
-        <template is="dom-if" if="{{!nextStatus}}">
+        <template is="dom-if" if="[[!nextStatus]]">
           <div class="ox-pagination-next disabled"></div>
         </template>
       </div>
@@ -50,7 +54,7 @@ class OXPagination extends PolymerElement {
       pagesNumber: {
         type: Array
       },
-      currentPage: {
+      page: {
         type: Number
       },
       // 与按钮绑定
@@ -61,8 +65,27 @@ class OXPagination extends PolymerElement {
     }
   }
 
+  ready() {
+    super.ready();
+    this.initUserClass();
+    this._reset();
+  }
+
+  initUserClass() {
+    // 渲染
+    this.backgroundColor = this.getAttribute('background') || '';
+    let style = document.createElement("style");
+    let nextTop = '';
+    let nextBottom = '';
+    nextTop = document.createTextNode(`.user-class.active:before {background-color: ${this.backgroundColor}}`);
+    nextBottom = document.createTextNode(`.user-class.active:after {background-color: ${this.backgroundColor}}`);
+    style.appendChild(nextTop);
+    style.appendChild(nextBottom);
+    this.shadowRoot.children[1].children[0].appendChild(style);
+  }
+
   _reset() {
-    this.currentPage = parseInt(this.getAttribute('defaultCurrent'));
+    this.page = parseInt(this.getAttribute('defaultCurrent'));
     this.total = parseInt(this.getAttribute('total'));
     this.pagesNumber = [];
     if (this.total > 10) {
@@ -71,7 +94,7 @@ class OXPagination extends PolymerElement {
         obj.active = false;
         obj.number = i + 1;
         obj.data = i + 1;
-        if (obj.number === this.currentPage) {
+        if (obj.number === this.page) {
           obj.active = true;
         }
         this.pagesNumber.push(obj);
@@ -84,17 +107,17 @@ class OXPagination extends PolymerElement {
         obj.active = false;
         obj.number = i + 1;
         obj.data = i + 1;
-        if (obj.number === this.currentPage) {
+        if (obj.number === this.page) {
           obj.active = true;
         }
         this.pagesNumber.push(obj);
       }
     }
     // 前后按钮
-    if (this.currentPage === 1) {
+    if (this.page === 1) {
       this.preStatus = false;
       this.nextStatus = true;
-    } else if (this.currentPage === this.total) {
+    } else if (this.page === this.total) {
       this.preStatus = true;
       this.nextStatus = false;
     } else {
@@ -103,21 +126,32 @@ class OXPagination extends PolymerElement {
     }
   }
 
-  ready() {
-    console.log(this.id);
-    super.ready();
+  liMouseover(e) {
+    if (this.backgroundColor) {
+      e.target.style.backgroundColor = this.backgroundColor;
+      e.target.style.borderTop = `1px solid ${this.backgroundColor}`;
+      e.target.style.borderBottom = `1px solid ${this.backgroundColor}`;
+      // e.target.style.borderLeft = `1px solid ${this.backgroundColor}`;
+    }
+  }
+
+  liMouseout(e) {
+    if (this.backgroundColor) {
+      e.target.style.backgroundColor = '';
+      e.target.style.borderTop = '';
+      e.target.style.borderBottom = '';
+    }
   }
 
   pageHandler(e) {
     const value = e.target.innerHTML;
     if (!value.includes('...')) {
-      this.currentPage = parseInt(value);
+      this.page = parseInt(value);
       this.pageNumberInitHandler(e.target);
     } else  {
       if (value === '...back') {
-        if (this.total - this.currentPage <= 5 || this.currentPage + 9 >= this.total || (this.total - (this.currentPage + 9)) < 5) {
-          console.log('1111111111111111', this.total - this.currentPage, this.currentPage + 9);
-          this.currentPage = this.currentPage + 9;
+        if (this.total - this.page <= 5 || this.page + 9 >= this.total || (this.total - (this.page + 9)) < 5) {
+          this.page = this.page + 9;
           this.pagesNumber = [];
           this.initOverObj(1);
           this.initOverObj('...', 'prev');
@@ -126,12 +160,11 @@ class OXPagination extends PolymerElement {
             obj.number = (this.total - 7) + i;
             obj.data = i;
             obj.active = false;
-            if (this.currentPage === obj.number) obj.active = true;
+            if (this.page === obj.number) obj.active = true;
             this.pagesNumber.push(obj);
           }
         } else {
-          console.log('222222222222222');
-          this.currentPage = this.currentPage + 9;
+          this.page = this.page + 9;
           this.pagesNumber = [];
           this.initOverObj(1);
           this.initOverObj('...', 'prev');
@@ -141,29 +174,28 @@ class OXPagination extends PolymerElement {
             obj.data = i;
             if (i === 2) {
               obj.active = true;
-              obj.number = this.currentPage;
+              obj.number = this.page;
             } else if (i < 2) {
-              obj.number = this.currentPage - (2 - i );
+              obj.number = this.page - (2 - i );
             } else {
-              obj.number = this.currentPage + (i -  2);
+              obj.number = this.page + (i -  2);
             }
             this.pagesNumber.push(obj);
           }
-          if (this.total - this.currentPage <= 4) {
+          if (this.total - this.page <= 4) {
     
           } else {
             this.initOverObj('...back', 'back');
           }
-          console.log('this.currentPage：', this.currentPage );
           this.initOverObj(this.total);
         }
       } else {
-        // this.currentPage = this.currentPage - 9;
-        if (this.currentPage < 9 || this.currentPage - 9 <= 8) {
-          if (this.currentPage - 9 <= 0) {
-            this.currentPage = 1;
+        // this.page = this.page - 9;
+        if (this.page < 9 || this.page - 9 <= 8) {
+          if (this.page - 9 <= 0) {
+            this.page = 1;
           } else  {
-            this.currentPage = this.currentPage - 9;
+            this.page = this.page - 9;
           }
           this.pagesNumber = [];
           for (let i = 0; i < 8; i++)  {
@@ -171,13 +203,13 @@ class OXPagination extends PolymerElement {
             obj.number = 1 + i;
             obj.data = i;
             obj.active = false;
-            if (this.currentPage === obj.number) obj.active = true;
+            if (this.page === obj.number) obj.active = true;
             this.pagesNumber.push(obj);
           }
           this.initOverObj('...back', 'back');
           this.initOverObj(this.total);
         } else {
-          this.currentPage = this.currentPage - 9;
+          this.page = this.page - 9;
           this.pagesNumber = [];
           this.initOverObj(1);
           this.initOverObj('...', 'prev');
@@ -187,11 +219,11 @@ class OXPagination extends PolymerElement {
             obj.data = i;
             if (i === 2) {
               obj.active = true;
-              obj.number = this.currentPage;
+              obj.number = this.page;
             } else if (i < 2) {
-              obj.number = this.currentPage - (2 - i );
+              obj.number = this.page - (2 - i );
             } else {
-              obj.number = this.currentPage + (i -  2);
+              obj.number = this.page + (i -  2);
             }
             this.pagesNumber.push(obj);
           }
@@ -200,9 +232,9 @@ class OXPagination extends PolymerElement {
           this.initOverObj(this.total);
         }
       }
+      this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
+      this.onOk();
     }
-    this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
-    this.onOk();
   }
 
   initOverObj(number, str = '') {
@@ -222,31 +254,31 @@ class OXPagination extends PolymerElement {
   }
 
   preHandler() {
-    this.currentPage = this.currentPage - 1;
+    this.page = this.page - 1;
     this.pageNumberInitHandler();
   }
 
   nextHandler() {
-    this.currentPage = this.currentPage + 1;
+    this.page = this.page + 1;
     this.pageNumberInitHandler();
   }
 
   pageNumberInitHandler(target) {
     // 处理页数渲染
     if (this.total > 10) {
-      if (this.currentPage < 8) {
+      if (this.page < 8) {
         this.pagesNumber = [];
         for (let i = 0; i < 8; i++)  {
           let obj = {};
           obj.number = i + 1;
           obj.data = i;
           obj.active = false;
-          if (this.currentPage === obj.number) obj.active = true;
+          if (this.page === obj.number) obj.active = true;
           this.pagesNumber.push(obj);
         }
         this.initOverObj('...back', 'back');
         this.initOverObj(this.total);
-      } else if ((this.total - this.currentPage) < 5) {
+      } else if ((this.total - this.page) < 5) {
         this.pagesNumber = [];
         this.initOverObj(1);
         this.initOverObj('...', 'prev');
@@ -255,10 +287,10 @@ class OXPagination extends PolymerElement {
           obj.number = this.total - 7 + i;
           obj.data = i;
           obj.active = false;
-          if (this.currentPage === obj.number) obj.active = true;
+          if (this.page === obj.number) obj.active = true;
           this.pagesNumber.push(obj);
         }
-      } else if (this.currentPage - 5 >= 0 && this.total - this.currentPage >= 5 ) {
+      } else if (this.page - 5 >= 0 && this.total - this.page >= 5 ) {
         this.pagesNumber = [];
         this.initOverObj(1);
         this.initOverObj('...', 'prev');
@@ -268,11 +300,11 @@ class OXPagination extends PolymerElement {
           obj.data = i;
           if (i === 2) {
             obj.active = true;
-            obj.number = this.currentPage;
+            obj.number = this.page;
           } else if (i < 2) {
-            obj.number = this.currentPage - (2 - i );
+            obj.number = this.page - (2 - i );
           } else {
-            obj.number = this.currentPage + (i -  2);
+            obj.number = this.page + (i -  2);
           }
           this.pagesNumber.push(obj);
         }
@@ -284,15 +316,15 @@ class OXPagination extends PolymerElement {
     } else {
       for (let i = 0; i < this.pagesNumber.length; i++) {
         this.pagesNumber[i].active = false;
-        this.pagesNumber[this.currentPage - 1].active = true;
+        this.pagesNumber[this.page - 1].active = true;
       }
     }
 
     // 处理前进和后退
-    if (this.currentPage === 1) {
+    if (this.page === 1) {
       this.preStatus = false;
       this.nextStatus = true;
-    } else if (this.currentPage === this.total) {
+    } else if (this.page === this.total) {
       this.preStatus = true;
       this.nextStatus = false;
     } else {
@@ -301,7 +333,6 @@ class OXPagination extends PolymerElement {
     }
     
     this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
-    console.log('currentPage:', this.currentPage);
     this.onOk();
   }
 }

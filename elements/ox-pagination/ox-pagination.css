@@ -29,6 +29,7 @@
   width: 2px;
   height: 11px;
   background-color: #D1D1D1;
+  border-radius: 2px;
 }
 
 .ox-pagination-pre.active, .ox-pagination-next.active {
@@ -103,16 +104,19 @@
   line-height: 36px;
   font-size: 16px;
   color: #282828;
+  
 }
 
 :host .ox-pagination-numer li.active {
+  min-width: 38px;
   transition: all .3s;
   background-color: var(--theme-bg-color-primary);
   color: var(--theme-color-default);
   border-top: 1px solid var(--theme-bg-color-primary);
   border-bottom: 1px solid var(--theme-bg-color-primary);
-  border-left: 1px solid var(--theme-bg-color-primary)!important;
-  
+  border-left: 1px solid var(--theme-bg-color-primary);
+  margin-left: -1px;
+  margin-right: -1px;
 }
 
 :host .ox-pagination-numer li:hover {
