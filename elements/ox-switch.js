@@ -63,7 +63,6 @@ class OXSwitch extends PolymerElement {
             value: {
                 type: String,
             },
-            // 检测选中状态对应事件
             checked: {
                 type: Boolean,
                 value: false,
