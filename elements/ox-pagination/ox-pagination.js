@@ -111,17 +111,49 @@ class OXPagination extends PolymerElement {
     }
   }
 
+  pageHandler(e) {
+    const value = e.target.innerHTML;
+    if (!value.includes('...')) {
+      this.page = parseInt(value);
+      this.pageNumberInitHandler(e.target);
+    } else  {
+      if (value === '...back') {
+        if (this.page + 5 >= this.total) {
+          this.page = this.total;
+          this.backNumberInit();
+        } else if ((this.total - (this.page + 5)) < 5) {
+          this.page = this.page + 5;
+          this.backNumberInit();
+        } else {
+          this.page = this.page + 5;
+          this.betweenNumberInit();
+        }
+      } else {
+        if ((this.page - 5) <= 0) {
+          this.page = 1;
+          this.preNumberInit();
+        } else if ((this.page - 5) < 5) {
+          this.page = this.page - 5;
+          this.preNumberInit();
+        } else {
+          this.page = this.page - 5;
+          this.betweenNumberInit();
+        }
+      }
+      this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
+      this.onOk();
+    }
+  }
+
   pageNumberInitHandler(target) {
     // 处理页数渲染
     if (this.total > 10) {
-      if (this.page < 8) {
+      if (this.page < 5) {
         this.preNumberInit();
       } else if ((this.total - this.page) < 5) {
         this.backNumberInit();
-      } else if (this.page - 5 >= 0 && this.total - this.page >= 5 ) {
-        this.betweenNumberInit();
       } else {
-        console.log('........................');
+        this.betweenNumberInit();
       }
     } else {
       for (let i = 0; i < this.pagesNumber.length; i++) {
@@ -144,44 +176,6 @@ class OXPagination extends PolymerElement {
     
     this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
     this.onOk();
-  }
-
-  pageHandler(e) {
-    const value = e.target.innerHTML;
-    if (!value.includes('...')) {
-      this.page = parseInt(value);
-      this.pageNumberInitHandler(e.target);
-    } else  {
-      if (value === '...back') {
-        if (this.page + 9 >= this.total) {
-          this.page = this.total;
-          this.backNumberInit();
-        } else {
-          this.page = this.page + 9;
-          this.betweenNumberInit(1);
-          if (this.total - this.page <= 4) {
-    
-          } else {
-            this.initOverObj('...back', 'back');
-          }
-          this.initOverObj(this.total);
-        }
-      } else {
-        if (this.page < 9 || this.page - 9 <= 8) {
-          if (this.page - 9 <= 0) {
-            this.page = 1;
-          } else  {
-            this.page = this.page - 9;
-          }
-          this.preNumberInit();
-        } else {
-          this.page = this.page - 9;
-          this.betweenNumberInit();
-        }
-      }
-      this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
-      this.onOk();
-    }
   }
 
   initOverObj(number, str = '') {
