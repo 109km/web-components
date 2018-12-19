@@ -63,6 +63,7 @@ class OXSwitch extends PolymerElement {
             value: {
                 type: String,
             },
+            // 检测选中状态对应事件
             checked: {
                 type: Boolean,
                 value: false,
@@ -98,11 +99,11 @@ class OXSwitch extends PolymerElement {
         this.removeAttribute('disabled');
     }
     _checkedChanged(newValue, oldValue) {
-        console.log("目前状态",newValue,"之前状态",oldValue);
+        // console.log("目前状态",newValue,"之前状态",oldValue);
         if(newValue){
-            console.log("打开状态事件")
+            // console.log("打开状态事件")
         }else{
-            console.log("关闭状态事件")
+            // console.log("关闭状态事件")
         }
       }
 }
