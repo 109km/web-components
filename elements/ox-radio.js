@@ -10,7 +10,6 @@ class OXRadio extends PolymerElement {
   constructor() {
     super();
     this.addEventListener('click', this.onClick);
-    console.log(this.tagName);
   }
   static get template() {
     return html `
@@ -111,7 +110,6 @@ class OXRadio extends PolymerElement {
   }
   ready() {
     super.ready();
-    console.log(this.checked);
   }
 }
 
