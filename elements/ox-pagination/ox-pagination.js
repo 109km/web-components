@@ -89,18 +89,50 @@ class OXPagination extends PolymerElement {
     this.total = parseInt(this.getAttribute('total'));
     this.pagesNumber = [];
     if (this.total > 10) {
-      for (let i = 0; i < 8; i++) {
-        let obj = {};
-        obj.active = false;
-        obj.number = i + 1;
-        obj.data = i + 1;
-        if (obj.number === this.page) {
-          obj.active = true;
+      if (this.page <= 8) {
+        for (let i = 0; i < 8; i++) {
+          let obj = {};
+          obj.active = false;
+          obj.number = i + 1;
+          obj.data = i + 1;
+          if (obj.number === this.page) {
+            obj.active = true;
+          }
+          this.pagesNumber.push(obj);
         }
-        this.pagesNumber.push(obj);
+        this.initOverObj('...back', 'back');
+        this.initOverObj(this.total);
+      } else if (this.page > 8 && this.page < (this.total - 5)) {
+        this.initOverObj(1);
+        this.initOverObj('...', 'prev');
+        for (let i = 0; i < 6; i++) {
+          let obj = {};
+          obj.active = false;
+          obj.data = i;
+          if (i === 2) {
+            obj.active = true;
+            obj.number = this.page;
+          } else if (i < 2) {
+            obj.number = this.page - (2 - i );
+          } else {
+            obj.number = this.page + (i -  2);
+          }
+          this.pagesNumber.push(obj);
+        }
+        this.initOverObj('...back', 'back');
+        this.initOverObj(this.total);
+      } else {
+        this.initOverObj(1);
+        this.initOverObj('...', 'prev');
+        for (let i = 0; i < 8; i++)  {
+          let obj = {};
+          obj.number = this.total - 7 + i;
+          obj.data = i;
+          obj.active = false;
+          if (this.page === obj.number) obj.active = true;
+          this.pagesNumber.push(obj);
+        }
       }
-      this.initOverObj('...back', 'back');
-      this.initOverObj(this.total);
     } else {
       for (let i = 0; i < this.total; i++) {
         let obj = {};
