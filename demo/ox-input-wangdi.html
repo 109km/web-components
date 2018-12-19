@@ -7,7 +7,6 @@
   <title>Demo - ox-input</title>
   <link rel="stylesheet" href="../elements/normalize.css">
   <link rel="stylesheet" href="../elements/global.css">
-  <link rel="stylesheet" href="../elements/ox-input-wangdi/ox-input-wangdi.css">
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
   <!-- 引入组件的js -->
@@ -18,11 +17,15 @@
   <style>
     ox-input {
       display: inline-block;
-      height: 30px;
       border: 1px solid #ccc;
       background: #e8e8e8;
       border-radius: 4px;
     }
+    ox-input:focus{
+    outline: 0;
+    border: 1px solid #f95d5d;
+    box-shadow: 0px 0px 10px 0px #f95d5d;
+  }
   </style>
   <div class="page page-demo">
     <h1 class="page-title">
@@ -30,19 +33,24 @@
     </h1>
     <div class="zone">
       <h2>默认</h2>
-      <ox-input class="ox-input"></ox-input>
+      <ox-input class="ox-input" value="" type="Default" ></ox-input>
     </div>
     <div class="zone">
       <h2>禁止</h2>
-      <ox-input class="ox-input" disabled></ox-input>
+      <ox-input class="ox-input" disabled type="disabled"></ox-input>
     </div>
     <div class="zone">
-      <h2>搜索</h2>
-      <ox-input class="ox-input"></ox-input>
+      <h2>手机号</h2>
+      <ox-input class="ox-input" required value="" type="Phone">
+      </ox-input>
     </div>
     <div class="zone">
-      <h2>有误</h2>
-      <ox-input class="ox-input"></ox-input>
+      <h2>e-mail</h2>
+      <ox-input class="ox-input" required value="" type="Email"></ox-input>
+    </div>
+    <div class="zone">
+      <h2>URL网址</h2>
+      <ox-input class="ox-input" required value="" type="Url"></ox-input>
     </div>
   
   </div>

@@ -1,0 +1,31 @@
+<!DOCTYPE html><html lang="en"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Web components</title>
+  <link rel="stylesheet" href="ox.min.css">
+
+  <script src="ox.min.js" type="module"></script>
+
+</head>
+
+<body>
+  <custom-style>
+    <style is="custom-style">.page{width:600px;margin:50px auto 0 auto;}.zone{margin-bottom:50px;}</style>
+  </custom-style>
+  <div class="page">
+    <div class="zone">
+      <ox-button>测试按钮</ox-button>
+    </div>
+    <div class="zone">
+      <ox-bubble type="right" director="右方弹出" content="右方内容提示信息"></ox-bubble>
+    </div>
+    <div class="zone">
+      <ox-checkbox checked="" group="group1" value="1">
+        <span slot="label">选项1</span>
+      </ox-checkbox>
+    </div>
+  </div>
+
+
+</body></html>

@@ -1,18 +1,29 @@
 {
   "entrypoint": "index.html",
   "componentDir": "elements/",
-  "shell": "main.js",
+  "shell": "index.js",
   "sources": [
-    "**.js",
-    "package.json"
+    "elements/*.css"
   ],
   "extraDependencies": [
-    "node_modules/@webcomponents/webcomponentsjs/bundles/**"
+    "node_modules/@webcomponents/webcomponentsjs/bundles/*.js",
+    "node_modules/@webcomponents/webcomponentsjs/*.js"
   ],
   "builds": [{
+    "name": "prod",
+    "browserCapabilities": [
+      "es2015"
+    ],
     "html": {
       "minify": false
     },
+    "css": {
+      "minify": true
+    },
+    "js": {
+      "minify": true
+    },
+    "bundle": true,
     "addServiceWorker": false
   }]
 }

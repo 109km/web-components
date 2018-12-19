@@ -10,17 +10,20 @@
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
   <!-- 引入组件的js -->
-  <script type="module" src="../elements/ox-input-wangning/ox-input-wangning.js"></script>
+  <script type="module" src="../elements/ox-input-wangning.js"></script>
 </head>
-
+<style>
+  .zone{
+    display:flex;
+  }
+</style>
 <body>
   <custom-style>
     <style>
-      ox-input{
-        width:200px;
-        height:40px;
-        border-radius:4px;
-      }
+      /*.ox-input-text{
+        width:300px;
+        border:1px solid blue;
+      }*/
     </style>
   </custom-style>
   <div class="page page-demo">
@@ -28,12 +31,20 @@
       输入框(ox-input)
     </h1>
     <div class="zone">
-      默认状态:<ox-input type="" placeholder="输入提示文本"></ox-input>
+      默认状态：<ox-input type="text" placeholder="输入提示文本"></ox-input>
     </div>
     <div class="zone">
-      禁用状态:<ox-input type="" placeholder="输入提示文本" disabled></ox-input>
+      禁用状态：<ox-input type="prohibit" placeholder="输入提示文本" disabled></ox-input>
+    </div>
+    <div class="zone">
+      输入电话：<ox-input type="tel" placeholder="输入提示文本" notice="请输入11位电话"></ox-input>
+    </div>
+    <div class="zone">
+      输入邮箱：<ox-input type="email" placeholder="输入提示文本" notice="请输入有效邮箱"></ox-input>
+    </div>
+    <div class="zone">
+      输入URL：<ox-input type="url" placeholder="输入提示文本" notice="请输入正确的url地址"></ox-input>
     </div>
   </div>
 </body>
-
 </html>

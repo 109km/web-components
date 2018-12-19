@@ -21,10 +21,11 @@ html {
   --theme-color-checkbox-disabled: #f6f6f6;
   --theme-bg-color-primary: #D99F53;
   --theme-bg-color-default: #C2C2C2;
-
+  --theme-color-dark: #344056;
   --theme-link-color: #333d56;
 
   --theme-border-radius: 5px;
+  --theme-button-radius: 2px;
 
   --modal-bg-color: #fff;
   --mask-bg-color: rgba(0, 0, 0, 0.8);
