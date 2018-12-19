@@ -28,7 +28,7 @@ class OXPagination extends PolymerElement {
           <template is="dom-repeat" items="[[pagesNumber]]">
             <template is="dom-if" if="[[item.active]]">
               <li
-                class="active"
+                class$="active [[item.data]]"
                 on-click="pageHandler"
                 data-other$="[[item.data]]"
                 style="background-color: [[backgroundColor]]; border-top: 1px solid [[backgroundColor]]; 
@@ -36,7 +36,7 @@ class OXPagination extends PolymerElement {
               >[[item.number]]</li>
             </template>
             <template is="dom-if" if="[[!item.active]]">
-              <li data-other$="[[item.data]]" on-mouseover="liMouseover" on-mouseout="liMouseout" on-click="pageHandler" user="[[item.number]]">[[item.number]]</li>
+              <li class$="[[item.data]]" data-other$="[[item.data]]" on-mouseover="liMouseover" on-mouseout="liMouseout" on-click="pageHandler">[[item.number]]</li>
             </template>
           </template>
         </ul>
@@ -114,7 +114,8 @@ class OXPagination extends PolymerElement {
 
   pageHandler(e) {
     const value = e.target.innerHTML;
-    if (!value.includes('...')) {
+    // !value.includes('...')
+    if (value !== '') {
       this.page = parseInt(value);
       this.pageNumberInitHandler(e.target);
     } else  {
@@ -185,8 +186,10 @@ class OXPagination extends PolymerElement {
     let content = number;
     if (number === '...') {
       data = str;
+      content = '';
     } else if (number === '...back') {
-      content = '...';
+      // content = '...';
+      content = '';
       data = str;
     }
 
