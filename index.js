@@ -31,5 +31,5 @@ import './elements/ox-bubble-alert';
 import './elements/ox-checkbox';
 import './elements/ox-modal-shaoxinheng';
 
-import './elements/ox-input-wangning';
+import './elements/ox-input';
 
