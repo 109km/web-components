@@ -57,9 +57,18 @@
         <span slot="label">选项3</span>
       </ox-checkbox>
     </div>
+    <div class="zone" style="display:flex;">
+      输入电话：
+      <ox-input type="tel" placeholder="输入提示文本">
+        <div class="ox-input-error-word" slot="notice">请输入11位电话</div>
+      </ox-input>
+    </div>
+    <div class="zone" style="display:flex;">
+      禁用状态：<ox-input type="prohibit" placeholder="输入提示文本" disabled></ox-input>
+    </div>
     <div class="zone">
       <ox-pagination default-page="25" total="48" ></ox-pagination>
-    </div>
+    </div> 
   </div>
   <script>
     const pageChange = document.querySelector('ox-pagination');

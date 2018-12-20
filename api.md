@@ -74,3 +74,18 @@
 | disabled | disabled 属性规定禁用按钮。被禁用的按钮既不可用，也不可点击。 | `String` |  | `N` |
 | group | 组别 | `String` |  | `Y` |
 | value | 选项值 | `String` |  | `Y` |
+
+
+
+### ox-input
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--: | --- | :--: | :--: |
+| type | 设置按钮类型，选值为`text`,`prohibit`,`tel`,`email`,`url`,`search` | `String` | `text` |
+| disabled | 输入框禁用状态 | `Boolean` | `false`|
+| placeholder | 输入框内的描述信息 | `String` |
+| fontsize | 输入框文本字体大小 | `String` |
+| color | 输入框文本颜色 | `String` |
+| cursorcolor | 输入框光标颜色 | `String` |
+| onBlur | 文本框失去焦点时的回调 | `(event) => void` |
+
