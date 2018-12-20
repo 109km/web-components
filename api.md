@@ -21,7 +21,7 @@
 | background | 设置是分页按钮背景色 | String | #d59e5b
 | total | 总条目数 | `number` 
 | default-page | 当前页数 | `number` | 1
-| 事件
+| onOk | 分页事件 |`(event) => void`
 
 
 ### ox-tabs
