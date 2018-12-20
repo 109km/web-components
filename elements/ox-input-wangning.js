@@ -72,7 +72,7 @@ class OXInput extends PolymerElement {
       </style> 
       <input type="{{type}}" placeholder="{{placeholder}}" disabled="{{disabled}}"/>
       <slot class="ox-input-error-word" name="notice"></slot>
-      <slot class="ox-input-search-icon" name="search"></slot>
+      <slot class="ox-input-search-icon" name="icon"></slot>
     `;
   }
   static get properties() {
