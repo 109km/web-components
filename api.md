@@ -22,3 +22,34 @@
 | total | 总条目数 | `number` 
 | default-page | 当前页数 | `number` | 1
 | 事件
+
+
+### ox-tabs
+
+| 属性  | 说明 | 类型 | 默认值 |
+| :---: | ---- |:--:|:--:|
+| type |tab类型 可选值为 `slide`,`piece`|`String`|`slide`
+| created |tab渲染结束后的方法|`(event) => void`|
+
+
+### ox-tab-pane
+
+| 属性  | 说明 | 类型 | 默认值 |
+| :---: | ---- |:--:|:--:|
+| label |选项卡内容|`String`|
+| oxtarget |对应区域的`ID`|`String`|
+
+
+### ox-tab-card
+
+| 属性  | 说明 | 类型 | 默认值 |
+| :---: | ---- |:--:|:--:|
+| oxcard | 对应tab的`ID` |`String`|
+
+
+### ox-tag
+
+| 属性  | 说明 | 类型 | 默认值 |
+| :---: | ---- |:--:|:--:|
+| type |tag类型 可选值为 `default`,`delete`|`String`|`default` 
+| delete |tag 删除事件回调|`(event) => void`|
