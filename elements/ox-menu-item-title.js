@@ -73,7 +73,7 @@ class MenuItemTitle extends PolymerElement {
     if(this.disabled) {
       this.className += 'disabled'
     }else {
-      this.onclick()
+      this.onclick();
     }
   }
   onclick() {
