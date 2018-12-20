@@ -13,7 +13,6 @@ import './elements/ox-button';
 // wyd
 import './elements/ox-pagination';
 //llj
-import './elements/ox-radio';
 // import './elements/ox-tab-llj/ox-tabs.js';
 // import './elements/ox-tab-llj/ox-tab-pane.js';
 // import './elements/ox-tab-llj/ox-tab-card.js';
@@ -26,6 +25,11 @@ import './elements/ox-radio';
 import './elements/ox-bubble';
 import './elements/ox-bubble-main';
 import './elements/ox-bubble-alert';
+
+
+//wd
+import './elements/ox-radio';
+import './elements/ox-switch';
 
 
 import './elements/ox-checkbox';

@@ -60,6 +60,20 @@
     <div class="zone">
       <ox-pagination default-page="25" total="48" ></ox-pagination>
     </div>
+
+    <div class="zone">
+      <ox-radio group="choices1" value="已选中" class="ox-radio-actived" >已选中</ox-radio>
+      <ox-radio group="choices1" value="未选中">未选中</ox-radio>
+      <ox-radio group="choices1" value="不可用" disabled>不可用</ox-radio>
+      <ox-radio group="choices1" value="选中不可用" disabled class="ox-radio-actived">选中不可用</ox-radio>     
+  </div>
+
+  <div class="zone">
+      <ox-switch></ox-switch>
+      <ox-switch checked ></ox-switch>
+      <ox-switch disabled></ox-switch>
+      <ox-switch checked disabled></ox-switch>
+  </div>
   </div>
   <script>
     const pageChange = document.querySelector('ox-pagination');

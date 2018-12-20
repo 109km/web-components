@@ -74,3 +74,24 @@
 | disabled | disabled 属性规定禁用按钮。被禁用的按钮既不可用，也不可点击。 | `String` |  | `N` |
 | group | 组别 | `String` |  | `Y` |
 | value | 选项值 | `String` |  | `Y` |
+
+
+
+### ox-switch
+
+| 属性  | 说明 | 类型 | 默认值 |
+| :---: | :----: |:--:|:--:|
+| checked | 开关是否打开状态 | `Boolean` | `false` |
+| disabled | 开关失效状态 | `Boolean` | `false` |
+| onClick | 点击按钮时的回调 | `(event) => void` |  |
+
+
+
+### ox-radio
+
+| 属性  | 说明 | 类型 | 默认值 |
+| :---: | :----: |:--:|:--:|
+| group | 组别 | `String` |  |
+| disabled | 按钮失效状态 | `Boolean` | `false` |
+| value | 选项值 | `String` |  |  |
+| onClick | 点击按钮时的回调 | `(event) => void` |  |
