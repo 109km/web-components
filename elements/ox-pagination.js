@@ -401,20 +401,17 @@ class OXPagination extends PolymerElement {
   
   liMouseover(e) {
     const target = e.target;
-    if (this.backgroundColor) {
-      target.style.backgroundColor = this.backgroundColor;
-      target.style.borderTop = `1px solid ${this.backgroundColor}`;
-      target.style.borderBottom = `1px solid ${this.backgroundColor}`;
-    }
+    let color = !!this.backgroundColor ? this.backgroundColor : 'var(--theme-bg-color-primary)';
+    target.style.backgroundColor = color;
+    target.style.borderTop = `1px solid ${color}`;
+    target.style.borderBottom = `1px solid ${color}`;
   }
 
   liMouseout(e) {
     const target = e.target;
-    if (this.backgroundColor) {
-      target.style.backgroundColor = '';
-      target.style.borderTop = '';
-      target.style.borderBottom = '';
-    }
+    target.style.backgroundColor = '';
+    target.style.borderTop = '';
+    target.style.borderBottom = '';
   }
 
   onOk() {
