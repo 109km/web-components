@@ -10,50 +10,39 @@ class OXMenu extends PolymerElement {
   constructor() {
     super();
   }
-  
   static get template() {
     return html `
     <style>
-      @import '../elements/ox-menu-mamingyang/ox-menu-mamingyang.css'
+      :host {
+        display: block;
+        width: 300px;
+        color: #333;
+        background: #ffffff;
+        box-sizing: border-box;
+      }
     </style>
-      <div class="ox-menu-box">
-        <slot name="title"></slot>
-        <div class="ox-menu-ground">
-          <slot class="ox-menu-item" name="ground-title"></solt>
-        </div>
-      </div>
+    <slot></slot>
     `;
   }
+
   static get properties() {
     return {
-      disabled: {
-        type: Boolean,
-        notify: true,
-        value: false,
+      backgroundColor: {
+        type: String
       },
-      isShow: {
-        type: Boolean,
-        value: 'ox-show'
+      textColor: {
+        type: String
       }
     }
   }
-  isDisabled() {
-    return this.querySelector(``);
-  }
-  onClick() {
-    let _this = this;
-    this.disabled = false
-    this.firstElementChild.addEventListener('click', function() {
-      console.log(this.nextElementSibling)
-      this.nextElementSilbing.style.display="block";     
-    })
-  }
-  onShow() {
-
-  }
   ready() {
     super.ready();
-    this.onClick();
+    if((/^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/).test(this.backgroundColor)) {
+      this.style.backgroundColor = this.backgroundColor
+    }
+    if((/^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/).test(this.textColor)) {
+      this.style.color = this.textColor
+    }
   }
-}
+} 
 window.customElements.define('ox-menu', OXMenu);
