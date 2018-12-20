@@ -26,8 +26,18 @@ class menuGroupItem extends PolymerElement {
           color: #999;
           cursor:no-drop;
         }
+        .ox-group-item {
+          display: block;
+          padding-left: 20px;
+        }
+        :host(.disabled) .ox-group-item:hover {
+          background: rgba(213, 158, 91, 0);
+        }
+        :host .ox-group-item:hover {
+          background: rgba(213, 158, 91, .3);
+        }
       </style>
-      <slot></slot>
+      <slot class="ox-group-item"></slot>
     `;
   }
 
@@ -36,11 +46,17 @@ class menuGroupItem extends PolymerElement {
        disabled: {
          type: Boolean,
          value: false
-       }
+       },
+       textColor: {
+        type: String
+      },
     }
   }
   ready() {
     super.ready();
+    if((/^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/).test(this.textColor)) {
+      this.style.color = this.textColor
+    }
     if(this.disabled) {
       this.className += 'disabled'
     }

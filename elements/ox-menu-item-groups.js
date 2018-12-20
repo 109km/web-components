@@ -19,7 +19,6 @@ class MenuItemGroups extends PolymerElement {
       }
       .ox-menu-groups {
         display: block;
-        padding-left: 20px;
         font-size: 14px;
       }
       :host([visible]) {

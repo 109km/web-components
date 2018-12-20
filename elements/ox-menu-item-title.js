@@ -20,9 +20,15 @@ class MenuItemTitle extends PolymerElement {
           display: block;
           cursor: pointer;
         }
+        :host .ox-menu-title:hover {
+          background: rgba(213, 158, 91, .3);
+        }
         :host(.disabled) .ox-menu-title {
           color: #999;
           cursor:no-drop;
+        }
+        :host(.disabled) .ox-menu-title:hover {
+          background: rgba(255, 255, 255, 0);
         }
         
         .ox-menu-title {
@@ -63,6 +69,9 @@ class MenuItemTitle extends PolymerElement {
          type: Boolean,
          value: false
       },
+      textColor: {
+        type: String
+      },
       open: {
         type: String
       }
@@ -70,6 +79,9 @@ class MenuItemTitle extends PolymerElement {
   }
   ready() {
     super.ready();
+    if((/^#([0-9a-fA-F]{6}|[0-9a-fA-F]{3})$/).test(this.textColor)) {
+      this.style.color = this.textColor
+    }
     if(this.disabled) {
       this.className += 'disabled'
     }else {
