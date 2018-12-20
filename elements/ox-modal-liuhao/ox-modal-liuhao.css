@@ -37,6 +37,10 @@
     position: fixed;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     padding: 0 15px 36px;
     box-shadow: 0 0 10px #aaa;
@@ -101,25 +105,43 @@
 }
 
 .animate-fade {
-    animation: animate-fade .75s ease-in-out;
+    animation: animate-fade .5s ease-in-out;
 }
 
 .animate-left {
-    animation: animate-left .75s ease-in-out;
+    animation: animate-left .5s ease-in-out;
 }
 
 .animate-right {
-    animation: animate-right .75s ease-in-out;
+    animation: animate-right .5s ease-in-out;
 }
 
 .animate-top {
-    animation: animate-top .75s ease-in-out;
+    animation: animate-top .5s ease-in-out;
 }
 
 .animate-bottom {
-    animation: animate-bottom .75s ease-in-out;
+    animation: animate-bottom .5s ease-in-out;
 }
 
+@-webkit-keyframes animate-fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+@-moz-keyframes animate-fade {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
 @keyframes animate-fade {
     0% {
         opacity: 0;
@@ -129,17 +151,51 @@
         opacity: 1;
     }
 }
-
-@keyframes animate-left {
+@-webkit-keyframes animate-left {
     0% {
-        left: -500px;
+        left: -1000px;
     }
 
     100% {
         left: 50%;
     }
 }
+@-moz-keyframes animate-left {
+    0% {
+        left: -1000px;
+    }
 
+    100% {
+        left: 50%;
+    }
+}
+@keyframes animate-left {
+    0% {
+        left: -1000px;
+    }
+
+    100% {
+        left: 50%;
+    }
+}
+@-webkit-keyframes animate-right {
+    0% {
+        left: 100%;
+    }
+
+    100% {
+        left: 50%;
+    }
+}
+@-moz-keyframes animate-right {
+    0% {
+        left: 100%;
+    }
+
+    100% {
+        left: 50%;
+    }
+}
 @keyframes animate-right {
     0% {
         left: 100%;
@@ -150,9 +206,27 @@
     }
 }
 
+@-webkit-keyframes animate-top {
+    0% {
+        top: -1000px;
+    }
+
+    100% {
+        top: 50%;
+    }
+}
+@-moz-keyframes animate-top {
+    0% {
+        top: -1000px;
+    }
+
+    100% {
+        top: 50%;
+    }
+}
 @keyframes animate-top {
     0% {
-        top: -500px;
+        top: -1000px;
     }
 
     100% {
@@ -160,6 +234,24 @@
     }
 }
 
+@-webkit-keyframes animate-bottom {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: 50%;
+    }
+}
+@-moz-keyframes animate-bottom {
+    0% {
+        top: 100%;
+    }
+
+    100% {
+        top: 50%;
+    }
+}
 @keyframes animate-bottom {
     0% {
         top: 100%;

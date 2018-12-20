@@ -57,6 +57,10 @@ class OXModal extends PolymerElement {
     position: fixed;
     top: 50%;
     left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
     transform: translate(-50%, -50%);
     padding: 0 15px 36px;
     box-shadow: 0 0 10px #aaa;
@@ -318,7 +322,7 @@ class OXModal extends PolymerElement {
             //标题
             title: {
                 type: String,
-                value: '标题'
+                value: ''
             },
             //确定按钮文字
             oktext: {
@@ -358,6 +362,7 @@ class OXModal extends PolymerElement {
         super.disconnectedCallback();
         console.log('disconnectedCallback')
     }
+
     ready() {
         console.log('ready')
         // console.log(this.oktext)

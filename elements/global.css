@@ -22,6 +22,7 @@ html {
   --theme-bg-color-primary: #D99F53;
   --theme-bg-color-default: #C2C2C2;
   --theme-color-dark: #344056;
+  --theme-color-opacity-dark: rgba(52,64,85,.6);  
   --theme-link-color: #333d56;
 
   --theme-border-radius: 5px;

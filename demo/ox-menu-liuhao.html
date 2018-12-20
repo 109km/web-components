@@ -11,11 +11,12 @@
     <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
     <!-- 引入组件的js -->
     <script type="module" src="../elements/ox-menu-liuhao/ox-menu-liuhao.js"></script>
+    <script type="module" src="../elements/ox-submenu-liuhao.js"></script>
 </head>
 <body>
     <custom-style>
         <style>
-          h1{
+          h1,h2{
             text-align: center;
           }
           /*.menu-a{
@@ -38,7 +39,7 @@
         </h1>
         <ox-menu theme="dark" to="./index.html">
             <img src="../assets/images/logo.png" alt="" class="logo" slot="logo">
-            <div class="menu-item active" slot="menu-item">首页</div>
+            <div id="home" class="menu-item active" slot="menu-item">首页</div>
             <!-- <div class="menu-item" slot="menu-item"><a href="./index.html">链接导航</a></div> -->
             <div class="menu-item" slot="menu-item">导航01</div>
             <div class="menu-item" slot="menu-item">导航02</div>
@@ -48,9 +49,37 @@
             <div class="menu-item" slot="menu-item">导航3</div>
             <img src="../assets/images/my.png" alt="" class="menu-my" slot="menu-my">
         </ox-menu>
+        <h2>二级导航(ox-submenu)</h2>
+        <div style="width: 300px;">
+          <ox-submenu  theme="light" title="内容管理" class="active">
+            <div class="submenu-icon" slot="submenu-icon"><i class="fa fa-file"></i></div>
+            <div class="submenu-item" slot="submenu-item">item1</div>
+            <div class="submenu-item active" slot="submenu-item">item2</div>
+          </ox-submenu>
+          <ox-submenu  theme="dark" title="文件分类" class="active">
+            <div class="submenu-icon" slot="submenu-icon"><i class="fa fa-file"></i></div>
+            <div id="file1" class="submenu-item" slot="submenu-item">file1</div>
+            <div class="submenu-item" slot="submenu-item">file2</div>
+            <div class="submenu-item" slot="submenu-item">file3</div>
+          </ox-submenu>
+        </div>
 </body>
 <script>
-
+  let home = document.getElementById('home')
+  let file1 = document.getElementById('file1')
+  let menu = document.querySelector('ox-menu')
+  let submenu = document.querySelector('ox-submenu[theme="dark"]')
+  console.log(submenu)
+  function log(){
+    console.log('点击了首页')
+  }
+  home.onclick = function(e){
+    console.log(e)
+    menu.selectItem(e,'',log)
+  }
+  file1.onclick = function(e){
+    submenu.selectItem(e,'',log)
+  }
 </script>
 
 </html>

@@ -1,0 +1,102 @@
+
+.clearfix:after {
+    content: "";
+    display: block;
+    clear: both;
+    overflow: hidden;
+    font-size: 0;
+    height: 0;
+}
+
+.fl {
+    float: left;
+}
+
+.fr {
+    float: right;
+}
+
+.ox-submenu-outer{
+    width: 300px;
+    cursor: pointer;
+    height: 60px;
+    overflow: hidden;
+}
+:host(.ox-submenu-dark) .ox-submenu-outer{
+    background-color: var(--theme-color-dark);
+    color:  hsla(0,0%,100%,.7);
+}
+:host(.ox-submenu-light) .ox-submenu-outer{
+    background-color: var(--color-white);
+    color:  var(--color-black);
+}
+:host(.ox-submenu-dark) .ox-submenu-outer:hover{
+    background-color: var(--theme-color-opacity-dark);
+}
+:host(.ox-submenu-light) .ox-submenu-outer:hover{
+    background-color: #f4f4f4;
+}
+:host(.ox-submenu-dark) .ox-submenu-outer.active{
+    background-color: var(--theme-color-opacity-dark);
+    height: auto;
+}
+:host(.ox-submenu-light) .ox-submenu-outer.active{
+    background-color: #f4f4f4;
+    height: auto;
+}
+::slotted(.submenu-item){
+    height: 60px;
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    line-height: 60px;
+}
+:host(.ox-submenu-dark) ::slotted(.submenu-item){
+    background-color: var(--theme-color-dark);
+}
+:host(.ox-submenu-light) ::slotted(.submenu-item){
+    background-color: var(--color-white);
+}
+:host(.ox-submenu-dark) ::slotted(.submenu-item:hover){
+    color: var(--color-white);
+}
+:host(.ox-submenu-light) ::slotted(.submenu-item:hover){
+    background-color: #f4f4f4;
+}
+:host(.ox-submenu-dark) ::slotted(.submenu-item.active){
+    color: var(--color-white);
+}
+:host(.ox-submenu-light) ::slotted(.submenu-item.active){
+    background-color: #f4f4f4;
+}
+.submenu-title-wrap i{
+    transition: transform .5s;
+}
+.ox-submenu-outer.active  .submenu-title-wrap i{
+    transform: rotate(-180deg);
+    transform-origin: center;
+    transition: all .5s;
+}
+.submenu-title-wrap{
+    line-height: 60px;
+    height: 60px;
+    font-size: 20px;
+}
+.submenu-title-wrap ::slotted(.submenu-icon){
+    margin-left: 50px;
+    float: left;
+}
+
+.submenu-title-wrap .submenu-title{
+    margin-left: 20px;
+    float: left;
+}
+.submenu-title-wrap i{
+    margin-right: 30px;
+    float: right;
+    line-height: 60px;
+}
+
+
+
+

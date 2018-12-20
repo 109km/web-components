@@ -5,23 +5,23 @@ import {
 /**
  * @name ox-modal
  */
-class OXMenu extends PolymerElement {
+class OXMenuGroup extends PolymerElement {
     constructor() {
         super();
     }
     static get template() {
         return html `
     <style>
-    @import '../elements/ox-menu-liuhao/ox-menu-liuhao.css'
+    @import '../elements/ox-menu-liuhao/ox-menugroup-liuhao.css'
         
     </style>
     <div class="ox-menu-outer">
       <div class="ox-menu-inner clearfix">
-        <slot name="logo"></slot>
+        <slot class="logo" name="logo"></slot>
         <div class="menu-items">
             <slot name="menu-item" on-click="selectItem"></slot>
         </div>
-        <slot name="menu-my"></slot>
+        <slot class="menu-my" name="menu-my"></slot>
       </div>
     </div>    
     `;
@@ -75,4 +75,4 @@ class OXMenu extends PolymerElement {
     }
 }
 
-customElements.define('ox-menu', OXMenu);
+customElements.define('ox-menugroup', OXMenuGroup);
