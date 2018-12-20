@@ -27,16 +27,11 @@
       单选(ox-radio)
     </h1>
     <div class="zone">
-      <h2>第1组</h2>
-      <ox-radio checked class="ox-radio-actived" disabled group="choices1" value="1"><span>选项1</span></ox-radio>
-      <ox-radio group="choices1" value="2" disabled>选项2</ox-radio>
-      <ox-radio group="choices1" value="3" disabled>选项3</ox-radio>
-    </div>
-    <div class="zone">
-      <h2>第2组</h2>
-      <ox-radio group="choices2" value="4" disabled><span>选项1</span></ox-radio>
-      <ox-radio group="choices2" value="5">选项2</ox-radio>
-      <ox-radio group="choices2" value="6">选项3</ox-radio>
+        <h2>组元素</h2>
+        <ox-radio group="choices1" value="已选中" class="ox-radio-actived" >已选中</ox-radio>
+        <ox-radio group="choices1" value="未选中">未选中</ox-radio>
+        <ox-radio group="choices1" value="不可用" disabled>不可用</ox-radio>
+        <ox-radio group="choices1" value="选中不可用" disabled class="ox-radio-actived">选中不可用</ox-radio>     
     </div>
   </div>
 </body>

@@ -1,0 +1,45 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>Demo - ox-button</title>
+  <link rel="stylesheet" href="../elements/normalize.css">
+  <link rel="stylesheet" href="../elements/global.css">
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <!-- 引入组件的js -->
+  <script type="module" src="../elements/ox-tag.js"></script>
+</head> 
+<body>
+  <custom-style>
+    <style>
+      body{padding-top:100px;}
+      ox-tag{
+        display: inline-block;
+        margin-right: 50px;
+      }  
+      .round{
+        border-radius: 50%;
+        width:100px;
+        height:100px;
+        line-height: 100px;
+        box-sizing: border-box;
+        background:orange;
+        text-align: center;
+        color:#fff;
+      }
+    </style>
+  </custom-style>
+  <div class="page page-demo">
+    <ox-tag>标签</ox-tag>
+    <ox-tag type="delete">标签</ox-tag> 
+   </div>
+</body>
+<script>
+  document.querySelector("[type=delete]").delete = ()=>{
+    alert("delete")
+  }
+</script>
+</html>
