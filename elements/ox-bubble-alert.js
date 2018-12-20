@@ -133,7 +133,7 @@ class OXBubbleAlert extends PolymerElement {
     };
   }
   changeColor(e){
-    console.log(this);
+    //console.log(this);
     this.style.display = "none";
   }
 
