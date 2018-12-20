@@ -9,7 +9,7 @@ import {
 class OXInput extends PolymerElement {
   constructor() {
     super();
-    this.addEventListener('input', this.onChange);
+    this.addEventListener('blur', this.onBlur);
   }
   static get template() {
     return html `
@@ -18,8 +18,9 @@ class OXInput extends PolymerElement {
           display:inline-block;
           width:200px;
           height:32px;
+          position:relative;
           border-radius: 4px;
-          border:1px solid var(--color-black); 
+          border:1px solid #e8e8e8; 
         }
         :host(.ox-input) input{
           display:block;
@@ -32,7 +33,17 @@ class OXInput extends PolymerElement {
           border:none;
           outline:none;
         }
-        :host(.ox-input) .ox-input-error-word{
+        input[type=search]::-webkit-search-cancel-button{
+          -webkit-appearance: none;
+          width: 14px;
+          height: 14px;
+          position: relative;
+          border-radius:50%;
+          background: var(--mask-bg-color) url("../assets/images/close.png")no-repeat center center;
+          background-size: 8px 8px;
+          cursor:pointer;
+        }
+        ::slotted(.ox-input-error-word){
           display:none;
           padding-top:4px;
           font-size: var(--theme-font-size-small);
@@ -41,43 +52,52 @@ class OXInput extends PolymerElement {
         :host([error]){
           border: 1px var(--theme-color-error) solid;
         }
-        :host([error]) .ox-input-error-word{
+        :host([error]) ::slotted(.ox-input-error-word){
           display: block;
         }
         :host([disabled]) input{
           cursor: not-allowed;
         }
+        ::slotted(.ox-input-search-icon){
+          left:10px;
+          top:8px;
+          color:#b3b3b3;
+          position: absolute;
+          font-size: var(--theme-font-size-small);
+        }
+        :host(.ox-input-search){
+          width:360px;
+          padding-left:30px;
+        }
       </style> 
       <input type="{{type}}" placeholder="{{placeholder}}" disabled="{{disabled}}"/>
-      <div class="ox-input-error-word">{{notice}}</div>
+      <slot class="ox-input-error-word" name="notice"></slot>
+      <slot class="ox-input-search-icon" name="search"></slot>
     `;
   }
   static get properties() {
     return {
-      placeholder: {
-        type: String,
-        value:'11',
-      },
       type: {
         type: String,
-        value:'primary',
+        value:'text',
       },
       disabled: {
         type: Boolean,
         value:false,
       },
-      notice: {
-        type: String,
-        value: '',
-      }
+      fontsize: String,
+      color: String,
+      cursorcolor: String,
+      placeholder: String,
+      error: String,
     };
   }
-
   ready() {
     super.ready();
+    this.onStyle();
     this.className = `ox-input ox-input-${this.type}`;
   }
-  onChange(e){
+  onBlur(e){
     var input = this.shadowRoot.querySelector('input');
     if(input.getAttribute('type') == 'tel'){
       console.log(input.value);
@@ -102,6 +122,14 @@ class OXInput extends PolymerElement {
         this.removeAttribute('error');
       }
     }
+  }
+  onValue(e){
+    return this.shadowRoot.querySelector('input').value;
+  }
+  onStyle(e){
+    this.shadowRoot.querySelector('input').style.fontSize = `${this.fontsize}`;
+    this.shadowRoot.querySelector('input').style.color = `${this.color}`;
+    this.shadowRoot.querySelector('input').style.caretColor = `${this.cursorcolor}`;
   }
 }
 

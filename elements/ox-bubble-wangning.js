@@ -108,7 +108,7 @@ class OXBubble extends PolymerElement {
         -ms-transform: translateX(-50%);
       }
       :host([type='top']) .triangle{
-        border-color:var(--mask-bg-color) transparent transparent transparent ;
+        border-color:var(--mask-bg-color) transparent transparent transparent;
         left: 50%;
         top: 98%;
         transform: translateX(-50%);
