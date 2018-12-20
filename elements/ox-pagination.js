@@ -14,8 +14,135 @@ class OXPagination extends PolymerElement {
   
   static get template() {
     return html`
-      <style>
-        @import '../elements/ox-pagination/ox-pagination.css';
+      <style>   
+        :host .ox-pagination-container {
+          display: -webkit-flex;
+          display: flex;
+          align-items: center;
+          -webkit-align-items: center;
+        }
+        :host .ox-pagination-container .disabled {
+          cursor: not-allowed;
+        }
+        :host .ox-pagination-numer, :host .ox-pagination-numer li {
+          margin: 0;
+          padding: 0;
+        }
+        :host .ox-pagination-numer li {
+          min-width: 36px;
+          height: 36px;
+
+          list-style: none;
+          list-style-type: none;
+          cursor: pointer;
+          background: #fff;
+          border-top: 1px solid #D1D1D1;
+          border-bottom: 1px solid #D1D1D1;
+          border-right: 1px solid #D1D1D1;
+
+          text-align: center;
+          line-height: 36px;
+          font-size: 16px;
+          color: #282828;
+          font-weight: 400;
+          vertical-align: middle;
+
+          position: relative;
+        }
+        :host .ox-pagination-numer li.active {
+          transition: all .3s;
+          background-color: var(--theme-bg-color-primary);
+          color: var(--theme-color-default);
+          border-top: 1px solid var(--theme-bg-color-primary);
+          border-bottom: 1px solid var(--theme-bg-color-primary);
+          border-left: 1px solid var(--theme-bg-color-primary);
+          margin-left: -1px;
+          margin-right: -1px;
+        }
+        :host .ox-pagination-numer li:hover {
+          background-color: var(--theme-bg-color-primary);
+          color: var(--theme-color-default);
+          transition: all .3s;
+        }
+        :host .ox-pagination-numer li.prev, :host .ox-pagination-numer li.back {
+          font-size: 24px;
+          line-height: 22px;
+        }
+        :host .ox-pagination-numer li.prev::before, :host .ox-pagination-numer li.back::before {
+          content: "\\2026";
+        }
+        :host .ox-pagination-numer li.prev:hover::before {
+          line-height: 30px;
+          content: "\\00AB";
+        }
+        :host .ox-pagination-numer li.back:hover::before {
+          line-height: 30px;
+          content: "\\00BB";
+        }
+        :host .ox-pagination-pre,  :host .ox-pagination-next {
+          min-width: 36px;
+          height: 36px;
+          border: 1px solid #D1D1D1;
+          line-height: 36px;
+          text-align: center;
+          position: relative;
+        }
+        .ox-pagination-pre::before, .ox-pagination-pre::after, .ox-pagination-next::before, .ox-pagination-next::after {
+          width: 2px;
+          height: 11px;
+          background-color: #D1D1D1;
+          border-radius: 2px;
+        }
+        .ox-pagination-pre.active, .ox-pagination-next.active {
+          cursor: pointer;
+        }
+        .ox-pagination-pre.active::before, .ox-pagination-pre.active::after,
+        .ox-pagination-next.active::before, .ox-pagination-next.active::after {
+          background-color: var(--theme-bg-color-primary);
+        }
+        .ox-pagination-pre::before, .ox-pagination-pre::after {
+          left: 14px;
+          content: '';
+          position: absolute;
+        }
+        .ox-pagination-pre::before {
+          top: 8px;
+          transform: rotate(45deg);
+        }
+        .ox-pagination-pre::after {
+          top: 15px;
+          transform: rotate(-45deg);
+        }
+        .ox-pagination-next::before, .ox-pagination-next::after {
+          left: 18px;
+          content: '';
+          position: absolute;
+        }
+        .ox-pagination-next::before {
+          top: 8px;
+          transform: rotate(-45deg);
+        }
+        .ox-pagination-next::after {
+          top: 15px;
+          transform: rotate(45deg);
+        }
+        :host .ox-pagination-pre {
+          border-radius: 4px 0 0 4px;
+          margin-right: 10px;
+        }
+        :host .ox-pagination-next {
+          border-radius: 0 4px 4px 0;
+          margin-left: 10px;
+        }
+        :host .ox-pagination-numer {
+          display: -webkit-flex;
+          display: flex;
+          align-items: center;
+          -webkit-align-items: center;
+        }
+        :host .ox-pagination-numer {
+          border-left: 1px solid #D1D1D1;
+        }
       </style>
       <div class="ox-pagination-container">
         <template is="dom-if" if="[[preStatus]]">
@@ -27,12 +154,7 @@ class OXPagination extends PolymerElement {
         <ul class="ox-pagination-numer">
           <template is="dom-repeat" items="[[pagesNumber]]">
             <template is="dom-if" if="[[item.active]]">
-              <li
-                class$="active [[item.data]]"
-                on-click="pageHandler"
-                data-other$="[[item.data]]"
-                style="background-color: [[backgroundColor]]; border-top: 1px solid [[backgroundColor]]; 
-                border-bottom: 1px solid [[backgroundColor]]; border-left: 1px solid [[backgroundColor]];"
+              <li class$="active [[item.data]]" on-click="pageHandler" data-other$="[[item.data]]" style$="[[defaultColor]]"
               >[[item.number]]</li>
             </template>
             <template is="dom-if" if="[[!item.active]]">
@@ -58,11 +180,7 @@ class OXPagination extends PolymerElement {
       page: {
         type: Number
       },
-      // 与按钮绑定
-      for: {
-        type: String,
-        value: ''
-      }
+      backgroundColor: String
     }
   }
 
@@ -75,18 +193,24 @@ class OXPagination extends PolymerElement {
   initUserClass() {
     // 渲染
     this.backgroundColor = this.getAttribute('background') || '';
-    let style = document.createElement("style");
-    let nextTop = '';
-    let nextBottom = '';
-    nextTop = document.createTextNode(`.user-class.active:before {background-color: ${this.backgroundColor}}`);
-    nextBottom = document.createTextNode(`.user-class.active:after {background-color: ${this.backgroundColor}}`);
-    style.appendChild(nextTop);
-    style.appendChild(nextBottom);
-    this.shadowRoot.children[1].children[0].appendChild(style);
+    if (this.backgroundColor) {
+      this.defaultColor = `background-color: ${this.backgroundColor}; border-top: 1px solid ${this.backgroundColor}; 
+      border-bottom: 1px solid ${this.backgroundColor}; border-left: 1px solid ${this.backgroundColor}`;
+      let style = document.createElement("style");
+      let nextTop = '';
+      let nextBottom = '';
+      nextTop = document.createTextNode(`.user-class.active:before {background-color: ${this.backgroundColor}}`);
+      nextBottom = document.createTextNode(`.user-class.active:after {background-color: ${this.backgroundColor}}`);
+      style.appendChild(nextTop);
+      style.appendChild(nextBottom);
+      this.shadowRoot.children[1].children[0].appendChild(style);
+    } else {
+      this.defaultColor = '';
+    }
   }
 
   _reset() {
-    this.page = parseInt(this.getAttribute('defaultCurrent'));
+    this.page = parseInt(this.getAttribute('default-page'));
     this.total = parseInt(this.getAttribute('total'));
     if (this.total > 10) {
       if (this.page <= 8) {
@@ -114,7 +238,6 @@ class OXPagination extends PolymerElement {
 
   pageHandler(e) {
     const value = e.target.innerHTML;
-    // !value.includes('...')
     if (value !== '') {
       this.page = parseInt(value);
       this.pageNumberInitHandler(e.target);
@@ -188,7 +311,6 @@ class OXPagination extends PolymerElement {
       data = str;
       content = '';
     } else if (number === '...back') {
-      // content = '...';
       content = '';
       data = str;
     }
@@ -284,20 +406,14 @@ class OXPagination extends PolymerElement {
       target.style.borderTop = `1px solid ${this.backgroundColor}`;
       target.style.borderBottom = `1px solid ${this.backgroundColor}`;
     }
-
-    // const targetContent = target.getAttribute('data-other');
-    // if (targetContent === 'prev') {
-
-    // } else if (targetContent === 'back') {
-
-    // }
   }
 
   liMouseout(e) {
+    const target = e.target;
     if (this.backgroundColor) {
-      e.target.style.backgroundColor = '';
-      e.target.style.borderTop = '';
-      e.target.style.borderBottom = '';
+      target.style.backgroundColor = '';
+      target.style.borderTop = '';
+      target.style.borderBottom = '';
     }
   }
 

@@ -9,11 +9,8 @@ class OXBubble extends PolymerElement {
   constructor() {
     super();
     //hasTitle();
-<<<<<<< HEAD
-=======
     this.addEventListener('mouseenter', this.onMouseenter);
     this.addEventListener('mouseleave', this.onMouseleave);
->>>>>>> develop
   }
   static get template() {
     return html `
@@ -21,9 +18,6 @@ class OXBubble extends PolymerElement {
     @import '../elements/ox-bubble-wangfanglan/ox-bubble.css';
     </style>
         <div class="ox-bubble">
-<<<<<<< HEAD
-            <slot></slot>
-=======
           {{director}}
           <div class$="ox-bubble-box [[mask]] ox-bubble-box-[[type]]">
             <div class="title">{{titleContent}}</div>
@@ -31,24 +25,11 @@ class OXBubble extends PolymerElement {
             <div class$="triangle triangle-[[type]]">
             </div>
           </div>
->>>>>>> develop
         </div>
     `;
   }
   static get properties() {
     return {
-<<<<<<< HEAD
-      oxClass:{
-        type:String,
-        value: '',
-      }
-    };
-  }
-
-  ready() {
-    super.ready();
-    this.className = `ox-bubble ${this.oxClass}`;
-=======
       director: {
         type: String,
         value: ''
@@ -106,7 +87,6 @@ class OXBubble extends PolymerElement {
     super.ready();
     //hasTitle();
     this.className = `ox-bubble-box ox-bubble-box-${this.type}`;
->>>>>>> develop
   }
 }
 

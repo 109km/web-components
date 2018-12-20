@@ -41,8 +41,18 @@
         <span slot="label">选项1</span>
       </ox-checkbox>
     </div>
- 
+    <div class="zone">
+      <ox-pagination default-page="25" total="48" ></ox-pagination>
+    </div>
   </div>
+  <script>
+    const pageChange = document.querySelector('ox-pagination');
+    pageChange.onOk = function() {
+      console.log('outer-currentPage:', this.page);
+    }
+  
+  
+  </script>
 </body>
 
 </html>
