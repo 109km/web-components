@@ -127,9 +127,9 @@ class OXInput extends PolymerElement {
     return this.shadowRoot.querySelector('input').value;
   }
   onStyle(e){
-    this.shadowRoot.querySelector('input').style.fontSize = `${this.fontsize}`;
-    this.shadowRoot.querySelector('input').style.color = `${this.color}`;
-    this.shadowRoot.querySelector('input').style.caretColor = `${this.cursorcolor}`;
+    this.shadowRoot.querySelector('input').style.fontSize = this.fontsize;
+    this.shadowRoot.querySelector('input').style.color = this.color;
+    this.shadowRoot.querySelector('input').style.caretColor = this.cursorcolor;
   }
 }
 
