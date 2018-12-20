@@ -210,7 +210,7 @@ class OXPagination extends PolymerElement {
   }
 
   _reset() {
-    this.page = parseInt(this.getAttribute('defaultCurrent'));
+    this.page = parseInt(this.getAttribute('default-page'));
     this.total = parseInt(this.getAttribute('total'));
     if (this.total > 10) {
       if (this.page <= 8) {
