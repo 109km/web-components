@@ -27,3 +27,8 @@ import './elements/ox-checkbox';
 import './elements/ox-modal-shaoxinheng';
 
 import './elements/ox-input-wangning';
+
+import './elements/ox-tabs';
+import './elements/ox-tab-card';
+import './elements/ox-tab-pane';
+import './elements/ox-tag';
