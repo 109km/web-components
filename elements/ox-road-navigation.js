@@ -9,6 +9,8 @@ import {
 class OXRoadNav extends PolymerElement {
   constructor() {
     super();
+    this.addEventListener("mouseenter", (e) => {
+    })
   }
   static get template() {
     return html`
@@ -19,6 +21,9 @@ class OXRoadNav extends PolymerElement {
       .item {
         text-decoration: none;
         color: #ccc;
+      }
+      .item:hover {
+        color: #333;
       }
       .active {
         color: #333;
@@ -46,8 +51,9 @@ class OXRoadNav extends PolymerElement {
     const navHtml = content && content.map((el, index, arr) => {
 
       return `<a 
+              on-mouseenter = onMouseenter
               class="${ el.isActive ? 'active item' : 'item' }" 
-              style="color: ${el.activeColor || ''}"
+              style="${ el.isActive ? `color: ${el.activeColor}`: '' }"
               href="${ el.href }" 
               target="_black">
               ${ el.text }</a>
@@ -55,6 +61,10 @@ class OXRoadNav extends PolymerElement {
     })
 
     this.navHtml = navHtml.join("");
+  }
+  onMouseenter (e) {
+    console.log(e.target)
+    e.target.style.color = this.content.activeColor; 
   }
   ready() {
     super.ready();
