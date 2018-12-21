@@ -97,6 +97,7 @@
 | 属性  | 说明 | 类型 | 默认值 |
 | :---: | ---- |:--:|:--:|
 | type |tag类型 可选值为 `default`,`delete`|`String`|`default` 
+| background-color |自定义背景颜色|`String`|`#D99F53`
 | onDelete |tag 删除事件回调|`(event) => void`|
 
 
