@@ -13,16 +13,11 @@
 | onClick | 点击按钮时的回调 | `(event) => void` |  |
 | onHover | 鼠标悬浮在按钮上时的回调，触发事件为`mouseover` | `(event) => void` |  |
 
-<<<<<<< HEAD
 
 ### ox-modal  props
-=======
-### ox-pagination
-
 
 | 属性  | 说明 | 类型 | 默认值 |
 | :---: | ---- |:--:|:--:|
-<<<<<<< HEAD
 | type | 设置对话框类型，可选值为 `basic`, `success` , `warning` , `error` | `String` | `success` |
 | for | 与页面元素id进行绑定 | `String` |  |
 | title | 对话框标题 | `String` | |
@@ -50,7 +45,6 @@
 
 ### ox-modal  instance
 
-
 | 属性  | 说明 | 类型 | 默认值 |
 | :---: | ---- |:--:|:--:|
 | success | 可通过`modal.success(config,onok,oncancel)`直接调用，config为对象,onok是点击确定的回调，oncanel是点击取消的回调|  |  |
@@ -63,7 +57,10 @@
 | oktext | 确定按钮文字 | `String` | `确定`|
 | canceltext | 取消按钮文字 | `String` | `取消` |
 | animationtype | 设置对话框动画类型，可选值为`animate-bottom`, `animate-top` , `animate-left` , `animate-right`, `animate-fade` | `String` |  |
-=======
+
+### ox-pagination
+| 属性  | 说明 | 类型 | 默认值 |
+| :---: | ---- |:--:|:--:|
 | background | 设置是分页按钮背景色 | String | #d59e5b
 | total | 总条目数 | `number` 
 | page | 当前页面 | `number` | 1
@@ -72,7 +69,6 @@
 
 
 ### ox-tabs
-
 | 属性  | 说明 | 类型 | 默认值 |
 | :---: | ---- |:--:|:--:|
 | type |tab类型 可选值为 `slide`,`piece`|`String`|`slide`
