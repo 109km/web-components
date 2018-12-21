@@ -132,7 +132,7 @@ class OXBubbleMain extends PolymerElement {
     };
   }
   onMouseenter(e) {
-    console.log("鼠标进入");
+    //console.log("鼠标进入");
     var alert = this.parentNode.children[1];
     var type = alert.getAttribute("type")
     var triangle = alert.shadowRoot.querySelector(".triangle");
@@ -149,18 +149,18 @@ class OXBubbleMain extends PolymerElement {
     }
     alert.style.display = "block";
     alert.shadowRoot.querySelector(".ox-bubble-alert").display = "block";
-    console.log(title);
+    //console.log(title);
 
     if(title != null){
-      console.log("buweikong");
-      console.log(alert.shadowRoot.querySelector(".ox-bubble-alert"));
+      //console.log("buweikong");
+      //console.log(alert.shadowRoot.querySelector(".ox-bubble-alert"));
       alert.shadowRoot.querySelector(".ox-bubble-alert").classList.add("wrap");
     }else{
-      console.log("kong")
+      //console.log("kong")
     }
   }
   onMouseleave(e) {
-    console.log("鼠标移出");
+    //console.log("鼠标移出");
     var alert = this.parentNode.children[1];
     alert.style.display = "none";
     alert.shadowRoot.querySelector(".ox-bubble-alert").display = "none";

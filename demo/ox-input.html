@@ -7,45 +7,64 @@
   <title>Demo - ox-input</title>
   <link rel="stylesheet" href="../elements/normalize.css">
   <link rel="stylesheet" href="../elements/global.css">
-  <link rel="stylesheet" href="../elements/ox-input/ox-input.css">
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-
   <!-- 引入组件的js -->
-  <script type="module" src="../elements/ox-input/ox-input.js"></script>
+  <script type="module" src="../elements/ox-input.js"></script>
 </head>
-
 <body>
-  <style>
-    ox-input {
-      display: inline-block;
-      height: 30px;
-      border: 1px solid #ccc;
-      background: #e8e8e8;
-      border-radius: 4px;
-    }
-  </style>
+  <custom-style>
+    <style>
+      .zone{
+        display:flex;
+      }
+    </style>
+  </custom-style>
   <div class="page page-demo">
     <h1 class="page-title">
       输入框(ox-input)
     </h1>
     <div class="zone">
-      <h2>默认</h2>
-      <ox-input class="ox-input"></ox-input>
+      默认状态：<ox-input type="text" placeholder="输入提示文本" fontsize="12px"></ox-input>
     </div>
     <div class="zone">
-      <h2>禁止</h2>
-      <ox-input class="ox-input" disabled></ox-input>
+      禁用状态：<ox-input type="prohibit" placeholder="输入提示文本" disabled></ox-input>
     </div>
     <div class="zone">
-      <h2>搜索</h2>
-      <ox-input class="ox-input"></ox-input>
+      输入电话：
+      <ox-input type="tel" placeholder="输入提示文本">
+        <div class="ox-input-error-word" slot="notice">请输入11位电话</div>
+      </ox-input>
     </div>
     <div class="zone">
-      <h2>有误</h2>
-      <ox-input class="ox-input"></ox-input>
+      输入邮箱：
+      <ox-input type="email" placeholder="输入提示文本">
+        <div class="ox-input-error-word" slot="notice">请输入邮箱号码</div>
+      </ox-input>
     </div>
-  
+    <div class="zone">
+      输入URL：
+      <ox-input type="url" placeholder="输入提示文本">
+        <div class="ox-input-error-word" slot="notice">请输入正确的url地址</div>
+      </ox-input>
+    </div>
+    <div class="zone">
+      搜索状态：
+      <ox-input type="search" placeholder="输入提示文本">
+        <div class="ox-input-search-icon" slot="icon">
+          <i class="fa fa-search"></i>
+        </div>
+      </ox-input>
+    </div>
   </div>
+  <script>
+    var search = document.querySelector('ox-input[type="search"]'); 
+    search.onkeydown = function(e){
+      var e = e||window.event;
+      if(e.keyCode == 13){
+        alert(this.onValue());
+      }
+    }
+  </script>
 </body>
-
 </html>

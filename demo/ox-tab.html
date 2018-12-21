@@ -4,35 +4,67 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
-  <title>Demo - ox-tab</title>
+  <title>Demo - ox-button</title>
   <link rel="stylesheet" href="../elements/normalize.css">
-  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
   <link rel="stylesheet" href="../elements/global.css">
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
-  <!-- 引入组件的js -->
-  <script type="module" src="../elements/ox-tab/ox-tab.js"></script>
-</head>
-
+  <!-- 引入组件的js --> 
+  <script type="module" src="../elements/ox-tabs.js"></script>
+  <script type="module" src="../elements/ox-tab-pane.js"></script>
+  <script type="module" src="../elements/ox-tab-card.js"></script>
+</head> 
 <body>
   <custom-style>
-    
+    <style> 
+     body{
+       font-size: 18px;
+       padding-top: 60px;
+     }
+    </style>
   </custom-style>
-  <div class="page page-demo">
-    <h1 class="page-title">
-      选项卡(ox-tab)
-    </h1>
-    <div class="zone">
-      <h2>第1组</h2>
-      <ox-tab type="tab_1" tab="第一项,第二项" content="我是第一项,我是第二项">
-      </ox-tab>
+  <div class="page page-demo">  
+    <ox-tabs type="piece">
+      <ox-tab-pane label="选项卡一" oxtarget="card1"></ox-tab-pane>
+      <ox-tab-pane label="选项卡二" oxtarget="card2"></ox-tab-pane>
+      <ox-tab-pane label="选项卡三" oxtarget="card3"></ox-tab-pane>
+      <ox-tab-pane label="选项卡四" oxtarget="card4"></ox-tab-pane> 
+    </ox-tabs>
+    <ox-tabs >
+      <ox-tab-pane label="选项卡一" oxtarget="card1"></ox-tab-pane>
+      <ox-tab-pane label="选项卡二" oxtarget="card2"></ox-tab-pane>
+      <ox-tab-pane label="选项卡三" oxtarget="card3"></ox-tab-pane>
+      <ox-tab-pane label="选项卡四" oxtarget="card4"></ox-tab-pane> 
+    </ox-tabs>
+    <div>
+      <ox-tab-card oxcard="card1">
+        <ul>
+          <li>11111</li>
+          <li>22222</li>
+          <li>33333</li>
+        </ul>
+      </ox-tab-card>
+      <ox-tab-card oxcard="card2">
+        <ol>
+          <li>11111</li>
+          <li>22222</li>
+          <li>33333</li>
+        </ol>
+      </ox-tab-card>
+      <ox-tab-card oxcard="card3">
+        woshi长选项卡卡卡卡卡卡卡卡卡卡111
+      </ox-tab-card>
+      <ox-tab-card oxcard="card4">
+        woshi长选项卡卡卡卡卡卡卡卡卡卡222
+      </ox-tab-card> 
     </div>
-
-    <div class="zone">
-      <h2>第2组</h2>
-      <ox-tab type="tab_2" tab="第一项,第二项" content="我是第一项,我是第二项"></ox-tab>
-    </div>
-  </div>
+   </div> 
 </body>
+<script>
+  let oxTab= document.querySelector("ox-tabs")
+  oxTab.created = function() {
+    console.log("created")
+  }   
 
+</script>
 </html>

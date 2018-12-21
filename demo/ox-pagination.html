@@ -27,17 +27,15 @@
       分页(ox-pagination)
     </h1>
     <div class="zone">
-      <ox-pagination defaultCurrent="1" total="10"></ox-pagination>
+      <ox-pagination defaultCurrent="25" total="48" background="#028be7"></ox-pagination>
     </div>
   </div>
 
   <script>
     const pageChange = document.querySelector('ox-pagination');
     pageChange.onOk = function() {
-      console.log('outer-currentPage:', this.currentPage);
+      console.log('outer-currentPage:', this.page);
     }
-  
-  
   </script>
 </body>
 

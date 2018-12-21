@@ -7,7 +7,13 @@
   <title>Document</title>
   <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
-  <script type="module" src="../elements/ox-menu-mamingyang/ox-menu-mamingyang.js"></script>
+  <script type="module">
+    import '../elements/ox-menu-mamingyang.js'
+    import '../elements/ox-menu-item.js'
+    import '../elements/ox-menu-item-groups.js'
+    import '../elements/ox-menu-item-title.js'
+    import '../elements/ox-menu-groups-item.js'
+  </script>
   <style>
     * {
       margin: 0;
@@ -20,14 +26,62 @@
   </style>
 </head>
 <body>
-  <ox-menu disabled="true">
-    <div class="ox-menu-title" slot="title">
-      <i class="fa fa-hospital-o"></i>
-      <span>导航1</span>
-    </div>
-    <div class="ox-menu-ground" slot="ground-title">
-      <span>子导航</span>
-    </div> 
+  <h1>ox-menu</h1>
+  <!-- <ox-menu disabled="true"> -->
+  <ox-menu background-color="#000" text-color="#e4393c">
+    <sub-menu index="1">
+      <menu-title slot="title" disabled="true">
+          <i class="fa fa-hospital-o"></i>
+          <span>导航1</span>
+      </menu-title>
+      <menu-group slot="list">
+        <menu-group-item>导航1-1</menu-group-item>
+      </menu-group>
+    </sub-menu>
+    <sub-menu index="1">
+      <menu-title slot="title">
+          <i class="fa fa-hospital-o"></i>
+          <span>导航1</span>
+      </menu-title>
+      <menu-group slot="list">
+        <menu-group-item disabled="true">导航1-1</menu-group-item>
+        <menu-group-item id="menu3">导航1-1</menu-group-item>
+      </menu-group>
+    </sub-menu>
+  </ox-menu>
+  <br>
+  <ox-menu>
+    <sub-menu index="1">
+      <menu-title slot="title" disabled="true">
+          <i class="fa fa-hospital-o"></i>
+          <span>导航1</span>
+      </menu-title>
+      <menu-group slot="list">
+        <menu-group-item>导航1-1</menu-group-item>
+      </menu-group>
+    </sub-menu>
+    <sub-menu index="1">
+      <menu-title slot="title" text-color="#67fff8">
+          <i class="fa fa-hospital-o"></i>
+          <span>导航1</span>
+      </menu-title>
+      <menu-group slot="list">
+        <menu-group-item disabled="true">导航1-1</menu-group-item>
+        <menu-group-item>导航1-2</menu-group-item>
+        <menu-group-item text-color="#43ff55">导航1-3</menu-group-item>
+      </menu-group>
+    </sub-menu>
+    <sub-menu index="1">
+      <menu-title slot="title">
+          <i class="fa fa-hospital-o"></i>
+          <span>导航1</span>
+      </menu-title>
+      <menu-group slot="list">
+        <menu-group-item disabled="true">导航1-1</menu-group-item>
+        <menu-group-item>导航1-2</menu-group-item>
+        <menu-group-item>导航1-3</menu-group-item>
+      </menu-group>
+    </sub-menu>
   </ox-menu>
 </body>
 </html>

@@ -1,6 +1,3 @@
-<<<<<<< HEAD
-:host(ox-bubble){
-=======
 /*:host(.page-title:active){*/
   /*color: red;*/
 /*}*/
@@ -9,7 +6,6 @@
   color: var(--color-white);
   background-color: var(--theme-color-primary);
   border-color: var(--theme-color-primary);
->>>>>>> develop
   display: inline-block;
   text-align: center;
   position: relative;
@@ -95,13 +91,6 @@
 }
 .title{
   background: #E9E9E9;
-<<<<<<< HEAD
-  width: 130%;
-  position: relative;
-  left: -15px;
-  top: -3px;
-  color: #333;
-=======
   line-height: 20px;
   padding-left: 22px;
   box-sizing: border-box;
@@ -126,6 +115,5 @@
 }
 .triangle-bottom-ok{
   border-color: transparent transparent #E9E9E9 transparent;
->>>>>>> develop
 }
 

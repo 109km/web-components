@@ -44,63 +44,84 @@ class OXTabs extends PolymerElement {
           z-index:101; 
           transition: all .5s;
         }
+        .piece.ol-tabs{
+          justify-content: flex-start
+        }
+        .piece.ol-tabs::after{
+          display:none;
+        }
+        .piece .active-bar{
+          display:none;
+        }
       </style>
-      <div class="ol-tabs" > 
-        <div class="active-bar"></div>
-        <slot></slot>
+      <div class$="ol-tabs [[type]]" > 
+        <div class="active-bar"></div> 
+        <slot></slot> 
       </div>
     `;
   }
   static get properties() {
     return {
+      // slide 条件下active 状态
       activebar: {
         type: Number,
         value: 0,
         observer:'attrChange'
       },
+      // tab-pane 是否渲染到页面
+      rendered:{
+        type:Boolean,
+        value:false,
+        observer:"render"
+      },
+      //tab类型 slide/piece
+      type:{
+        type: String,
+        value: 'slide'
+      }
     };
   }
-  attrChange(newVal,oldVal){    
+  render(newVal,oldVal){
+    if(newVal){  
+      this.initBar(); 
+    }
+  }
+  // slide类型下 tab切换触发事件
+  attrChange(newVal,oldVal){  
     let tabDom = this.querySelectorAll("ox-tab-pane")[newVal];
     if(!tabDom) return false
     let width = tabDom.offsetWidth; 
     let left =(oldVal!==undefined && tabDom.offsetLeft) || 0;
     let activeDom = this.shadowRoot.querySelector(".active-bar"); 
+    activeDom.style.webkitTransform=`translateX(${left}px)`;
     activeDom.style.width=width+'px'; 
-    activeDom.style.webkitTransform=`translateX(${left}px)` 
-  } 
-  //计算宽度
-  getLineWidth(){
-    let domWidth=0;
-    let childDom = this.querySelectorAll("ox-tab-pane"); 
-    let childNum = childDom.length;   
-    let fontSize = this.initBar(); 
-    if(!fontSize) return false;
 
-    childDom.forEach((val,index)=>{ 
-      // 添加属性
-      val.setAttribute("index",index)
-      domWidth+=val.offsetWidth;
-    }) 
-    domWidth = (domWidth/fontSize*14)+(childNum-1)*46;
-    return domWidth
-  }
-  //初始化
+
+  }  
+  //初始化 slide滑动条
   initBar(){
     let activeDom = this.shadowRoot.querySelector(".active-bar");
+    let childDom = this.querySelectorAll("ox-tab-pane");  
     let paneDom = this.querySelector("ox-tab-pane");
     if(!paneDom)  return false;
+    childDom.forEach((val,index)=>{ 
+      // tan-pane添加属性
+      val.setAttribute("index",index) ; 
+    })  
     // 获取继承的最终的字体大小
     let fontSize = document.defaultView.getComputedStyle(paneDom,null).fontSize;
     fontSize = Number(fontSize.replace("px",''))
-    let activeBarWidth = (paneDom && paneDom.offsetWidth/fontSize*14) || 0; 
-    activeDom.style.width=activeBarWidth+'px' ;
-    return fontSize;
+     
+    let activeBarWidth = paneDom && paneDom.offsetWidth; 
+    activeDom.style.width=activeBarWidth+'px' ; 
   }
   ready() {
-    super.ready();  
-    let domWidth= this.getLineWidth()  
-    this.style.width=domWidth+'px'; 
+    super.ready();
+    
+    this.created();
   }  
+  created(callback) {
+    callback && callback();
+  }
 } 
 window.customElements.define('ox-tabs', OXTabs);
