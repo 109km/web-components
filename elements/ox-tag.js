@@ -73,9 +73,9 @@ class OXTag extends PolymerElement {
   hide() {
     if(!this.getAttribute("class").includes("delete")) return false;
     this.style.display = "none" ;
-    this.delete();
+    this.onDelete();
   } 
-  delete(callback){
+  onDelete(callback){
     callback&&callback()
   }
 } 

@@ -30,16 +30,7 @@ class OXTabPane extends PolymerElement {
           color:#D99F53;
           text-align:center; 
           margin-right: -1px;
-        }
-        .ox-tab-pane.active{
-          color: #D99F53; 
-          transition:all .5s;
-        }
-        .piece.active{
-          background: #D99F53;
-          color: #fff;
-          transition:all .5s;
-        }
+        } 
         .first{
           border-radius:4px 0 0 4px;
         }
@@ -72,6 +63,24 @@ class OXTabPane extends PolymerElement {
       },
     };
   }
+  // 初始化颜色
+  initColor(type){ 
+    let bgcolor = this.backgroundColor;
+    let color = this.color;
+    let target = this.shadowRoot.querySelector(".ox-tab-pane")
+    let targetActive = this.shadowRoot.querySelector(".active ")
+    if(type ==="piece"){
+      target.style.borderColor = bgcolor;
+      target.style.color = bgcolor;
+      if(!targetActive) return false;
+      target.style.backgroundColor = bgcolor;
+      targetActive.style.color = color;
+    }else{ 
+      target.style.color = color;
+      if(!targetActive) return false;
+      targetActive.style.color = bgcolor;
+    }
+  }
   ready() {
     super.ready();  
     this.tabHtml =this.label;  
@@ -79,10 +88,13 @@ class OXTabPane extends PolymerElement {
     let index = Number(this.getAttribute("index"));    
     let domLength = this.parentNode.children.length; 
     this.type=this.parentNode.type || this.parentNode.getAttribute("type");
+    this.backgroundColor=this.parentNode.backgroundColor || this.parentNode.getAttribute("tab-color");
+    this.color=this.parentNode.color || this.parentNode.getAttribute("color");
+    
     // 默认第一个card显示及tab-pane active 
     switch (index) {
-      case 0:
-        this.active = "active";
+      case 0: 
+      this.active = "active"
         this.className = "first"
         let card = document.querySelector(`ox-tab-card[oxcard=${this.oxtarget}]`);  
         if(!card)return false;
@@ -92,19 +104,38 @@ class OXTabPane extends PolymerElement {
       case domLength-1:
         this.className = "last"
         break;
-    }
+    } 
+    
+    this.initColor(this.type)
   
   } 
   // tab切换
   change(){  
+    let type =this.type;
+    let bgcolor = this.backgroundColor;
+    let color = this.color;
+    let target = this.shadowRoot.querySelector(".ox-tab-pane");
     [...this.parentNode.children].forEach((val)=>{
-      val.shadowRoot.querySelector(".ox-tab-pane").classList.remove("active")
-    })
-    this.shadowRoot.querySelector(".ox-tab-pane").classList.add("active")
-    if(this.type !=="piece"){
-      let index = this.getAttribute("index"); 
-      this.parentNode.activebar = Number(index);  
+      let target = val.shadowRoot.querySelector(".ox-tab-pane"); 
+      // 重置
+      if(type === "piece"){
+        target.style.color=bgcolor;   
+        target.style.backgroundColor="#fff"; 
+      }else{
+        target.style.color=color
+      } 
+    });
+
+    if(type === "piece"){
+      target.style.color=color; 
+      target.style.backgroundColor=bgcolor; 
+    }else{
+      target.style.color=bgcolor;
     } 
+
+      
+    let index = this.getAttribute("index"); 
+    this.parentNode.activebar = Number(index); 
     let card = document.querySelector(`ox-tab-card[oxcard=${this.oxtarget}]`);  
     if(!card)return false;
     card.show=true; 

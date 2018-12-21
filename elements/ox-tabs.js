@@ -38,8 +38,7 @@ class OXTabs extends PolymerElement {
         .active-bar{
           position: absolute;
           bottom:0;
-          height:4px;
-          background: #D99F53;
+          height:4px; 
           width: 100px;  
           z-index:101; 
           transition: all .5s;
@@ -78,6 +77,14 @@ class OXTabs extends PolymerElement {
       type:{
         type: String,
         value: 'slide'
+      },
+      backgroundColor:{
+        type: String,
+        value: '#D99F53'
+      },
+      color:{
+        type: String,
+        value: '#333'
       }
     };
   }
@@ -94,10 +101,12 @@ class OXTabs extends PolymerElement {
     let left =(oldVal!==undefined && tabDom.offsetLeft) || 0;
     let activeDom = this.shadowRoot.querySelector(".active-bar"); 
     activeDom.style.webkitTransform=`translateX(${left}px)`;
-    activeDom.style.width=width+'px'; 
-
-
+    activeDom.style.width=width+'px';  
+    this.onChange(newVal,oldVal)
   }  
+  onChange(callback){
+    callback && typeof callback === "function" &&callback()
+  }
   //初始化 slide滑动条
   initBar(){
     let activeDom = this.shadowRoot.querySelector(".active-bar");
@@ -115,13 +124,10 @@ class OXTabs extends PolymerElement {
     let activeBarWidth = paneDom && paneDom.offsetWidth; 
     activeDom.style.width=activeBarWidth+'px' ; 
   }
-  ready() {
-    super.ready();
-    
-    this.created();
-  }  
-  created(callback) {
-    callback && callback();
-  }
+  ready() { 
+    super.ready(); 
+    //active-bar 
+    this.shadowRoot.querySelector(".active-bar").style.backgroundColor = this.backgroundColor
+  }   
 } 
 window.customElements.define('ox-tabs', OXTabs);

@@ -72,7 +72,9 @@
 | 属性  | 说明 | 类型 | 默认值 |
 | :---: | ---- |:--:|:--:|
 | type |tab类型 可选值为 `slide`,`piece`|`String`|`slide`
-| created |tab渲染结束后的方法|`(event) => void`|
+| background-color |组件色系|`String`|`#D99F53`
+| color |相对于色系的默认颜色|`String`|`#333`
+| onChange |tab切换触发回调方法|`(event) => void`|
 
 
 ### ox-tab-pane
@@ -95,7 +97,7 @@
 | 属性  | 说明 | 类型 | 默认值 |
 | :---: | ---- |:--:|:--:|
 | type |tag类型 可选值为 `default`,`delete`|`String`|`default` 
-| delete |tag 删除事件回调|`(event) => void`|
+| onDelete |tag 删除事件回调|`(event) => void`|
 
 
 ### ox-bubble
