@@ -13,7 +13,66 @@
 :host .ox-pagination-numer, :host .ox-pagination-numer li {
   margin: 0;
   padding: 0;
+}
+
+:host .ox-pagination-numer li {
+  min-width: 36px;
+  height: 36px;
+
+  list-style: none;
   list-style-type: none;
+  cursor: pointer;
+  background: #fff;
+  border-top: 1px solid #D1D1D1;
+  border-bottom: 1px solid #D1D1D1;
+  border-right: 1px solid #D1D1D1;
+
+  text-align: center;
+  line-height: 36px;
+  /* line-height: 29px; */
+  font-size: 16px;
+  color: #282828;
+  font-weight: 400;
+  vertical-align: middle;
+
+  position: relative;
+}
+
+:host .ox-pagination-numer li.active {
+  /* min-width: 38px; */
+  transition: all .3s;
+  background-color: var(--theme-bg-color-primary);
+  color: var(--theme-color-default);
+  border-top: 1px solid var(--theme-bg-color-primary);
+  border-bottom: 1px solid var(--theme-bg-color-primary);
+  border-left: 1px solid var(--theme-bg-color-primary);
+  margin-left: -1px;
+  margin-right: -1px;
+}
+
+:host .ox-pagination-numer li:hover {
+  background-color: var(--theme-bg-color-primary);
+  color: var(--theme-color-default);
+  transition: all .3s;
+}
+:host .ox-pagination-numer li.prev, :host .ox-pagination-numer li.back {
+  font-size: 24px;
+  line-height: 22px;
+}
+
+:host .ox-pagination-numer li.prev::before, :host .ox-pagination-numer li.back::before {
+  content: "\2026";
+}
+
+:host .ox-pagination-numer li.prev:hover::before {
+  line-height: 30px;
+  content: "\00AB";
+}
+
+:host .ox-pagination-numer li.back:hover::before {
+  line-height: 30px;
+  
+  content: "\00BB";
 }
 
 :host .ox-pagination-pre,  :host .ox-pagination-next {
@@ -29,6 +88,11 @@
   width: 2px;
   height: 11px;
   background-color: #D1D1D1;
+  border-radius: 2px;
+}
+
+.ox-pagination-pre.active, .ox-pagination-next.active {
+  cursor: pointer;
 }
 
 .ox-pagination-pre.active::before, .ox-pagination-pre.active::after, .ox-pagination-next.active::before, .ox-pagination-next.active::after {
@@ -82,39 +146,6 @@
   display: flex;
   align-items: center;
   -webkit-align-items: center;
-}
-
-:host .ox-pagination-numer li {
-  min-width: 36px;
-  height: 36px;
-
-  list-style: none;
-  cursor: pointer;
-  background: #fff;
-  border-top: 1px solid #D1D1D1;
-  border-bottom: 1px solid #D1D1D1;
-  border-right: 1px solid #D1D1D1;
-
-  text-align: center;
-  line-height: 36px;
-  font-size: 16px;
-  color: #282828;
-}
-
-:host .ox-pagination-numer li.active {
-  transition: all .3s;
-  background-color: var(--theme-bg-color-primary);
-  color: var(--theme-color-default);
-  border-top: 1px solid var(--theme-bg-color-primary);
-  border-bottom: 1px solid var(--theme-bg-color-primary);
-  border-left: 1px solid var(--theme-bg-color-primary)!important;
-  
-}
-
-:host .ox-pagination-numer li:hover {
-  background-color: var(--theme-bg-color-primary);
-  color: var(--theme-color-default);
-  transition: all .3s;
 }
 
 :host .ox-pagination-numer {

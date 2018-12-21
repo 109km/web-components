@@ -10,7 +10,9 @@
   <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
 
   <!-- 引入组件的js -->
-  <script type="module" src="../elements/ox-bubble-wangfanglan/ox-bubble.js"></script>
+  <script type="module" src="../elements/ox-bubble.js"></script>
+  <script type="module" src="../elements/ox-bubble-main.js"></script>
+  <script type="module" src="../elements/ox-bubble-alert.js"></script>
   <style>
     .zone{
       margin: 80px auto 200px !important;
@@ -19,30 +21,118 @@
 </head>
 
 <body>
+<custom-style>
+  <style>
+    ox-bubble{
+      /*border: 1px solid blue;*/
+    }
+    /*ox-bubble-main{*/
+      /*background: greenyellow;*/
+    /*}*/
+    /*ox-bubble-alert{*/
+      /*color: red;*/
+      /*background: pink;*/
+    /*}*/
+    .alert-top{
+      background: #DA9D55;
+    }
+    .main-color,.alert-color{
+      color: blue;
+    }
+    .a{
+      /*left:-110%;*/
+    }
+    </style>
+</custom-style>
+
 <div class="page page-demo">
   <h1 class="page-title">
     气泡(ox-bubble)
   </h1>
   <div class="zone">
     <!-- ox-buble 左方弹出-->
-    <ox-bubble type="left" director="左方弹出" content="左方内容提示信息"></ox-bubble>
+    <ox-bubble>
+      <ox-bubble-main>
+        左方弹出弹出
+      </ox-bubble-main>
+      <ox-bubble-alert ox-class="a" type="left">
+        左方内容提示信息
+      </ox-bubble-alert>
+    </ox-bubble>
+
     <!-- ox-buble 上方弹出-->
-    <ox-bubble type="top" director="上方弹出" content="上方内容提示信息"></ox-bubble>
+    <ox-bubble>
+      <ox-bubble-main>
+        上方弹出弹出
+      </ox-bubble-main>
+      <ox-bubble-alert ox-class="alert-top" type="top" triangle-color="#DA9D55">
+        上方内容提示信息
+      </ox-bubble-alert>
+    </ox-bubble>
+
     <!-- ox-buble 下方弹出-->
-    <ox-bubble type="bottom" director="下方弹出" content="下方内容提示信息"></ox-bubble>
+    <ox-bubble>
+      <ox-bubble-main>
+        下方弹出弹出
+      </ox-bubble-main>
+      <ox-bubble-alert ox-class="a" type="bottom">
+        下方内容提示信息
+      </ox-bubble-alert>
+    </ox-bubble>
+
     <!-- ox-buble 右方弹出-->
-    <ox-bubble type="right" director="右方弹出" content="右方内容提示信息"></ox-bubble>
+    <ox-bubble>
+      <ox-bubble-main ox-class="main-color">
+        右方弹出弹出
+      </ox-bubble-main>
+      <ox-bubble-alert type="right" ox-class="alert-color">
+        右方内容提示信息
+      </ox-bubble-alert>
+    </ox-bubble>
+
   </div>
 
   <div class="zone">
-    <!-- ox-buble-title 左方弹出-->
-    <ox-bubble type="left" director="左方弹出" content="弹出框文本可多行显示" title-content="标题1"></ox-bubble>
-    <!-- ox-buble-title 上方弹出-->
-    <ox-bubble type="top" director="上方弹出" content="弹出框文本可多行显示" title-content="标题2"></ox-bubble>
-    <!-- ox-buble-title 下方弹出-->
-    <ox-bubble type="bottom" director="下方弹出" content="弹出框文本可多行显示" title-content="标题3"></ox-bubble>
-    <!-- ox-buble-title 右方弹出-->
-    <ox-bubble type="right" director="右方弹出" content="弹出框文本可多行显示" title-content="标题4"></ox-bubble>
+    <!-- ox-buble 左方弹出-->
+    <ox-bubble>
+      <ox-bubble-main>
+        左方弹出弹出
+      </ox-bubble-main>
+      <ox-bubble-alert ox-class="a" type="left" title="左方弹出">
+        左方内容提示信左方内容提示信息左方内容提示信息息
+      </ox-bubble-alert>
+    </ox-bubble>
+
+    <!-- ox-buble 上方弹出-->
+    <ox-bubble>
+      <ox-bubble-main>
+        上方弹出弹出
+      </ox-bubble-main>
+      <ox-bubble-alert ox-class="a" type="top" title="上方弹出">
+        左方内容提示信左方内容提示信息左方内容提示信息息
+      </ox-bubble-alert>
+    </ox-bubble>
+
+    <!-- ox-buble 下方弹出-->
+    <ox-bubble>
+      <ox-bubble-main>
+        下方弹出弹出
+      </ox-bubble-main>
+      <ox-bubble-alert ox-class="a" type="bottom" title="下方弹出">
+        下方弹出下方弹出下方弹出
+      </ox-bubble-alert>
+    </ox-bubble>
+
+    <!-- ox-buble 右方弹出-->
+    <ox-bubble>
+      <ox-bubble-main>
+        右方弹出弹出
+      </ox-bubble-main>
+      <ox-bubble-alert ox-class="a" type="right" title="右方弹出">
+        右方弹出右方弹出
+      </ox-bubble-alert>
+    </ox-bubble>
+
   </div>
 
 </div>

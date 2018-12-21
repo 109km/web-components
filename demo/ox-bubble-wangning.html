@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+  <title>Demo - ox-bubble</title>
+  <link rel="stylesheet" href="../elements/normalize.css">
+  <link rel="stylesheet" href="../assets/css/font-awesome.min.css">
+  <link rel="stylesheet" href="../elements/global.css">
+  <script src="../node_modules/@webcomponents/webcomponentsjs/webcomponents-loader.js"></script>
+
+  <!-- 引入组件的js -->
+  <script type="module" src="../elements/ox-bubble-wangning/ox-bubble-wangning.js"></script>
+</head>
+
+<body>
+  <custom-style>
+    <style>
+      .zone{
+        display:inline-block;
+        margin-right:20px;
+      }
+      /*.ox-bubble-top{
+        background:red;
+      }*/
+      /*.ox-bubble-content{
+        background:red;
+      }*/
+    </style>
+  </custom-style>
+  <div class="page page-demo">
+    <h1 class="page-title">
+      气泡(ox-bubble)
+    </h1>
+    <div>
+      <div class="zone">
+        <ox-bubble title="左方弹出" type='left'>
+          <div class="ox-bubble-content" slot="content">左侧内容提示信息</div>
+        </ox-bubble>
+      </div>
+      <div class="zone">
+        <ox-bubble title="右方弹出" type='right'>
+          <div class="ox-bubble-content" slot="content">右侧内容提示信息</div>
+        </ox-bubble>
+      </div>
+      <div class="zone">
+        <ox-bubble title="上方弹出" type='top'>
+          <div class="ox-bubble-content" slot="content">上侧内容提示信息</div>
+        </ox-bubble>
+      </div>
+      <div class="zone">
+        <ox-bubble title="下方弹出" type='bottom'>
+          <div class="ox-bubble-content" slot="content">下侧内容提示信息</div>
+        </ox-bubble>
+      </div>
+    </div>
+    <div style="margin-top:100px">
+      <div class="zone">
+        <ox-bubble title="左方弹出" type='left' mask>
+          <div class="ox-bubble-subtitle" slot="subtitle">标题</div>
+          <div class="ox-bubble-content" slot="content">左侧内容提示信息左侧内容提示信息左侧内容提示信息</div>
+        </ox-bubble>
+      </div>
+      <div class="zone">
+        <ox-bubble title="右方弹出" type='right' mask>
+          <div class="ox-bubble-subtitle" slot="subtitle">标题</div>
+          <div class="ox-bubble-content" slot="content">右侧内容提示信息左侧内容提示信息左侧内容提示信息</div>
+        </ox-bubble>
+      </div>
+      <div class="zone">
+        <ox-bubble title="上方弹出" type='top' mask>
+          <div class="ox-bubble-subtitle" slot="subtitle">标题</div>
+          <div class="ox-bubble-content" slot="content">上侧内容提示信息上侧内容提示信息上侧内容提示信息上侧内容提示信息</div>
+        </ox-bubble>
+      </div>
+      <div class="zone">
+        <ox-bubble title="下方弹出" type='bottom' mask>
+          <div class="ox-bubble-subtitle" slot="subtitle">标题</div>
+          <div class="ox-bubble-content" slot="content">下侧内容提示信息下侧内容提示信息下侧内容提示信息下侧内容提示信息下侧内容提示信息</div>
+        </ox-bubble>
+      </div>
+    </div>
+  </div>
+</body>
+
+</html>

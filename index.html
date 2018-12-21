@@ -27,6 +27,9 @@
       .zone{
         margin-bottom: 50px;
       }
+      .bubble-alert-right{
+        right: -145%;
+      }
     </style>
   </custom-style>
   <div class="page">
@@ -34,14 +37,62 @@
       <ox-button>测试按钮</ox-button>
     </div>
     <div class="zone">
-      <ox-bubble type="right" director="右方弹出" content="右方内容提示信息"></ox-bubble>
+      <ox-bubble>
+        <ox-bubble-main>
+          测试气泡
+        </ox-bubble-main>
+        <ox-bubble-alert ox-class="bubble-alert-right" type="right">
+          右方内容提示信息
+        </ox-bubble-alert>
+      </ox-bubble>
     </div>
     <div class="zone">
       <ox-checkbox checked group="group1" value="1">
         <span slot="label">选项1</span>
       </ox-checkbox>
+      <ox-checkbox group="group1" value="2">
+        <span slot="label">选项2</span>
+      </ox-checkbox>
+      <ox-checkbox group="group1" value="3" disabled>
+        <span slot="label">选项3</span>
+      </ox-checkbox>
     </div>
+    <div class="zone" style="display:flex;">
+      输入电话：
+      <ox-input type="tel" placeholder="输入提示文本">
+        <div class="ox-input-error-word" slot="notice">请输入11位电话</div>
+      </ox-input>
+    </div>
+    <div class="zone" style="display:flex;">
+      禁用状态：<ox-input type="prohibit" placeholder="输入提示文本" disabled></ox-input>
+    </div>
+    <div class="zone">
+      <ox-pagination default-page="25" total="48" ></ox-pagination>
+    </div>
+
+    <div class="zone">
+      <ox-radio group="choices1" value="已选中" class="ox-radio-actived" >已选中</ox-radio>
+      <ox-radio group="choices1" value="未选中">未选中</ox-radio>
+      <ox-radio group="choices1" value="不可用" disabled>不可用</ox-radio>
+      <ox-radio group="choices1" value="选中不可用" disabled class="ox-radio-actived">选中不可用</ox-radio>     
   </div>
+
+  <div class="zone">
+      <ox-switch></ox-switch>
+      <ox-switch checked ></ox-switch>
+      <ox-switch disabled></ox-switch>
+      <ox-switch checked disabled></ox-switch>
+  </div>
+    </div> 
+  </div>
+  <script>
+    const pageChange = document.querySelector('ox-pagination');
+    pageChange.onOk = function() {
+      console.log('outer-currentPage:', this.page);
+    }
+  
+  
+  </script>
 </body>
 
 </html>
