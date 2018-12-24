@@ -106,10 +106,8 @@
 | 属性  | 说明 | 类型 | 默认值 | 必须 |
 | :---: | ---- |:--:|:--:|:--:|
 | type | 设置弹出气泡的方向，可选值为 `left` , `right` , `top` , `bottom` | `String` |  | `Y` |
-| ox-class | 类名，自定义 CSS 样式 | `String` |  | `N` |
-| triangle-color | 设置气泡箭头颜色 | `String` | `#333333` | `N` |
 | title | 设置弹出气泡标题 | `String` |  | `N` |
-
+| ox-class | 类名，自定义 CSS 样式 | `String` |  | `N` |
 
 
 ### ox-cheackbox
@@ -118,9 +116,8 @@
 | :---: | ---- |:--:|:--:|:--:|
 | cheacked | checked 属性规定在页面加载时应该被预先选定的 input 元素。 | `String` |  | `N` |
 | disabled | disabled 属性规定禁用按钮。被禁用的按钮既不可用，也不可点击。 | `String` |  | `N` |
-| group | 组别 | `String` |  | `Y` |
+| group | 组别 | `String` |  | `N` |
 | value | 选项值 | `String` |  | `Y` |
-
 
 
 ### ox-switch
