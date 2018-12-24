@@ -84,6 +84,10 @@ class OXRadio extends PolymerElement {
       value: {
         type: String,
         value: ''
+      },
+      disabled:{
+        type:Boolean,
+        value:false
       }
     };
   }
@@ -91,10 +95,10 @@ class OXRadio extends PolymerElement {
     if (this.hasAttribute('disabled')) return;
     let radios = this.getGroupRadios();
     radios.forEach(function(radio, index) {
+      
       radio.className = '';
       radio.removeAttribute('actived');
     });
-
     this.checked = true;
     this.className = "ox-radio-actived";
     console.log('此选项值为' + this.value);
@@ -105,7 +109,7 @@ class OXRadio extends PolymerElement {
   setDisabled() {
     this.setAttribute('disabled');
   }
-  removeDisabled() {
+  removeDisabled() {   
     this.removeAttribute('disabled');
   }
   ready() {

@@ -127,6 +127,7 @@
 | checked | 开关是否打开状态 | `Boolean` | `false` |
 | disabled | 开关失效状态 | `Boolean` | `false` |
 | onClick | 点击按钮时的回调 | `(event) => void` |  |
+| onChange | 检测开关状态对应的回调 | `(event) => void` |  |
 
 
 
