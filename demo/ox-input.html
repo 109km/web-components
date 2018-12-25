@@ -49,6 +49,12 @@
       </ox-input>
     </div>
     <div class="zone">
+      输入密码：
+      <ox-input type="password" placeholder="输入密码">
+        <div class="ox-input-error-word" slot="notice">请输入正确的密码</div>
+      </ox-input>
+    </div>
+    <div class="zone">
       搜索状态：
       <ox-input type="search" placeholder="输入提示文本">
         <div class="ox-input-search-icon" slot="icon">
@@ -58,11 +64,11 @@
     </div>
   </div>
   <script>
-    var search = document.querySelector('ox-input[type="search"]'); 
+    let search = document.querySelector('ox-input[type="search"]'); 
     search.onkeydown = function(e){
       var e = e||window.event;
       if(e.keyCode == 13){
-        alert(this.onValue());
+        console.log(this.onValue());
       }
     }
   </script>

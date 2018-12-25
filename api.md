@@ -144,11 +144,12 @@
 
 | 属性 | 说明 | 类型 | 默认值 |
 | :--: | --- | :--: | :--: |
-| type | 设置按钮类型，选值为`text`,`prohibit`,`tel`,`email`,`url`,`search` | `String` | `text` |
+| type | 设置按钮类型，选值为`text`,`prohibit`,`tel`,`email`,`url`,`search`，`password` | `String` | `text` |
 | disabled | 输入框禁用状态 | `Boolean` | `false`|
 | placeholder | 输入框内的描述信息 | `String` |
 | fontsize | 输入框文本字体大小 | `String` |
 | color | 输入框文本颜色 | `String` |
 | cursorcolor | 输入框光标颜色 | `String` |
+| onFocus | 文本框获得焦点时的回调 | `(event) => void` |
 | onBlur | 文本框失去焦点时的回调 | `(event) => void` |
 

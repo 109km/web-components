@@ -10,6 +10,7 @@ class OXInput extends PolymerElement {
   constructor() {
     super();
     this.addEventListener('blur', this.onBlur);
+    this.addEventListener('focus', this.onFoucs);
   }
   static get template() {
     return html `
@@ -50,7 +51,12 @@ class OXInput extends PolymerElement {
           color: var(--theme-color-error);
         }
         :host([error]){
-          border: 1px var(--theme-color-error) solid;
+          border: 1px solid var(--theme-color-error);
+          box-shadow:0 0 2px var(--theme-color-error);
+          -webkit-box-shadow:0 0 2px var(--theme-color-error);
+          -moz-box-shadow:0 0 2px var(--theme-color-error);
+          -ms-box-shadow:0 0 2px var(--theme-color-error);
+          -o-box-shadow:0 0 2px var(--theme-color-error);
         }
         :host([error]) ::slotted(.ox-input-error-word){
           display: block;
@@ -68,6 +74,14 @@ class OXInput extends PolymerElement {
         :host(.ox-input-search){
           width:360px;
           padding-left:30px;
+        }
+        :host(.ox-focus){
+          border: 1px solid var(--theme-color-primary);
+          box-shadow:0 0 2px var(--theme-color-primary);
+          -webkit-box-shadow:0 0 2px var(--theme-color-primary);
+          -moz-box-shadow:0 0 2px var(--theme-color-primary);
+          -ms-box-shadow:0 0 2px var(--theme-color-primary);
+          -o-box-shadow:0 0 2px var(--theme-color-primary);
         }
       </style> 
       <input type="{{type}}" placeholder="{{placeholder}}" disabled="{{disabled}}"/>
@@ -97,8 +111,12 @@ class OXInput extends PolymerElement {
     this.onStyle();
     this.className = `ox-input ox-input-${this.type}`;
   }
+  onFoucs(e){
+    this.classList.add('ox-focus');
+  }
   onBlur(e){
-    var input = this.shadowRoot.querySelector('input');
+    this.classList.remove('ox-focus');
+    let input = this.shadowRoot.querySelector('input');
     if(input.getAttribute('type') == 'tel'){
       console.log(input.value);
       if(!(/^1[3,5,8,9,4,6,7]\d{9}$/.test(input.value))){
