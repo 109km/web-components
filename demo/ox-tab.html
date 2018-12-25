@@ -24,13 +24,13 @@
     </style>
   </custom-style>
   <div class="page page-demo">  
-    <ox-tabs type="piece">
+    <ox-tabs type="piece"  background-color="blue" color="red">
       <ox-tab-pane label="选项卡一" oxtarget="card1"></ox-tab-pane>
       <ox-tab-pane label="选项卡二" oxtarget="card2"></ox-tab-pane>
       <ox-tab-pane label="选项卡三" oxtarget="card3"></ox-tab-pane>
       <ox-tab-pane label="选项卡四" oxtarget="card4"></ox-tab-pane> 
     </ox-tabs>
-    <ox-tabs >
+    <ox-tabs>
       <ox-tab-pane label="选项卡一" oxtarget="card1"></ox-tab-pane>
       <ox-tab-pane label="选项卡二" oxtarget="card2"></ox-tab-pane>
       <ox-tab-pane label="选项卡三" oxtarget="card3"></ox-tab-pane>
@@ -61,10 +61,11 @@
    </div> 
 </body>
 <script>
-  let oxTab= document.querySelector("ox-tabs")
-  oxTab.created = function() {
-    console.log("created")
-  }   
-
+  let oxTab= document.querySelectorAll("ox-tabs");
+  [...oxTab].forEach(element => {
+    element.onChange = function(newVal,oldVal) { 
+    console.log(newVal,oldVal)
+  }  
+  }); 
 </script>
 </html>

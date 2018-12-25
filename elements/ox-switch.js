@@ -65,7 +65,8 @@ class OXSwitch extends PolymerElement {
             },
             checked: {
                 type: Boolean,
-                value: false
+                value: false,
+                observer: '_onChecked'
             },
             disabled: {
                 type: Boolean,
@@ -73,13 +74,19 @@ class OXSwitch extends PolymerElement {
             },
         }
     }
-  
+    _onChecked(newValue, oldValue) {
+        if(newValue === true){
+            console.log("check event");
+        }else{
+            console.log("Uncheck event");
+        }
+      }
     ifChecked(e){
         if (this.hasAttribute('checked')) {
             this.checked = true;
             this.setAttribute('checked', true);
             this.className = 'ox-switch-actived';
-        } 
+        }
     }
     onClick(e) {
         if (this.hasAttribute('disabled')) return;

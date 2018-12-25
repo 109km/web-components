@@ -63,19 +63,26 @@ class OXTag extends PolymerElement {
       type: {
         type: String,
         value: 'default',
+      },
+      backgroundColor:{
+        type: String,
+        value: "#d59e5b",
       },  
     };
   }
   ready() {
     super.ready();
     this.className = `ox-tag ox-tag-${this.type}`;  
+    if(this.type!=="delete"){
+      this.style.backgroundColor = this.backgroundColor 
+    }
   }
   hide() {
     if(!this.getAttribute("class").includes("delete")) return false;
     this.style.display = "none" ;
-    this.delete();
+    this.onDelete();
   } 
-  delete(callback){
+  onDelete(callback){
     callback&&callback()
   }
 } 

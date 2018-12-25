@@ -138,29 +138,26 @@ class OXBubbleMain extends PolymerElement {
     var triangle = alert.shadowRoot.querySelector(".triangle");
     var color = alert.getAttribute("triangle-color");
     var title = alert.getAttribute("title");
+
+    var finalStyle = alert.currentStyle ? alert.currentStyle : document.defaultView.getComputedStyle(alert, null);
+    console.log(finalStyle.backgroundColor);
     if(type == "left"){
-      triangle.style.borderLeftColor = color;
+      triangle.style.borderLeftColor = finalStyle.backgroundColor;
     }else if(type == "right"){
-      triangle.style.borderRightColor = color;
+      triangle.style.borderRightColor = finalStyle.backgroundColor;
     }else if(type == "top"){
-      triangle.style.borderTopColor = color;
+      triangle.style.borderTopColor = finalStyle.backgroundColor;
     }else{
-      triangle.style.borderBottomColor = color;
+      triangle.style.borderBottomColor = finalStyle.backgroundColor;
     }
     alert.style.display = "block";
     alert.shadowRoot.querySelector(".ox-bubble-alert").display = "block";
-    //console.log(title);
-
     if(title != null){
-      //console.log("buweikong");
-      //console.log(alert.shadowRoot.querySelector(".ox-bubble-alert"));
       alert.shadowRoot.querySelector(".ox-bubble-alert").classList.add("wrap");
     }else{
-      //console.log("kong")
     }
   }
   onMouseleave(e) {
-    //console.log("鼠标移出");
     var alert = this.parentNode.children[1];
     alert.style.display = "none";
     alert.shadowRoot.querySelector(".ox-bubble-alert").display = "none";
