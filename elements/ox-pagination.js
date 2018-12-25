@@ -192,7 +192,7 @@ class OXPagination extends PolymerElement {
 
   initUserClass() {
     // 渲染
-    this.backgroundColor = this.getAttribute('background') || '';
+    this.backgroundColor = this.getAttribute('background-color') || '';
     if (this.backgroundColor) {
       this.defaultColor = `background-color: ${this.backgroundColor}; border-top: 1px solid ${this.backgroundColor}; 
       border-bottom: 1px solid ${this.backgroundColor}; border-left: 1px solid ${this.backgroundColor}`;
@@ -210,7 +210,7 @@ class OXPagination extends PolymerElement {
   }
 
   _reset() {
-    this.page = parseInt(this.getAttribute('default-page'));
+    this.page = parseInt(this.getAttribute('page'));
     this.total = parseInt(this.getAttribute('total'));
     if (this.total > 10) {
       if (this.page <= 8) {
@@ -266,7 +266,7 @@ class OXPagination extends PolymerElement {
         }
       }
       this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
-      this.onOk();
+      this.onChange();
     }
   }
 
@@ -300,7 +300,7 @@ class OXPagination extends PolymerElement {
     }
     
     this.pagesNumber = JSON.parse( JSON.stringify( this.pagesNumber) );
-    this.onOk();
+    this.onChange();
   }
 
   initOverObj(number, str = '') {
@@ -414,7 +414,7 @@ class OXPagination extends PolymerElement {
     target.style.borderBottom = '';
   }
 
-  onOk() {
+  onChange() {
     callback && callback();
   }
 }

@@ -67,7 +67,7 @@
       禁用状态：<ox-input type="prohibit" placeholder="输入提示文本" disabled></ox-input>
     </div>
     <div class="zone">
-      <ox-pagination default-page="25" total="48" ></ox-pagination>
+      <ox-pagination page="25" total="48" ></ox-pagination>
     </div>
 
     <div class="zone">
@@ -87,7 +87,7 @@
   </div>
   <script>
     const pageChange = document.querySelector('ox-pagination');
-    pageChange.onOk = function() {
+    pageChange.onChange = function() {
       console.log('outer-currentPage:', this.page);
     }
   

@@ -61,11 +61,10 @@
 ### ox-pagination
 | 属性  | 说明 | 类型 | 默认值 |
 | :---: | ---- |:--:|:--:|
-| background | 设置是分页按钮背景色 | String | #d59e5b
-| total | 总条目数 | `number` 
+| background-color | 设置是分页按钮背景色 | String | #d59e5b
+| total | 总页数 | `number` 
 | page | 当前页面 | `number` | 1
-| default-page | 默认的当前页数 | `number` | 1
-| onOk | 分页事件 |`(event) => void`
+| onChange | 分页事件 |`(event) => void`
 
 
 ### ox-tabs
