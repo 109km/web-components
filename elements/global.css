@@ -43,7 +43,7 @@ html {
 
 }
 
-[ox-ready] {
+[ox-cloak] {
   opacity: 0;
 }
 
