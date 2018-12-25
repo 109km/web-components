@@ -37,3 +37,7 @@ import './elements/ox-modal-shaoxinheng';
 
 import './elements/ox-input';
 
+
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('[ox-ready]') && document.querySelector('[ox-ready]').removeAttribute('ox-ready');
+}, false);
