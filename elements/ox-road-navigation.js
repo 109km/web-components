@@ -2,7 +2,6 @@ import {
   html,
   PolymerElement
 } from '@polymer/polymer/polymer-element.js';
-
 /**
  * @name ox-road-navigation
  */
@@ -32,8 +31,9 @@ class OXRoadNav extends PolymerElement {
         margin: 0 5px;
       }
     </style>
-    <div class="ox-road-navigation-main" inner-h-t-m-l={{navHtml}}>
-      
+    <div class="ox-road-navigation-main">
+      <ox-road-nav-item separator={{separator}} content={{content}}></ox-road-nav-item>
+      <slot></slot>
     </div>
     `;
   }
@@ -42,33 +42,19 @@ class OXRoadNav extends PolymerElement {
       content: {
         type: Array,
         value: []
+      },
+      separator: {
+        type: String
       }
     };
   }
-  toHtml() {
-    const { content } = this;
-
-    const navHtml = content && content.map((el, index, arr) => {
-
-      return `<a 
-              on-mouseenter = onMouseenter
-              class="${ el.isActive ? 'active item' : 'item' }" 
-              style="${ el.isActive ? `color: ${el.activeColor}`: '' }"
-              href="${ el.href }" 
-              target="_black">
-              ${ el.text }</a>
-              ${ index<arr.length-1 ? "<span class='line'>/</span>" : "" }`
-    })
-
-    this.navHtml = navHtml.join("");
-  }
+  
   onMouseenter (e) {
     console.log(e.target)
     e.target.style.color = this.content.activeColor; 
   }
   ready() {
     super.ready();
-    this.toHtml();
   }
 }
 

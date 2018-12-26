@@ -153,3 +153,17 @@
 | onFocus | 文本框获得焦点时的回调 | `(event) => void` |
 | onBlur | 文本框失去焦点时的回调 | `(event) => void` |
 
+### ox-road-navigation
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--: | --- | :--: | :--: |
+| content | [{href: 连接,text: "文字", params: {路由参数}}] | `Array` | `{}` |
+| separator | 参数分隔符 | `String` | `&`|
+
+### ox-road-navigation-item
+
+| 属性 | 说明 | 类型 | 默认值 |
+| :--: | --- | :--: | :--: |
+| params | 路由参数 | `Object` | `{}` |
+| href | 参数分隔符 | `String` | `&`|
+| target | 跳转方式 | `String` | `_self`|

@@ -12,6 +12,7 @@
 
   <!-- 引入组件的js -->
   <script type="module" src="../elements/ox-road-navigation.js"></script>
+  <script type="module" src="../elements/ox-road-navigation-item.js"></script>
 </head>
 
 <body>
@@ -23,16 +24,20 @@
       导航路劲(ox-road-navigation)
     </h1>
     <div class="zone">
-      <ox-road-nav id="nav">
+      <ox-road-nav id="nav" separator="%">
+        <ox-road-nav-item target="_black" href="#">aaa</ox-road-nav-item>
       </ox-road-nav>
     </div>
     <script>
       const el = document.querySelectorAll("#nav");
-      const b = [{
+      const item = [{
           href: "https://www.baidu.com",
           text: "导航1",
           isActive: false,
-          activeColor: "red"
+          params: {
+            a: 1,
+            b: 2
+          }
         },
         {
           href: "#",
@@ -44,7 +49,7 @@
           text: "导航3"
         }
       ];
-      const a = el[0].setAttribute("content", JSON.stringify(b));
+      const a = el[0].setAttribute("content", JSON.stringify(item));
     </script>
   </div>
 </body>
