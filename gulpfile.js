@@ -15,6 +15,7 @@ const minifyCSS = require('gulp-clean-css');
 const htmlReplace = require('gulp-html-replace');
 const rename = require('gulp-rename');
 
+const VERSION = '0.1.0';
 
 function buildPolymer() {
   return exec('polymer build');
@@ -22,14 +23,14 @@ function buildPolymer() {
 
 function buildCSS() {
   return src(`elements/*.css`)
-    .pipe(concatCSS(`ox.min.css`))
+    .pipe(concatCSS(`ox-${VERSION}.min.css`))
     .pipe(minifyCSS())
     .pipe(dest(`${DIST_DIR}/prod`));
 }
 
 function renameJS() {
   return src(`${DIST_DIR}/prod/index.js`)
-    .pipe(rename(`ox.min.js`))
+    .pipe(rename(`ox-${VERSION}.min.js`))
     .pipe(dest(`${DIST_DIR}/prod`));
 }
 
@@ -40,10 +41,10 @@ function removeUselessFiles() {
 function replaceHTML() {
   return src(`${DIST_DIR}/prod/index.html`)
     .pipe(htmlReplace({
-      'css': 'ox.min.css',
+      'css': `ox-${VERSION}.min.css`,
       'js': {
         src: [
-          ['ox.min.js']
+          [`ox-${VERSION}.min.js`]
         ],
         tpl: '<script src="%s" type="module"></script>'
       }
