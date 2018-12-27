@@ -110,3 +110,11 @@
 | cursorcolor | 输入框光标颜色 | `String` |
 | onBlur | 文本框失去焦点时的回调 | `(event) => void` |
 
+
+### ox-menu
+| 属性 | 说明 | 类型 | 默认值 |
+| :--: | --- | :--: | :--: |
+| background-color | 菜单的背景色（仅支持 hex 格式） | `String`| #ffffff |
+| text-color | 菜单的文字颜色（仅支持 hex 格式 | `String` | #333333
+| disabled | 是否禁用	| `Boolean` | false
+
