@@ -1,36 +1,17 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
+<!DOCTYPE html><html lang="en"><head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>Web components</title>
-  <!-- build:css -->
-  <link rel="stylesheet" href="./elements/normalize.css">
-  <link rel="stylesheet" href="./elements/global.css">
-  <!-- endbuild -->
+  <link rel="stylesheet" href="ox.min.css">
 
-  <!-- build:js -->
-  <script src="./index.js" type="module"></script>
-  <!-- endbuild -->
+  <script src="ox.min.js" type="module"></script>
 
 </head>
 
-<body ox-ready>
+<body ox-ready="">
   <custom-style>
-    <style is="custom-style">
-      .page {
-        width: 600px;
-        margin: 50px auto 0 auto;
-      }
-      .zone{
-        margin-bottom: 50px;
-      }
-      .bubble-alert-right{
-        right: -145%;
-      }
-    </style>
+    <style is="custom-style">.page{width:600px;margin:50px auto 0 auto;}.zone{margin-bottom:50px;}.bubble-alert-right{right:-145%;}</style>
   </custom-style>
   <div class="page">
     <div class="zone">
@@ -47,13 +28,13 @@
       </ox-bubble>
     </div>
     <div class="zone">
-      <ox-checkbox checked group="group1" value="1">
+      <ox-checkbox checked="" group="group1" value="1">
         <span slot="label">选项1</span>
       </ox-checkbox>
       <ox-checkbox group="group1" value="2">
         <span slot="label">选项2</span>
       </ox-checkbox>
-      <ox-checkbox group="group1" value="3" disabled>
+      <ox-checkbox group="group1" value="3" disabled="">
         <span slot="label">选项3</span>
       </ox-checkbox>
     </div>
@@ -64,7 +45,7 @@
       </ox-input>
     </div>
     <div class="zone" style="display:flex;">
-      禁用状态：<ox-input type="prohibit" placeholder="输入提示文本" disabled></ox-input>
+      禁用状态：<ox-input type="prohibit" placeholder="输入提示文本" disabled=""></ox-input>
     </div>
     <div class="zone">
       <ox-pagination default-page="25" total="48"></ox-pagination>
@@ -73,21 +54,19 @@
     <div class="zone">
       <ox-radio group="choices1" value="已选中" class="ox-radio-actived">已选中</ox-radio>
       <ox-radio group="choices1" value="未选中">未选中</ox-radio>
-      <ox-radio group="choices1" value="不可用" disabled>不可用</ox-radio>
-      <ox-radio group="choices1" value="选中不可用" disabled class="ox-radio-actived">选中不可用</ox-radio>
+      <ox-radio group="choices1" value="不可用" disabled="">不可用</ox-radio>
+      <ox-radio group="choices1" value="选中不可用" disabled="" class="ox-radio-actived">选中不可用</ox-radio>
     </div>
 
     <div class="zone">
       <ox-switch></ox-switch>
-      <ox-switch checked></ox-switch>
-      <ox-switch disabled></ox-switch>
-      <ox-switch checked disabled></ox-switch>
+      <ox-switch checked=""></ox-switch>
+      <ox-switch disabled=""></ox-switch>
+      <ox-switch checked="" disabled=""></ox-switch>
     </div>
   </div>
-  </div>
-  <script>
+  
+  <script></script>
 
-  </script>
-</body>
 
-</html>
+</body></html>
